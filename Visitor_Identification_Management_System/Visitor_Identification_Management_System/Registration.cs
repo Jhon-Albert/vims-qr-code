@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Visitor_Identification_Management_System
 {
@@ -22,7 +23,6 @@ namespace Visitor_Identification_Management_System
 
         private void LoadEmailCredentials()
         {
-            // Ideally load from a secure configuration or environment variables
             senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "degolladomichael01@gmail.com";
             senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "ctor uogr wgin mvev";
         }
@@ -36,6 +36,38 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        //GENERATE VISITOR ID
+        private string GenerateVisitorID()
+        {
+            int lastVisitorNumber = 10000;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\VIMS_try\VIMS.mdf"";Integrated Security=True;Connect Timeout=30"))
+                {
+                    con.Open();
+                    string query = "SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        var result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            string lastVisitorID = result.ToString();
+                            if (int.TryParse(lastVisitorID.Substring(1), out int visitorNumber))
+                            {
+                                lastVisitorNumber = visitorNumber;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching last VisitorID: " + ex.Message);
+            }
+            return "V" + (lastVisitorNumber + 1);
+        }
+
+        //GENERATE VISITOR QR CODE
         private void GenerateQRCode(string data, string visitorID)
         {
             try
@@ -59,6 +91,7 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        //SEND VISITOR QR CODE TO EMAIL
         private bool SendEmailWithQRCode(string recipientEmail, string qrFilePath)
         {
             try
@@ -79,6 +112,20 @@ namespace Visitor_Identification_Management_System
                 };
 
                 smtp.Send(mail);
+
+                attachment.Dispose(); //CLEANUP ATTACHMENT AFTER SENDING EMAIL
+                try
+                {
+                    if (File.Exists(qrFilePath))
+                    {
+                        File.Delete(qrFilePath); // CLEANUP QR CODE FILE AFTER SENDING EMAIL
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error deleting QR code file: " + ex.Message);
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -88,16 +135,19 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        //BUTTONS
         private void btn_register_Click(object sender, EventArgs e)
         {
             try
             {
+                string visitorID = GenerateVisitorID();
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\VIMS_try\VIMS.mdf"";Integrated Security=True;Connect Timeout=30"))
                 {
                     con.Open();
-                    string query = "INSERT INTO Registration (Email, FirstName, LastName, Address, ContactNumber, Purpose) VALUES (@Email, @FirstName, @LastName, @Address, @ContactNumber, @Purpose)";
+                    string query = "INSERT INTO Registration (VisitorID, Email, FirstName, LastName, Address, ContactNumber, Purpose) VALUES (@VisitorID, @Email, @FirstName, @LastName, @Address, @ContactNumber, @Purpose)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
+                        cmd.Parameters.AddWithValue("@VisitorID", visitorID.Trim());
                         cmd.Parameters.AddWithValue("@Email", txt_email.Text.Trim());
                         cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text.Trim());
                         cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text.Trim());
@@ -110,9 +160,10 @@ namespace Visitor_Identification_Management_System
                     }
                 }
 
-                string visitorData = $"Name: {txt_firstName.Text.Trim()} {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
-                string filePath = Path.Combine(Application.StartupPath, $"Visitor_{txt_firstName.Text.Trim()}{txt_lastName.Text.Trim()}.png");
-                GenerateQRCode(visitorData, txt_firstName.Text.Trim() + txt_lastName.Text.Trim());
+                string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
+                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
+                string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
+                GenerateQRCode(systemVisitorData, visitorID);
 
                 if (SendEmailWithQRCode(txt_email.Text.Trim(), filePath))
                 {

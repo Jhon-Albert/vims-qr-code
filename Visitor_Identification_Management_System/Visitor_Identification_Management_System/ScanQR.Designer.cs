@@ -28,31 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btn_back = new Button();
-            txt_purpose = new TextBox();
-            label6 = new Label();
-            txt_contact_number = new TextBox();
-            label7 = new Label();
-            txt_address = new TextBox();
-            label8 = new Label();
-            txt_email = new TextBox();
-            label5 = new Label();
-            txt_lastName = new TextBox();
-            label4 = new Label();
-            txt_firstName = new TextBox();
-            label3 = new Label();
             cmb_camera = new ComboBox();
-            btn_scan_qr = new Button();
             btn_camera = new Button();
             pb_scan = new PictureBox();
             label2 = new Label();
             label1 = new Label();
+            gb_visitor_information = new GroupBox();
+            txt_lastName = new TextBox();
+            label4 = new Label();
+            txt_purpose = new TextBox();
+            txt_address = new TextBox();
+            txt_contactNumber = new TextBox();
+            txt_email = new TextBox();
+            txt_firstName = new TextBox();
+            txt_visitorID = new TextBox();
+            label9 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label5 = new Label();
+            label3 = new Label();
+            lbl_date = new Label();
+            lbl_time = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pb_scan).BeginInit();
+            gb_visitor_information.SuspendLayout();
             SuspendLayout();
             // 
             // btn_back
             // 
-            btn_back.Location = new Point(96, 397);
+            btn_back.Location = new Point(90, 405);
             btn_back.Name = "btn_back";
             btn_back.Size = new Size(89, 23);
             btn_back.TabIndex = 48;
@@ -60,135 +67,17 @@
             btn_back.UseVisualStyleBackColor = true;
             btn_back.Click += btn_back_Click;
             // 
-            // txt_purpose
-            // 
-            txt_purpose.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_purpose.Location = new Point(654, 154);
-            txt_purpose.Name = "txt_purpose";
-            txt_purpose.Size = new Size(130, 27);
-            txt_purpose.TabIndex = 47;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(533, 156);
-            label6.Name = "label6";
-            label6.Size = new Size(115, 20);
-            label6.TabIndex = 46;
-            label6.Text = "Purpose of Visit:";
-            // 
-            // txt_contact_number
-            // 
-            txt_contact_number.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_contact_number.Location = new Point(397, 189);
-            txt_contact_number.Name = "txt_contact_number";
-            txt_contact_number.Size = new Size(130, 27);
-            txt_contact_number.TabIndex = 45;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(270, 192);
-            label7.Name = "label7";
-            label7.Size = new Size(121, 20);
-            label7.TabIndex = 44;
-            label7.Text = "Contact Number:";
-            // 
-            // txt_address
-            // 
-            txt_address.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_address.Location = new Point(397, 222);
-            txt_address.Multiline = true;
-            txt_address.Name = "txt_address";
-            txt_address.Size = new Size(218, 100);
-            txt_address.TabIndex = 43;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(326, 225);
-            label8.Name = "label8";
-            label8.Size = new Size(65, 20);
-            label8.TabIndex = 42;
-            label8.Text = "Address:";
-            // 
-            // txt_email
-            // 
-            txt_email.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_email.Location = new Point(397, 153);
-            txt_email.Name = "txt_email";
-            txt_email.Size = new Size(130, 27);
-            txt_email.TabIndex = 41;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(342, 156);
-            label5.Name = "label5";
-            label5.Size = new Size(49, 20);
-            label5.TabIndex = 40;
-            label5.Text = "Email:";
-            // 
-            // txt_lastName
-            // 
-            txt_lastName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_lastName.Location = new Point(654, 121);
-            txt_lastName.Name = "txt_lastName";
-            txt_lastName.Size = new Size(130, 27);
-            txt_lastName.TabIndex = 39;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(566, 124);
-            label4.Name = "label4";
-            label4.Size = new Size(82, 20);
-            label4.TabIndex = 38;
-            label4.Text = "Last Name:";
-            // 
-            // txt_firstName
-            // 
-            txt_firstName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_firstName.Location = new Point(397, 120);
-            txt_firstName.Name = "txt_firstName";
-            txt_firstName.Size = new Size(130, 27);
-            txt_firstName.TabIndex = 37;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(308, 124);
-            label3.Name = "label3";
-            label3.Size = new Size(83, 20);
-            label3.TabIndex = 36;
-            label3.Text = "First Name:";
-            // 
             // cmb_camera
             // 
             cmb_camera.FormattingEnabled = true;
-            cmb_camera.Location = new Point(79, 127);
+            cmb_camera.Location = new Point(74, 122);
             cmb_camera.Name = "cmb_camera";
             cmb_camera.Size = new Size(121, 23);
             cmb_camera.TabIndex = 35;
             // 
-            // btn_scan_qr
-            // 
-            btn_scan_qr.Location = new Point(96, 368);
-            btn_scan_qr.Name = "btn_scan_qr";
-            btn_scan_qr.Size = new Size(89, 23);
-            btn_scan_qr.TabIndex = 34;
-            btn_scan_qr.Text = "Scan QR";
-            btn_scan_qr.UseVisualStyleBackColor = true;
-            // 
             // btn_camera
             // 
-            btn_camera.Location = new Point(96, 339);
+            btn_camera.Location = new Point(90, 347);
             btn_camera.Name = "btn_camera";
             btn_camera.Size = new Size(89, 23);
             btn_camera.TabIndex = 33;
@@ -199,9 +88,9 @@
             // pb_scan
             // 
             pb_scan.BorderStyle = BorderStyle.FixedSingle;
-            pb_scan.Location = new Point(25, 156);
+            pb_scan.Location = new Point(27, 151);
             pb_scan.Name = "pb_scan";
-            pb_scan.Size = new Size(228, 177);
+            pb_scan.Size = new Size(232, 190);
             pb_scan.SizeMode = PictureBoxSizeMode.StretchImage;
             pb_scan.TabIndex = 32;
             pb_scan.TabStop = false;
@@ -226,27 +115,192 @@
             label1.TabIndex = 30;
             label1.Text = "Scan QR Code";
             // 
+            // gb_visitor_information
+            // 
+            gb_visitor_information.Controls.Add(txt_lastName);
+            gb_visitor_information.Controls.Add(label4);
+            gb_visitor_information.Controls.Add(txt_purpose);
+            gb_visitor_information.Controls.Add(txt_address);
+            gb_visitor_information.Controls.Add(txt_contactNumber);
+            gb_visitor_information.Controls.Add(txt_email);
+            gb_visitor_information.Controls.Add(txt_firstName);
+            gb_visitor_information.Controls.Add(txt_visitorID);
+            gb_visitor_information.Controls.Add(label9);
+            gb_visitor_information.Controls.Add(label6);
+            gb_visitor_information.Controls.Add(label7);
+            gb_visitor_information.Controls.Add(label8);
+            gb_visitor_information.Controls.Add(label5);
+            gb_visitor_information.Controls.Add(label3);
+            gb_visitor_information.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gb_visitor_information.Location = new Point(284, 73);
+            gb_visitor_information.Name = "gb_visitor_information";
+            gb_visitor_information.Size = new Size(504, 365);
+            gb_visitor_information.TabIndex = 49;
+            gb_visitor_information.TabStop = false;
+            gb_visitor_information.Text = "VISITOR INFORMATION";
+            // 
+            // txt_lastName
+            // 
+            txt_lastName.Font = new Font("Segoe UI", 12F);
+            txt_lastName.Location = new Point(133, 112);
+            txt_lastName.Name = "txt_lastName";
+            txt_lastName.Size = new Size(218, 29);
+            txt_lastName.TabIndex = 69;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(45, 116);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 20);
+            label4.TabIndex = 68;
+            label4.Text = "Last Name:";
+            // 
+            // txt_purpose
+            // 
+            txt_purpose.Font = new Font("Segoe UI", 12F);
+            txt_purpose.Location = new Point(133, 322);
+            txt_purpose.Name = "txt_purpose";
+            txt_purpose.Size = new Size(218, 29);
+            txt_purpose.TabIndex = 67;
+            // 
+            // txt_address
+            // 
+            txt_address.Font = new Font("Segoe UI", 12F);
+            txt_address.Location = new Point(133, 217);
+            txt_address.Multiline = true;
+            txt_address.Name = "txt_address";
+            txt_address.Size = new Size(218, 99);
+            txt_address.TabIndex = 66;
+            // 
+            // txt_contactNumber
+            // 
+            txt_contactNumber.Font = new Font("Segoe UI", 12F);
+            txt_contactNumber.Location = new Point(133, 182);
+            txt_contactNumber.Name = "txt_contactNumber";
+            txt_contactNumber.Size = new Size(218, 29);
+            txt_contactNumber.TabIndex = 65;
+            // 
+            // txt_email
+            // 
+            txt_email.Font = new Font("Segoe UI", 12F);
+            txt_email.Location = new Point(133, 147);
+            txt_email.Name = "txt_email";
+            txt_email.Size = new Size(218, 29);
+            txt_email.TabIndex = 64;
+            // 
+            // txt_firstName
+            // 
+            txt_firstName.Font = new Font("Segoe UI", 12F);
+            txt_firstName.Location = new Point(133, 78);
+            txt_firstName.Name = "txt_firstName";
+            txt_firstName.Size = new Size(218, 29);
+            txt_firstName.TabIndex = 62;
+            // 
+            // txt_visitorID
+            // 
+            txt_visitorID.Font = new Font("Segoe UI", 12F);
+            txt_visitorID.Location = new Point(133, 43);
+            txt_visitorID.Name = "txt_visitorID";
+            txt_visitorID.Size = new Size(218, 29);
+            txt_visitorID.TabIndex = 61;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(54, 47);
+            label9.Name = "label9";
+            label9.Size = new Size(73, 20);
+            label9.TabIndex = 60;
+            label9.Text = "Visitor ID:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(12, 326);
+            label6.Name = "label6";
+            label6.Size = new Size(115, 20);
+            label6.TabIndex = 58;
+            label6.Text = "Purpose of Visit:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(6, 186);
+            label7.Name = "label7";
+            label7.Size = new Size(121, 20);
+            label7.TabIndex = 56;
+            label7.Text = "Contact Number:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(62, 221);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 20);
+            label8.TabIndex = 54;
+            label8.Text = "Address:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(78, 151);
+            label5.Name = "label5";
+            label5.Size = new Size(49, 20);
+            label5.TabIndex = 52;
+            label5.Text = "Email:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(44, 82);
+            label3.Name = "label3";
+            label3.Size = new Size(83, 20);
+            label3.TabIndex = 48;
+            label3.Text = "First Name:";
+            // 
+            // lbl_date
+            // 
+            lbl_date.AutoSize = true;
+            lbl_date.Font = new Font("Segoe UI", 12F);
+            lbl_date.Location = new Point(570, 34);
+            lbl_date.Name = "lbl_date";
+            lbl_date.Size = new Size(46, 21);
+            lbl_date.TabIndex = 50;
+            lbl_date.Text = "DATE";
+            // 
+            // lbl_time
+            // 
+            lbl_time.AutoSize = true;
+            lbl_time.Font = new Font("Segoe UI", 12F);
+            lbl_time.Location = new Point(660, 60);
+            lbl_time.Name = "lbl_time";
+            lbl_time.Size = new Size(44, 21);
+            lbl_time.TabIndex = 51;
+            lbl_time.Text = "TIME";
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // ScanQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(lbl_time);
+            Controls.Add(lbl_date);
+            Controls.Add(gb_visitor_information);
             Controls.Add(btn_back);
-            Controls.Add(txt_purpose);
-            Controls.Add(label6);
-            Controls.Add(txt_contact_number);
-            Controls.Add(label7);
-            Controls.Add(txt_address);
-            Controls.Add(label8);
-            Controls.Add(txt_email);
-            Controls.Add(label5);
-            Controls.Add(txt_lastName);
-            Controls.Add(label4);
-            Controls.Add(txt_firstName);
-            Controls.Add(label3);
             Controls.Add(cmb_camera);
-            Controls.Add(btn_scan_qr);
             Controls.Add(btn_camera);
             Controls.Add(pb_scan);
             Controls.Add(label2);
@@ -256,6 +310,8 @@
             FormClosing += ScanQR_FormClosing;
             Load += ScanQR_Load;
             ((System.ComponentModel.ISupportInitialize)pb_scan).EndInit();
+            gb_visitor_information.ResumeLayout(false);
+            gb_visitor_information.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -263,23 +319,28 @@
         #endregion
 
         private Button btn_back;
-        private TextBox txt_purpose;
-        private Label label6;
-        private TextBox txt_contact_number;
-        private Label label7;
-        private TextBox txt_address;
-        private Label label8;
-        private TextBox txt_email;
-        private Label label5;
-        private TextBox txt_lastName;
-        private Label label4;
-        private TextBox txt_firstName;
-        private Label label3;
         private ComboBox cmb_camera;
-        private Button btn_scan_qr;
         private Button btn_camera;
         private PictureBox pb_scan;
         private Label label2;
         private Label label1;
+        private GroupBox gb_visitor_information;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label5;
+        private Label label3;
+        private Label lbl_date;
+        private Label lbl_time;
+        private System.Windows.Forms.Timer timer1;
+        private TextBox txt_visitorID;
+        private Label label9;
+        private TextBox txt_purpose;
+        private TextBox txt_address;
+        private TextBox txt_contactNumber;
+        private TextBox txt_email;
+        private TextBox txt_firstName;
+        private TextBox txt_lastName;
+        private Label label4;
     }
 }
