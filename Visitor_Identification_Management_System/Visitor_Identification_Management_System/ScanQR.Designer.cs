@@ -36,6 +36,8 @@
             label2 = new Label();
             label1 = new Label();
             gb_visitor_information = new GroupBox();
+            btn_checkOut = new Button();
+            btn_confirm = new Button();
             txt_lastName = new TextBox();
             label4 = new Label();
             txt_purpose = new TextBox();
@@ -59,9 +61,11 @@
             // 
             // btn_back
             // 
-            btn_back.Location = new Point(90, 405);
+            btn_back.AutoSize = true;
+            btn_back.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_back.Location = new Point(91, 407);
             btn_back.Name = "btn_back";
-            btn_back.Size = new Size(89, 23);
+            btn_back.Size = new Size(89, 31);
             btn_back.TabIndex = 48;
             btn_back.Text = "Back";
             btn_back.UseVisualStyleBackColor = true;
@@ -69,17 +73,20 @@
             // 
             // cmb_camera
             // 
+            cmb_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmb_camera.FormattingEnabled = true;
-            cmb_camera.Location = new Point(74, 122);
+            cmb_camera.Location = new Point(29, 116);
             cmb_camera.Name = "cmb_camera";
-            cmb_camera.Size = new Size(121, 23);
+            cmb_camera.Size = new Size(230, 29);
             cmb_camera.TabIndex = 35;
             // 
             // btn_camera
             // 
-            btn_camera.Location = new Point(90, 347);
+            btn_camera.AutoSize = true;
+            btn_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_camera.Location = new Point(77, 347);
             btn_camera.Name = "btn_camera";
-            btn_camera.Size = new Size(89, 23);
+            btn_camera.Size = new Size(116, 31);
             btn_camera.TabIndex = 33;
             btn_camera.Text = "Open Camera";
             btn_camera.UseVisualStyleBackColor = true;
@@ -117,6 +124,8 @@
             // 
             // gb_visitor_information
             // 
+            gb_visitor_information.Controls.Add(btn_checkOut);
+            gb_visitor_information.Controls.Add(btn_confirm);
             gb_visitor_information.Controls.Add(txt_lastName);
             gb_visitor_information.Controls.Add(label4);
             gb_visitor_information.Controls.Add(txt_purpose);
@@ -138,6 +147,30 @@
             gb_visitor_information.TabIndex = 49;
             gb_visitor_information.TabStop = false;
             gb_visitor_information.Text = "VISITOR INFORMATION";
+            // 
+            // btn_checkOut
+            // 
+            btn_checkOut.AutoSize = true;
+            btn_checkOut.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_checkOut.Location = new Point(394, 78);
+            btn_checkOut.Name = "btn_checkOut";
+            btn_checkOut.Size = new Size(92, 31);
+            btn_checkOut.TabIndex = 71;
+            btn_checkOut.Text = "Check Out";
+            btn_checkOut.UseVisualStyleBackColor = true;
+            btn_checkOut.Click += btn_checkOut_Click;
+            // 
+            // btn_confirm
+            // 
+            btn_confirm.AutoSize = true;
+            btn_confirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_confirm.Location = new Point(394, 41);
+            btn_confirm.Name = "btn_confirm";
+            btn_confirm.Size = new Size(92, 31);
+            btn_confirm.TabIndex = 70;
+            btn_confirm.Text = "Check In";
+            btn_confirm.UseVisualStyleBackColor = true;
+            btn_confirm.Click += btn_confirm_Click;
             // 
             // txt_lastName
             // 
@@ -342,5 +375,7 @@
         private TextBox txt_firstName;
         private TextBox txt_lastName;
         private Label label4;
+        private Button btn_confirm;
+        private Button btn_checkOut;
     }
 }

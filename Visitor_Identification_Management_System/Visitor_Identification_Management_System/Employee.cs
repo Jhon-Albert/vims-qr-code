@@ -19,6 +19,7 @@ namespace Visitor_Identification_Management_System
             EmployeeDashboard employeeDashboard = new EmployeeDashboard();
             addUserControl(employeeDashboard);
         }
+
         private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
@@ -43,12 +44,6 @@ namespace Visitor_Identification_Management_System
         private void btn_info_Click(object sender, EventArgs e)
         {
             Info uc = new Info();
-            addUserControl(uc);
-        }
-
-        private void btn_notification_Click(object sender, EventArgs e)
-        {
-            Notification uc = new Notification();
             addUserControl(uc);
         }
 

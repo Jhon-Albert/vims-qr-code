@@ -33,7 +33,6 @@
             btn_logout = new Button();
             btn_scan = new Button();
             btn_blacklist = new Button();
-            btn_notification = new Button();
             btn_info = new Button();
             btn_logs = new Button();
             button1 = new Button();
@@ -56,7 +55,6 @@
             panelTabs.Controls.Add(btn_logout);
             panelTabs.Controls.Add(btn_scan);
             panelTabs.Controls.Add(btn_blacklist);
-            panelTabs.Controls.Add(btn_notification);
             panelTabs.Controls.Add(btn_info);
             panelTabs.Controls.Add(btn_logs);
             panelTabs.Controls.Add(button1);
@@ -64,7 +62,7 @@
             panelTabs.Dock = DockStyle.Left;
             panelTabs.Location = new Point(0, 0);
             panelTabs.Name = "panelTabs";
-            panelTabs.Size = new Size(200, 511);
+            panelTabs.Size = new Size(200, 572);
             panelTabs.TabIndex = 0;
             // 
             // btn_logout
@@ -78,7 +76,7 @@
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_logout.Location = new Point(0, 456);
+            btn_logout.Location = new Point(0, 517);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(12, 0, 0, 0);
             btn_logout.Size = new Size(200, 55);
@@ -100,7 +98,7 @@
             btn_scan.ForeColor = SystemColors.ControlText;
             btn_scan.Image = (Image)resources.GetObject("btn_scan.Image");
             btn_scan.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_scan.Location = new Point(0, 350);
+            btn_scan.Location = new Point(0, 295);
             btn_scan.Name = "btn_scan";
             btn_scan.Padding = new Padding(12, 0, 0, 0);
             btn_scan.Size = new Size(200, 55);
@@ -122,7 +120,7 @@
             btn_blacklist.ForeColor = SystemColors.ControlText;
             btn_blacklist.Image = (Image)resources.GetObject("btn_blacklist.Image");
             btn_blacklist.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_blacklist.Location = new Point(0, 295);
+            btn_blacklist.Location = new Point(0, 240);
             btn_blacklist.Name = "btn_blacklist";
             btn_blacklist.Padding = new Padding(12, 0, 0, 0);
             btn_blacklist.Size = new Size(200, 55);
@@ -132,28 +130,6 @@
             btn_blacklist.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_blacklist.UseVisualStyleBackColor = true;
             btn_blacklist.Click += btn_blacklist_Click;
-            // 
-            // btn_notification
-            // 
-            btn_notification.Dock = DockStyle.Top;
-            btn_notification.FlatAppearance.BorderSize = 0;
-            btn_notification.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_notification.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btn_notification.FlatStyle = FlatStyle.Flat;
-            btn_notification.Font = new Font("Segoe UI", 9F);
-            btn_notification.ForeColor = SystemColors.ControlText;
-            btn_notification.Image = (Image)resources.GetObject("btn_notification.Image");
-            btn_notification.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_notification.Location = new Point(0, 240);
-            btn_notification.Name = "btn_notification";
-            btn_notification.Padding = new Padding(12, 0, 0, 0);
-            btn_notification.Size = new Size(200, 55);
-            btn_notification.TabIndex = 9;
-            btn_notification.Text = "   Notification";
-            btn_notification.TextAlign = ContentAlignment.MiddleLeft;
-            btn_notification.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_notification.UseVisualStyleBackColor = true;
-            btn_notification.Click += btn_notification_Click;
             // 
             // btn_info
             // 
@@ -238,15 +214,22 @@
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(200, 0);
             panelTitle.Name = "panelTitle";
-            panelTitle.Size = new Size(766, 47);
+            panelTitle.Size = new Size(1053, 47);
             panelTitle.TabIndex = 1;
+            // 
+            // Title
+            // 
+            Title.Location = new Point(0, 0);
+            Title.Name = "Title";
+            Title.Size = new Size(100, 23);
+            Title.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.Controls.Add(lbl_name);
             panel3.Controls.Add(pbClose);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(612, 0);
+            panel3.Location = new Point(899, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(154, 47);
             panel3.TabIndex = 6;
@@ -277,14 +260,14 @@
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(200, 47);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(766, 464);
+            panelContainer.Size = new Size(1053, 525);
             panelContainer.TabIndex = 2;
             // 
             // Employee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(966, 511);
+            ClientSize = new Size(1253, 572);
             Controls.Add(panelContainer);
             Controls.Add(panelTitle);
             Controls.Add(panelTabs);
@@ -293,7 +276,6 @@
             Text = "Employee";
             panelTabs.ResumeLayout(false);
             panelTitle.ResumeLayout(false);
-            panelTitle.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbClose).EndInit();
@@ -312,7 +294,6 @@
         private Button btn_logout;
         private Button btn_scan;
         private Button btn_blacklist;
-        private Button btn_notification;
         private Button btn_info;
         private Button btn_logs;
         private Button button1;

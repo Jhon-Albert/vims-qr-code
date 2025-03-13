@@ -5,7 +5,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class frmLogin : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\VIMS_try\VIMS.mdf"";Integrated Security=True;Connect Timeout=30");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
         public frmLogin()
         {
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace Visitor_Identification_Management_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Message: " + ex);
+                MessageBox.Show("Error Message: " + ex.Message);
             }
         }
 

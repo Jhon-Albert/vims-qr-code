@@ -12,7 +12,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class ScanQR : Form
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jhon Albert Ogana\source\repos\VIMS_try\VIMS.mdf;Integrated Security=True;Connect Timeout=30");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
 
@@ -89,16 +89,26 @@ namespace Visitor_Identification_Management_System
                             // Now fetch additional info from the database if needed
                             if (!string.IsNullOrEmpty(txt_visitorID.Text))
                             {
-                                con.Open();
-                                SqlCommand cmd = new SqlCommand("SELECT * FROM Registration WHERE VisitorID = @VisitorID", con);
-                                cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
-                                SqlDataReader dr = cmd.ExecuteReader();
-
-                                if (dr.Read()) // Only read if there’s a row
+                                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Registration WHERE VisitorID = @VisitorID", con))
                                 {
-                                    txt_email.Text = dr["Email"].ToString();
+                                    cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
+
+                                    if (con.State != System.Data.ConnectionState.Open)
+                                        con.Open();
+
+                                    using (SqlDataReader dr = cmd.ExecuteReader())
+                                    {
+                                        if (dr.Read())
+                                        {
+                                            txt_email.Text = dr["Email"].ToString();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Unauthorized QR code. This visitor is not registered.");
+                                            ClearTextFields();
+                                        }
+                                    }
                                 }
-                                con.Close();
                             }
                         }
                         else
@@ -110,13 +120,90 @@ namespace Visitor_Identification_Management_System
                     {
                         MessageBox.Show("Error Message: " + ex.Message);
                     }
+                    finally
+                    {
+                        if (con.State == System.Data.ConnectionState.Open)
+                            con.Close();
+                    }
                 }
             }
+        }
+        private void ClearTextFields()
+        {
+            txt_visitorID.Clear();
+            txt_firstName.Clear();
+            txt_lastName.Clear();
+            txt_address.Clear();
+            txt_contactNumber.Clear();
+            txt_purpose.Clear();
+            txt_email.Clear();
         }
         //BUTTON
         private void btn_back_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_confirm_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_visitorID.Text))
+            {
+                MessageBox.Show("No visitor selected. Please scan a valid QR code first.");
+                return;
+            }
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO VisitorLogs (VisitorID, FirstName, LastName, Purpose, CheckInTime, Status) VALUES (@VisitorID, @FirstName, @LastName, @Purpose, @CheckInTime, @Status)", con);
+                cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
+                cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);
+                cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text);
+                cmd.Parameters.AddWithValue("@Purpose", txt_purpose.Text);
+                cmd.Parameters.AddWithValue("@CheckInTime", DateTime.Now);
+                cmd.Parameters.AddWithValue("@Status", "Checked In");
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("Visitor Checked In Successfully");
+                ClearTextFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message: " + ex.Message);
+            }
+        }
+        private void btn_checkOut_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_visitorID.Text))
+            {
+                MessageBox.Show("No visitor selected. Please scan a valid QR code first.");
+                return;
+            }
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE VisitorLogs SET CheckOutTime = @CheckOutTime, Status = @Status WHERE VisitorID = @VisitorID AND CheckOutTime IS NULL", con);
+                cmd.Parameters.AddWithValue("@CheckOutTime", DateTime.Now);
+                cmd.Parameters.AddWithValue("@Status", "Checked Out");
+                cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                con.Close();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Visitor Checked Out Successfully");
+                }
+                else
+                {
+                    MessageBox.Show("No active check-in found for this visitor.");
+                }
+
+                ClearTextFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message: " + ex.Message);
+            }
         }
     }
 }

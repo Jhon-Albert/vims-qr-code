@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeDashboard));
+            panel4 = new Panel();
+            label2 = new Label();
+            label1 = new Label();
+            panel5 = new Panel();
             panel3 = new Panel();
             lbl_current = new Label();
             pictureBox3 = new PictureBox();
@@ -41,8 +45,8 @@
             lbl_total_regis = new Label();
             pictureBox1 = new PictureBox();
             label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
@@ -51,16 +55,57 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(label2);
+            panel4.Controls.Add(label1);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(766, 100);
+            panel4.TabIndex = 16;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(26, 60);
+            label2.Name = "label2";
+            label2.Size = new Size(140, 21);
+            label2.TabIndex = 14;
+            label2.Text = "Home | Dashboard";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(17, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(184, 45);
+            label1.TabIndex = 13;
+            label1.Text = "Dashboard";
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(panel3);
+            panel5.Controls.Add(panel2);
+            panel5.Controls.Add(panel1);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(0, 100);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(766, 364);
+            panel5.TabIndex = 17;
+            // 
             // panel3
             // 
             panel3.BackColor = Color.Yellow;
             panel3.Controls.Add(lbl_current);
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(394, 119);
+            panel3.Location = new Point(461, 46);
             panel3.Name = "panel3";
             panel3.Size = new Size(175, 100);
-            panel3.TabIndex = 15;
+            panel3.TabIndex = 18;
             // 
             // lbl_current
             // 
@@ -98,10 +143,10 @@
             panel2.Controls.Add(lbl_today);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label5);
-            panel2.Location = new Point(213, 119);
+            panel2.Location = new Point(280, 46);
             panel2.Name = "panel2";
             panel2.Size = new Size(175, 100);
-            panel2.TabIndex = 14;
+            panel2.TabIndex = 17;
             // 
             // lbl_today
             // 
@@ -139,10 +184,10 @@
             panel1.Controls.Add(lbl_total_regis);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(32, 119);
+            panel1.Location = new Point(99, 46);
             panel1.Name = "panel1";
             panel1.Size = new Size(175, 100);
-            panel1.TabIndex = 13;
+            panel1.TabIndex = 16;
             // 
             // lbl_total_regis
             // 
@@ -174,37 +219,17 @@
             label3.TabIndex = 0;
             label3.Text = "Total Visitor Registered";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(26, 60);
-            label2.Name = "label2";
-            label2.Size = new Size(140, 21);
-            label2.TabIndex = 12;
-            label2.Text = "Home | Dashboard";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(184, 45);
-            label1.TabIndex = 11;
-            label1.Text = "Dashboard";
-            // 
             // EmployeeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(panel5);
+            Controls.Add(panel4);
             Name = "EmployeeDashboard";
             Size = new Size(766, 464);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -215,11 +240,14 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
+        private Panel panel4;
+        private Label label2;
+        private Label label1;
+        private Panel panel5;
         private Panel panel3;
         private Label lbl_current;
         private PictureBox pictureBox3;
@@ -232,7 +260,5 @@
         private Label lbl_total_regis;
         private PictureBox pictureBox1;
         private Label label3;
-        private Label label2;
-        private Label label1;
     }
 }

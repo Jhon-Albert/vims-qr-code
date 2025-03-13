@@ -64,7 +64,7 @@
             panelTabs.Dock = DockStyle.Left;
             panelTabs.Location = new Point(0, 0);
             panelTabs.Name = "panelTabs";
-            panelTabs.Size = new Size(200, 511);
+            panelTabs.Size = new Size(200, 572);
             panelTabs.TabIndex = 1;
             // 
             // btn_logout
@@ -78,7 +78,7 @@
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_logout.Location = new Point(0, 456);
+            btn_logout.Location = new Point(0, 517);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(12, 0, 0, 0);
             btn_logout.Size = new Size(200, 55);
@@ -238,7 +238,7 @@
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(200, 0);
             panelTitle.Name = "panelTitle";
-            panelTitle.Size = new Size(766, 47);
+            panelTitle.Size = new Size(1053, 47);
             panelTitle.TabIndex = 2;
             // 
             // Title
@@ -257,7 +257,7 @@
             panel3.Controls.Add(lbl_name);
             panel3.Controls.Add(pbClose);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(612, 0);
+            panel3.Location = new Point(899, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(154, 47);
             panel3.TabIndex = 6;
@@ -288,14 +288,14 @@
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(200, 47);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(766, 464);
+            panelContainer.Size = new Size(1053, 525);
             panelContainer.TabIndex = 3;
             // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(966, 511);
+            ClientSize = new Size(1253, 572);
             Controls.Add(panelContainer);
             Controls.Add(panelTitle);
             Controls.Add(panelTabs);
