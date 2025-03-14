@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             panelTabs = new Panel();
             btn_logout = new Button();
-            btn_realtimeTracking = new Button();
             btn_blacklistManagement = new Button();
             btn_visitorReports = new Button();
             btn_employeeManagement = new Button();
@@ -54,7 +53,6 @@
             // 
             panelTabs.BackColor = Color.Beige;
             panelTabs.Controls.Add(btn_logout);
-            panelTabs.Controls.Add(btn_realtimeTracking);
             panelTabs.Controls.Add(btn_blacklistManagement);
             panelTabs.Controls.Add(btn_visitorReports);
             panelTabs.Controls.Add(btn_employeeManagement);
@@ -88,28 +86,6 @@
             btn_logout.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_logout.UseVisualStyleBackColor = true;
             btn_logout.Click += btn_logout_Click;
-            // 
-            // btn_realtimeTracking
-            // 
-            btn_realtimeTracking.Dock = DockStyle.Top;
-            btn_realtimeTracking.FlatAppearance.BorderSize = 0;
-            btn_realtimeTracking.FlatAppearance.MouseDownBackColor = Color.Yellow;
-            btn_realtimeTracking.FlatAppearance.MouseOverBackColor = Color.Yellow;
-            btn_realtimeTracking.FlatStyle = FlatStyle.Flat;
-            btn_realtimeTracking.Font = new Font("Segoe UI", 9F);
-            btn_realtimeTracking.ForeColor = SystemColors.ControlText;
-            btn_realtimeTracking.Image = (Image)resources.GetObject("btn_realtimeTracking.Image");
-            btn_realtimeTracking.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_realtimeTracking.Location = new Point(0, 350);
-            btn_realtimeTracking.Name = "btn_realtimeTracking";
-            btn_realtimeTracking.Padding = new Padding(12, 0, 0, 0);
-            btn_realtimeTracking.Size = new Size(200, 55);
-            btn_realtimeTracking.TabIndex = 11;
-            btn_realtimeTracking.Text = "   Real Time Tracking";
-            btn_realtimeTracking.TextAlign = ContentAlignment.MiddleLeft;
-            btn_realtimeTracking.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_realtimeTracking.UseVisualStyleBackColor = true;
-            btn_realtimeTracking.Click += btn_realtimeTracking_Click;
             // 
             // btn_blacklistManagement
             // 
@@ -315,7 +291,6 @@
 
         private Panel panelTabs;
         private Button btn_logout;
-        private Button btn_realtimeTracking;
         private Button btn_blacklistManagement;
         private Button btn_visitorReports;
         private Button btn_employeeManagement;

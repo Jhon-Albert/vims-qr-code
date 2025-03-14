@@ -56,12 +56,6 @@ namespace Visitor_Identification_Management_System
             BlacklistManagement uc = new BlacklistManagement();
             addUserControl(uc);
         }
-
-        private void btn_realtimeTracking_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_logout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

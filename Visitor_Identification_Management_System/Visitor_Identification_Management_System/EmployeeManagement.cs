@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Visitor_Identification_Management_System
 {
-    public partial class EmployeeManagement: UserControl
+    public partial class EmployeeManagement : UserControl
     {
         public EmployeeManagement()
         {
             InitializeComponent();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

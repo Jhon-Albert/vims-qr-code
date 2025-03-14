@@ -31,6 +31,9 @@
     <Compile Update="Logs.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="RealTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Registration.cs">
       <SubType>Form</SubType>
     </Compile>

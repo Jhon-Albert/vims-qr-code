@@ -75,16 +75,16 @@
             // 
             cmb_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmb_camera.FormattingEnabled = true;
-            cmb_camera.Location = new Point(29, 116);
+            cmb_camera.Location = new Point(26, 103);
             cmb_camera.Name = "cmb_camera";
-            cmb_camera.Size = new Size(230, 29);
+            cmb_camera.Size = new Size(232, 29);
             cmb_camera.TabIndex = 35;
             // 
             // btn_camera
             // 
             btn_camera.AutoSize = true;
             btn_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_camera.Location = new Point(77, 347);
+            btn_camera.Location = new Point(76, 369);
             btn_camera.Name = "btn_camera";
             btn_camera.Size = new Size(116, 31);
             btn_camera.TabIndex = 33;
@@ -95,7 +95,7 @@
             // pb_scan
             // 
             pb_scan.BorderStyle = BorderStyle.FixedSingle;
-            pb_scan.Location = new Point(27, 151);
+            pb_scan.Location = new Point(26, 173);
             pb_scan.Name = "pb_scan";
             pb_scan.Size = new Size(232, 190);
             pb_scan.SizeMode = PictureBoxSizeMode.StretchImage;

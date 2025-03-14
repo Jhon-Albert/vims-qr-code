@@ -43,6 +43,7 @@
             lbl_name = new Label();
             pbClose = new PictureBox();
             panelContainer = new Panel();
+            btn_realTime = new Button();
             panelTabs.SuspendLayout();
             panelTitle.SuspendLayout();
             panel3.SuspendLayout();
@@ -52,6 +53,7 @@
             // panelTabs
             // 
             panelTabs.BackColor = SystemColors.GradientInactiveCaption;
+            panelTabs.Controls.Add(btn_realTime);
             panelTabs.Controls.Add(btn_logout);
             panelTabs.Controls.Add(btn_scan);
             panelTabs.Controls.Add(btn_blacklist);
@@ -263,6 +265,28 @@
             panelContainer.Size = new Size(1053, 525);
             panelContainer.TabIndex = 2;
             // 
+            // btn_realTime
+            // 
+            btn_realTime.Dock = DockStyle.Top;
+            btn_realTime.FlatAppearance.BorderSize = 0;
+            btn_realTime.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_realTime.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_realTime.FlatStyle = FlatStyle.Flat;
+            btn_realTime.Font = new Font("Segoe UI", 9F);
+            btn_realTime.ForeColor = SystemColors.ControlText;
+            btn_realTime.Image = (Image)resources.GetObject("btn_realTime.Image");
+            btn_realTime.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_realTime.Location = new Point(0, 350);
+            btn_realTime.Name = "btn_realTime";
+            btn_realTime.Padding = new Padding(12, 0, 0, 0);
+            btn_realTime.Size = new Size(200, 55);
+            btn_realTime.TabIndex = 13;
+            btn_realTime.Text = "  Real-Time Tracking";
+            btn_realTime.TextAlign = ContentAlignment.MiddleLeft;
+            btn_realTime.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_realTime.UseVisualStyleBackColor = true;
+            btn_realTime.Click += btn_realTime_Click;
+            // 
             // Employee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -298,5 +322,6 @@
         private Button btn_logs;
         private Button button1;
         private Panel panelContainer;
+        private Button btn_realTime;
     }
 }

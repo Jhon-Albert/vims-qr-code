@@ -72,5 +72,10 @@ namespace Visitor_Identification_Management_System
             }
             //AddButtonEffects(btn_logout);
         }
+        private void btn_realTime_Click(object sender, EventArgs e)
+        {
+            RealTime uc = new RealTime();
+            addUserControl(uc);
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace Visitor_Identification_Management_System
             int lastVisitorNumber = 10000;
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\VIMS_try\VIMS.mdf"";Integrated Security=True;Connect Timeout=30"))
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
                 {
                     con.Open();
                     string query = "SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC";
@@ -121,7 +121,7 @@ namespace Visitor_Identification_Management_System
                         File.Delete(qrFilePath); // CLEANUP QR CODE FILE AFTER SENDING EMAIL
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error deleting QR code file: " + ex.Message);
                 }
@@ -141,7 +141,7 @@ namespace Visitor_Identification_Management_System
             try
             {
                 string visitorID = GenerateVisitorID();
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\VIMS_try\VIMS.mdf"";Integrated Security=True;Connect Timeout=30"))
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
                 {
                     con.Open();
                     string query = "INSERT INTO Registration (VisitorID, Email, FirstName, LastName, Address, ContactNumber, Purpose) VALUES (@VisitorID, @Email, @FirstName, @LastName, @Address, @ContactNumber, @Purpose)";
@@ -178,6 +178,16 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void txt_firstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
