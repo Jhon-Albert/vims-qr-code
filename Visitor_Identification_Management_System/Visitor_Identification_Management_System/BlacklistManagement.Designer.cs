@@ -32,29 +32,27 @@
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            textBox1 = new TextBox();
+            txt_dateAdded = new TextBox();
             btn_delete = new Button();
             btn_update = new Button();
             btn_add = new Button();
             label6 = new Label();
             label7 = new Label();
-            txt_lastName = new TextBox();
-            label4 = new Label();
+            txt_blacklistFirstname = new TextBox();
             label5 = new Label();
-            txt_contactNumber = new TextBox();
-            txt_address = new TextBox();
+            txt_blacklistLastname = new TextBox();
             label3 = new Label();
             label8 = new Label();
-            txt_firstName = new TextBox();
-            txt_email = new TextBox();
-            dgv_logs = new DataGridView();
-            txt_search_logs = new TextBox();
+            txt_blacklistID = new TextBox();
+            txt_reason = new TextBox();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            txt_search_blacklist = new TextBox();
+            dgv_blacklist = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgv_logs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_blacklist).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -79,55 +77,33 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txt_dateAdded);
             panel1.Controls.Add(btn_delete);
             panel1.Controls.Add(btn_update);
             panel1.Controls.Add(btn_add);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label7);
-            panel1.Controls.Add(txt_lastName);
-            panel1.Controls.Add(label4);
+            panel1.Controls.Add(txt_blacklistFirstname);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(txt_contactNumber);
-            panel1.Controls.Add(txt_address);
+            panel1.Controls.Add(txt_blacklistLastname);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label8);
-            panel1.Controls.Add(txt_firstName);
-            panel1.Controls.Add(txt_email);
+            panel1.Controls.Add(txt_blacklistID);
+            panel1.Controls.Add(txt_reason);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(760, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(293, 525);
             panel1.TabIndex = 24;
             // 
-            // panel2
+            // txt_dateAdded
             // 
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(label2);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(760, 105);
-            panel2.TabIndex = 25;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(txt_search_logs);
-            panel3.Controls.Add(dgv_logs);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 105);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(760, 420);
-            panel3.TabIndex = 26;
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.None;
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(30, 309);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 29);
-            textBox1.TabIndex = 84;
+            txt_dateAdded.Anchor = AnchorStyles.None;
+            txt_dateAdded.Font = new Font("Segoe UI", 12F);
+            txt_dateAdded.Location = new Point(30, 398);
+            txt_dateAdded.Name = "txt_dateAdded";
+            txt_dateAdded.Size = new Size(232, 29);
+            txt_dateAdded.TabIndex = 84;
             // 
             // btn_delete
             // 
@@ -146,6 +122,7 @@
             btn_delete.TabIndex = 83;
             btn_delete.Text = "DELETE";
             btn_delete.UseVisualStyleBackColor = false;
+            btn_delete.Click += btn_delete_Click;
             // 
             // btn_update
             // 
@@ -164,6 +141,7 @@
             btn_update.TabIndex = 82;
             btn_update.Text = "UPDATE";
             btn_update.UseVisualStyleBackColor = false;
+            btn_update.Click += btn_update_Click;
             // 
             // btn_add
             // 
@@ -182,127 +160,136 @@
             btn_add.TabIndex = 81;
             btn_add.Text = "ADD";
             btn_add.UseVisualStyleBackColor = false;
+            btn_add.Click += btn_add_Click;
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(30, 285);
+            label6.Location = new Point(30, 374);
             label6.Name = "label6";
-            label6.Size = new Size(119, 21);
+            label6.Size = new Size(91, 21);
             label6.TabIndex = 80;
-            label6.Text = "Purpose of Visit";
+            label6.Text = "Date Added";
             // 
             // label7
             // 
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(32, 86);
+            label7.Location = new Point(32, 175);
             label7.Name = "label7";
-            label7.Size = new Size(84, 21);
+            label7.Size = new Size(86, 21);
             label7.TabIndex = 79;
-            label7.Text = "Last Name";
+            label7.Text = "First Name";
             // 
-            // txt_lastName
+            // txt_blacklistFirstname
             // 
-            txt_lastName.Anchor = AnchorStyles.None;
-            txt_lastName.Font = new Font("Segoe UI", 12F);
-            txt_lastName.Location = new Point(32, 110);
-            txt_lastName.Name = "txt_lastName";
-            txt_lastName.Size = new Size(232, 29);
-            txt_lastName.TabIndex = 78;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.None;
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(30, 358);
-            label4.Name = "label4";
-            label4.Size = new Size(66, 21);
-            label4.TabIndex = 77;
-            label4.Text = "Address";
+            txt_blacklistFirstname.Anchor = AnchorStyles.None;
+            txt_blacklistFirstname.Font = new Font("Segoe UI", 12F);
+            txt_blacklistFirstname.Location = new Point(32, 199);
+            txt_blacklistFirstname.Name = "txt_blacklistFirstname";
+            txt_blacklistFirstname.Size = new Size(232, 29);
+            txt_blacklistFirstname.TabIndex = 78;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(30, 159);
+            label5.Location = new Point(30, 248);
             label5.Name = "label5";
-            label5.Size = new Size(125, 21);
+            label5.Size = new Size(84, 21);
             label5.TabIndex = 76;
-            label5.Text = "Contact Number";
+            label5.Text = "Last Name";
             // 
-            // txt_contactNumber
+            // txt_blacklistLastname
             // 
-            txt_contactNumber.Anchor = AnchorStyles.None;
-            txt_contactNumber.Font = new Font("Segoe UI", 12F);
-            txt_contactNumber.Location = new Point(30, 183);
-            txt_contactNumber.Name = "txt_contactNumber";
-            txt_contactNumber.Size = new Size(232, 29);
-            txt_contactNumber.TabIndex = 74;
-            // 
-            // txt_address
-            // 
-            txt_address.Anchor = AnchorStyles.None;
-            txt_address.Font = new Font("Segoe UI", 12F);
-            txt_address.Location = new Point(30, 382);
-            txt_address.Multiline = true;
-            txt_address.Name = "txt_address";
-            txt_address.Size = new Size(232, 75);
-            txt_address.TabIndex = 75;
+            txt_blacklistLastname.Anchor = AnchorStyles.None;
+            txt_blacklistLastname.Font = new Font("Segoe UI", 12F);
+            txt_blacklistLastname.Location = new Point(30, 272);
+            txt_blacklistLastname.Name = "txt_blacklistLastname";
+            txt_blacklistLastname.Size = new Size(232, 29);
+            txt_blacklistLastname.TabIndex = 74;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(30, 229);
+            label3.Location = new Point(30, 313);
             label3.Name = "label3";
-            label3.Size = new Size(48, 21);
+            label3.Size = new Size(61, 21);
             label3.TabIndex = 73;
-            label3.Text = "Email";
+            label3.Text = "Reason";
             // 
             // label8
             // 
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(30, 16);
+            label8.Location = new Point(30, 105);
             label8.Name = "label8";
-            label8.Size = new Size(86, 21);
+            label8.Size = new Size(85, 21);
             label8.TabIndex = 72;
-            label8.Text = "First Name";
+            label8.Text = "Blacklist ID";
             // 
-            // txt_firstName
+            // txt_blacklistID
             // 
-            txt_firstName.Anchor = AnchorStyles.None;
-            txt_firstName.Font = new Font("Segoe UI", 12F);
-            txt_firstName.Location = new Point(30, 40);
-            txt_firstName.Name = "txt_firstName";
-            txt_firstName.Size = new Size(232, 29);
-            txt_firstName.TabIndex = 70;
+            txt_blacklistID.Anchor = AnchorStyles.None;
+            txt_blacklistID.Font = new Font("Segoe UI", 12F);
+            txt_blacklistID.Location = new Point(30, 129);
+            txt_blacklistID.Name = "txt_blacklistID";
+            txt_blacklistID.Size = new Size(232, 29);
+            txt_blacklistID.TabIndex = 70;
             // 
-            // txt_email
+            // txt_reason
             // 
-            txt_email.Anchor = AnchorStyles.None;
-            txt_email.Font = new Font("Segoe UI", 12F);
-            txt_email.Location = new Point(30, 253);
-            txt_email.Name = "txt_email";
-            txt_email.Size = new Size(232, 29);
-            txt_email.TabIndex = 71;
+            txt_reason.Anchor = AnchorStyles.None;
+            txt_reason.Font = new Font("Segoe UI", 12F);
+            txt_reason.Location = new Point(30, 337);
+            txt_reason.Name = "txt_reason";
+            txt_reason.Size = new Size(232, 29);
+            txt_reason.TabIndex = 71;
             // 
-            // dgv_logs
+            // panel2
             // 
-            dgv_logs.AllowUserToAddRows = false;
-            dgv_logs.AllowUserToDeleteRows = false;
-            dgv_logs.AllowUserToResizeColumns = false;
-            dgv_logs.AllowUserToResizeRows = false;
-            dgv_logs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_logs.BorderStyle = BorderStyle.None;
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(label2);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(760, 105);
+            panel2.TabIndex = 25;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(txt_search_blacklist);
+            panel3.Controls.Add(dgv_blacklist);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 105);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(760, 420);
+            panel3.TabIndex = 26;
+            // 
+            // txt_search_blacklist
+            // 
+            txt_search_blacklist.Location = new Point(75, 26);
+            txt_search_blacklist.Name = "txt_search_blacklist";
+            txt_search_blacklist.PlaceholderText = "Search";
+            txt_search_blacklist.Size = new Size(204, 23);
+            txt_search_blacklist.TabIndex = 18;
+            txt_search_blacklist.TextChanged += txt_search_blacklist_TextChanged;
+            // 
+            // dgv_blacklist
+            // 
+            dgv_blacklist.AllowUserToAddRows = false;
+            dgv_blacklist.AllowUserToDeleteRows = false;
+            dgv_blacklist.AllowUserToResizeColumns = false;
+            dgv_blacklist.AllowUserToResizeRows = false;
+            dgv_blacklist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_blacklist.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -310,21 +297,14 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgv_logs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgv_logs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_logs.Location = new Point(75, 55);
-            dgv_logs.Name = "dgv_logs";
-            dgv_logs.RowHeadersVisible = false;
-            dgv_logs.Size = new Size(602, 321);
-            dgv_logs.TabIndex = 17;
-            // 
-            // txt_search_logs
-            // 
-            txt_search_logs.Location = new Point(75, 26);
-            txt_search_logs.Name = "txt_search_logs";
-            txt_search_logs.PlaceholderText = "Search";
-            txt_search_logs.Size = new Size(204, 23);
-            txt_search_logs.TabIndex = 18;
+            dgv_blacklist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgv_blacklist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_blacklist.Location = new Point(75, 55);
+            dgv_blacklist.Name = "dgv_blacklist";
+            dgv_blacklist.RowHeadersVisible = false;
+            dgv_blacklist.Size = new Size(602, 321);
+            dgv_blacklist.TabIndex = 17;
+            dgv_blacklist.CellContentClick += dgv_blacklist_CellContentClick;
             // 
             // BlacklistManagement
             // 
@@ -341,7 +321,7 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgv_logs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_blacklist).EndInit();
             ResumeLayout(false);
         }
 
@@ -352,22 +332,20 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private TextBox textBox1;
+        private TextBox txt_dateAdded;
         private Button btn_delete;
         private Button btn_update;
         private Button btn_add;
         private Label label6;
         private Label label7;
-        private TextBox txt_lastName;
-        private Label label4;
+        private TextBox txt_blacklistFirstname;
         private Label label5;
-        private TextBox txt_contactNumber;
-        private TextBox txt_address;
+        private TextBox txt_blacklistLastname;
         private Label label3;
         private Label label8;
-        private TextBox txt_firstName;
-        private TextBox txt_email;
-        private DataGridView dgv_logs;
-        private TextBox txt_search_logs;
+        private TextBox txt_blacklistID;
+        private TextBox txt_reason;
+        private DataGridView dgv_blacklist;
+        private TextBox txt_search_blacklist;
     }
 }

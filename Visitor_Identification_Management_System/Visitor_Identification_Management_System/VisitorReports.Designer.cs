@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
-            txt_search_logs = new TextBox();
-            dgv_logs = new DataGridView();
-            button2 = new Button();
-            button1 = new Button();
-            btn_add = new Button();
+            btn_print = new Button();
+            btn_export = new Button();
+            btn_refresh = new Button();
+            dgv_reports = new DataGridView();
+            txt_search_reports = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgv_logs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_reports).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -75,101 +75,105 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button1);
-            panel2.Controls.Add(btn_add);
-            panel2.Controls.Add(dgv_logs);
-            panel2.Controls.Add(txt_search_logs);
+            panel2.Controls.Add(btn_print);
+            panel2.Controls.Add(btn_export);
+            panel2.Controls.Add(btn_refresh);
+            panel2.Controls.Add(dgv_reports);
+            panel2.Controls.Add(txt_search_reports);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 100);
             panel2.Name = "panel2";
             panel2.Size = new Size(1053, 425);
             panel2.TabIndex = 23;
             // 
-            // txt_search_logs
+            // btn_print
             // 
-            txt_search_logs.Location = new Point(107, 23);
-            txt_search_logs.Name = "txt_search_logs";
-            txt_search_logs.PlaceholderText = "Search";
-            txt_search_logs.Size = new Size(204, 23);
-            txt_search_logs.TabIndex = 14;
+            btn_print.Anchor = AnchorStyles.None;
+            btn_print.AutoSize = true;
+            btn_print.BackColor = Color.FromArgb(52, 152, 219);
+            btn_print.FlatAppearance.BorderSize = 0;
+            btn_print.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_print.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_print.FlatStyle = FlatStyle.Flat;
+            btn_print.Font = new Font("Segoe UI", 12F);
+            btn_print.ForeColor = Color.White;
+            btn_print.Location = new Point(586, 358);
+            btn_print.Name = "btn_print";
+            btn_print.Size = new Size(77, 33);
+            btn_print.TabIndex = 72;
+            btn_print.Text = "PRINT";
+            btn_print.UseVisualStyleBackColor = false;
+            btn_print.Click += btn_print_Click;
             // 
-            // dgv_logs
+            // btn_export
             // 
-            dgv_logs.AllowUserToAddRows = false;
-            dgv_logs.AllowUserToDeleteRows = false;
-            dgv_logs.AllowUserToResizeColumns = false;
-            dgv_logs.AllowUserToResizeRows = false;
-            dgv_logs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_logs.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgv_logs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgv_logs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_logs.Location = new Point(107, 52);
-            dgv_logs.Name = "dgv_logs";
-            dgv_logs.RowHeadersVisible = false;
-            dgv_logs.Size = new Size(838, 280);
-            dgv_logs.TabIndex = 15;
+            btn_export.Anchor = AnchorStyles.None;
+            btn_export.AutoSize = true;
+            btn_export.BackColor = Color.FromArgb(52, 152, 219);
+            btn_export.FlatAppearance.BorderSize = 0;
+            btn_export.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_export.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_export.FlatStyle = FlatStyle.Flat;
+            btn_export.Font = new Font("Segoe UI", 12F);
+            btn_export.ForeColor = Color.White;
+            btn_export.Location = new Point(503, 358);
+            btn_export.Name = "btn_export";
+            btn_export.Size = new Size(77, 33);
+            btn_export.TabIndex = 71;
+            btn_export.Text = "EXPORT";
+            btn_export.UseVisualStyleBackColor = false;
+            btn_export.Click += btn_export_Click;
             // 
-            // button2
+            // btn_refresh
             // 
-            button2.Anchor = AnchorStyles.None;
-            button2.AutoSize = true;
-            button2.BackColor = Color.FromArgb(52, 152, 219);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button2.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(597, 358);
-            button2.Name = "button2";
-            button2.Size = new Size(77, 33);
-            button2.TabIndex = 72;
-            button2.Text = "PRINT";
-            button2.UseVisualStyleBackColor = false;
+            btn_refresh.Anchor = AnchorStyles.None;
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_refresh.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Location = new Point(413, 358);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(84, 33);
+            btn_refresh.TabIndex = 70;
+            btn_refresh.Text = "REFRESH";
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
-            // button1
+            // dgv_reports
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.AutoSize = true;
-            button1.BackColor = Color.FromArgb(52, 152, 219);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button1.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(504, 358);
-            button1.Name = "button1";
-            button1.Size = new Size(77, 33);
-            button1.TabIndex = 71;
-            button1.Text = "EXPORT";
-            button1.UseVisualStyleBackColor = false;
+            dgv_reports.AllowUserToAddRows = false;
+            dgv_reports.AllowUserToDeleteRows = false;
+            dgv_reports.AllowUserToResizeColumns = false;
+            dgv_reports.AllowUserToResizeRows = false;
+            dgv_reports.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_reports.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv_reports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgv_reports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_reports.Location = new Point(107, 52);
+            dgv_reports.Name = "dgv_reports";
+            dgv_reports.RowHeadersVisible = false;
+            dgv_reports.Size = new Size(838, 280);
+            dgv_reports.TabIndex = 15;
             // 
-            // btn_add
+            // txt_search_reports
             // 
-            btn_add.Anchor = AnchorStyles.None;
-            btn_add.AutoSize = true;
-            btn_add.BackColor = Color.FromArgb(52, 152, 219);
-            btn_add.FlatAppearance.BorderSize = 0;
-            btn_add.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_add.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btn_add.FlatStyle = FlatStyle.Flat;
-            btn_add.Font = new Font("Segoe UI", 12F);
-            btn_add.ForeColor = Color.White;
-            btn_add.Location = new Point(413, 358);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(84, 33);
-            btn_add.TabIndex = 70;
-            btn_add.Text = "REFRESH";
-            btn_add.UseVisualStyleBackColor = false;
+            txt_search_reports.Location = new Point(107, 23);
+            txt_search_reports.Name = "txt_search_reports";
+            txt_search_reports.PlaceholderText = "Search";
+            txt_search_reports.Size = new Size(204, 23);
+            txt_search_reports.TabIndex = 14;
+            txt_search_reports.TextChanged += txt_search_reports_TextChanged;
             // 
             // VisitorReports
             // 
@@ -183,7 +187,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgv_logs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_reports).EndInit();
             ResumeLayout(false);
         }
 
@@ -193,10 +197,10 @@
         private Label label1;
         private Panel panel1;
         private Panel panel2;
-        private TextBox txt_search_logs;
-        private DataGridView dgv_logs;
-        private Button button2;
-        private Button button1;
-        private Button btn_add;
+        private TextBox txt_search_reports;
+        private DataGridView dgv_reports;
+        private Button btn_print;
+        private Button btn_export;
+        private Button btn_refresh;
     }
 }
