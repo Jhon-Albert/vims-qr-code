@@ -123,3 +123,5 @@ C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System
 C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\bin\Debug\net8.0-windows\runtimes\win-x86\native\msvcp140_codecvt_ids.dll
 C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\bin\Debug\net8.0-windows\runtimes\win-x86\native\vcruntime140.dll
 C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\obj\Debug\net8.0-windows\Visitor_Identification_Management_System.RealTime.resources
+C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\bin\Debug\net8.0-windows\itextsharp.dll
