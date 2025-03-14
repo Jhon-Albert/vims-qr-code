@@ -143,6 +143,7 @@
             // 
             // pb_camera2
             // 
+            pb_camera2.BorderStyle = BorderStyle.FixedSingle;
             pb_camera2.Dock = DockStyle.Right;
             pb_camera2.Location = new Point(372, 0);
             pb_camera2.Name = "pb_camera2";
@@ -152,6 +153,7 @@
             // 
             // pb_camera1
             // 
+            pb_camera1.BorderStyle = BorderStyle.FixedSingle;
             pb_camera1.Dock = DockStyle.Left;
             pb_camera1.Location = new Point(0, 0);
             pb_camera1.Name = "pb_camera1";

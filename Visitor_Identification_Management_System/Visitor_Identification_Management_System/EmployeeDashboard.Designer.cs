@@ -57,12 +57,13 @@
             // 
             // panel4
             // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(766, 100);
+            panel4.Size = new Size(1051, 100);
             panel4.TabIndex = 16;
             // 
             // label2
@@ -93,7 +94,7 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(0, 100);
             panel5.Name = "panel5";
-            panel5.Size = new Size(766, 364);
+            panel5.Size = new Size(1051, 423);
             panel5.TabIndex = 17;
             // 
             // panel3
@@ -223,10 +224,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(panel5);
             Controls.Add(panel4);
             Name = "EmployeeDashboard";
-            Size = new Size(766, 464);
+            Size = new Size(1051, 523);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);

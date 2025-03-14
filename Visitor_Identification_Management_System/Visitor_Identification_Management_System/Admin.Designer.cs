@@ -37,6 +37,7 @@
             btn_visitorManagement = new Button();
             btn_admin_dashboard = new Button();
             panelLogo = new Panel();
+            pictureBox1 = new PictureBox();
             panelTitle = new Panel();
             Title = new Label();
             panel3 = new Panel();
@@ -44,6 +45,8 @@
             pbClose = new PictureBox();
             panelContainer = new Panel();
             panelTabs.SuspendLayout();
+            panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelTitle.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClose).BeginInit();
@@ -52,6 +55,7 @@
             // panelTabs
             // 
             panelTabs.BackColor = Color.Beige;
+            panelTabs.BorderStyle = BorderStyle.FixedSingle;
             panelTabs.Controls.Add(btn_logout);
             panelTabs.Controls.Add(btn_blacklistManagement);
             panelTabs.Controls.Add(btn_visitorReports);
@@ -76,10 +80,10 @@
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_logout.Location = new Point(0, 517);
+            btn_logout.Location = new Point(0, 515);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(12, 0, 0, 0);
-            btn_logout.Size = new Size(200, 55);
+            btn_logout.Size = new Size(198, 55);
             btn_logout.TabIndex = 12;
             btn_logout.Text = "   Log Out";
             btn_logout.TextAlign = ContentAlignment.MiddleLeft;
@@ -101,7 +105,7 @@
             btn_blacklistManagement.Location = new Point(0, 295);
             btn_blacklistManagement.Name = "btn_blacklistManagement";
             btn_blacklistManagement.Padding = new Padding(12, 0, 0, 0);
-            btn_blacklistManagement.Size = new Size(200, 55);
+            btn_blacklistManagement.Size = new Size(198, 55);
             btn_blacklistManagement.TabIndex = 10;
             btn_blacklistManagement.Text = "   Blacklist Management";
             btn_blacklistManagement.TextAlign = ContentAlignment.MiddleLeft;
@@ -123,7 +127,7 @@
             btn_visitorReports.Location = new Point(0, 240);
             btn_visitorReports.Name = "btn_visitorReports";
             btn_visitorReports.Padding = new Padding(12, 0, 0, 0);
-            btn_visitorReports.Size = new Size(200, 55);
+            btn_visitorReports.Size = new Size(198, 55);
             btn_visitorReports.TabIndex = 9;
             btn_visitorReports.Text = "   Visitor Reports";
             btn_visitorReports.TextAlign = ContentAlignment.MiddleLeft;
@@ -145,7 +149,7 @@
             btn_employeeManagement.Location = new Point(0, 185);
             btn_employeeManagement.Name = "btn_employeeManagement";
             btn_employeeManagement.Padding = new Padding(12, 0, 0, 0);
-            btn_employeeManagement.Size = new Size(200, 55);
+            btn_employeeManagement.Size = new Size(198, 55);
             btn_employeeManagement.TabIndex = 8;
             btn_employeeManagement.Text = "   Employee Management";
             btn_employeeManagement.TextAlign = ContentAlignment.MiddleLeft;
@@ -167,7 +171,7 @@
             btn_visitorManagement.Location = new Point(0, 130);
             btn_visitorManagement.Name = "btn_visitorManagement";
             btn_visitorManagement.Padding = new Padding(12, 0, 0, 0);
-            btn_visitorManagement.Size = new Size(200, 55);
+            btn_visitorManagement.Size = new Size(198, 55);
             btn_visitorManagement.TabIndex = 7;
             btn_visitorManagement.Text = "   Visitor Management";
             btn_visitorManagement.TextAlign = ContentAlignment.MiddleLeft;
@@ -189,7 +193,7 @@
             btn_admin_dashboard.Location = new Point(0, 75);
             btn_admin_dashboard.Name = "btn_admin_dashboard";
             btn_admin_dashboard.Padding = new Padding(12, 0, 0, 0);
-            btn_admin_dashboard.Size = new Size(200, 55);
+            btn_admin_dashboard.Size = new Size(198, 55);
             btn_admin_dashboard.TabIndex = 1;
             btn_admin_dashboard.Text = "   Dashboard";
             btn_admin_dashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -200,11 +204,22 @@
             // panelLogo
             // 
             panelLogo.BackColor = Color.LightGoldenrodYellow;
+            panelLogo.Controls.Add(pictureBox1);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(200, 75);
+            panelLogo.Size = new Size(198, 75);
             panelLogo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(62, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(73, 64);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // panelTitle
             // 
@@ -222,10 +237,10 @@
             Title.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             Title.AutoSize = true;
             Title.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Title.Location = new Point(6, 16);
+            Title.Location = new Point(340, 13);
             Title.Name = "Title";
             Title.Size = new Size(373, 21);
-            Title.TabIndex = 7;
+            Title.TabIndex = 8;
             Title.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
             // 
             // panel3
@@ -261,6 +276,7 @@
             // 
             // panelContainer
             // 
+            panelContainer.BackColor = Color.Beige;
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(200, 47);
             panelContainer.Name = "panelContainer";
@@ -279,6 +295,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin";
             panelTabs.ResumeLayout(false);
+            panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelTitle.ResumeLayout(false);
             panelTitle.PerformLayout();
             panel3.ResumeLayout(false);
@@ -298,10 +316,11 @@
         private Button btn_admin_dashboard;
         private Panel panelLogo;
         private Panel panelTitle;
-        private Label Title;
         private Panel panel3;
         private Label lbl_name;
         private PictureBox pbClose;
         private Panel panelContainer;
+        private Label Title;
+        private PictureBox pictureBox1;
     }
 }

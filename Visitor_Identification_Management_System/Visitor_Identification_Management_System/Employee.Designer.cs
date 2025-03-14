@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employee));
             panelTabs = new Panel();
+            btn_realTime = new Button();
             btn_logout = new Button();
             btn_scan = new Button();
             btn_blacklist = new Button();
@@ -37,14 +38,17 @@
             btn_logs = new Button();
             button1 = new Button();
             panelLogo = new Panel();
+            pictureBox1 = new PictureBox();
             panelTitle = new Panel();
+            label1 = new Label();
             Title = new Label();
             panel3 = new Panel();
             lbl_name = new Label();
             pbClose = new PictureBox();
             panelContainer = new Panel();
-            btn_realTime = new Button();
             panelTabs.SuspendLayout();
+            panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelTitle.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClose).BeginInit();
@@ -53,6 +57,7 @@
             // panelTabs
             // 
             panelTabs.BackColor = SystemColors.GradientInactiveCaption;
+            panelTabs.BorderStyle = BorderStyle.FixedSingle;
             panelTabs.Controls.Add(btn_realTime);
             panelTabs.Controls.Add(btn_logout);
             panelTabs.Controls.Add(btn_scan);
@@ -67,6 +72,28 @@
             panelTabs.Size = new Size(200, 572);
             panelTabs.TabIndex = 0;
             // 
+            // btn_realTime
+            // 
+            btn_realTime.Dock = DockStyle.Top;
+            btn_realTime.FlatAppearance.BorderSize = 0;
+            btn_realTime.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_realTime.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_realTime.FlatStyle = FlatStyle.Flat;
+            btn_realTime.Font = new Font("Segoe UI", 9F);
+            btn_realTime.ForeColor = SystemColors.ControlText;
+            btn_realTime.Image = (Image)resources.GetObject("btn_realTime.Image");
+            btn_realTime.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_realTime.Location = new Point(0, 350);
+            btn_realTime.Name = "btn_realTime";
+            btn_realTime.Padding = new Padding(12, 0, 0, 0);
+            btn_realTime.Size = new Size(198, 55);
+            btn_realTime.TabIndex = 13;
+            btn_realTime.Text = "  Real-Time Tracking";
+            btn_realTime.TextAlign = ContentAlignment.MiddleLeft;
+            btn_realTime.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_realTime.UseVisualStyleBackColor = true;
+            btn_realTime.Click += btn_realTime_Click;
+            // 
             // btn_logout
             // 
             btn_logout.Dock = DockStyle.Bottom;
@@ -78,10 +105,10 @@
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_logout.Location = new Point(0, 517);
+            btn_logout.Location = new Point(0, 515);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(12, 0, 0, 0);
-            btn_logout.Size = new Size(200, 55);
+            btn_logout.Size = new Size(198, 55);
             btn_logout.TabIndex = 12;
             btn_logout.Text = "   Log Out";
             btn_logout.TextAlign = ContentAlignment.MiddleLeft;
@@ -103,7 +130,7 @@
             btn_scan.Location = new Point(0, 295);
             btn_scan.Name = "btn_scan";
             btn_scan.Padding = new Padding(12, 0, 0, 0);
-            btn_scan.Size = new Size(200, 55);
+            btn_scan.Size = new Size(198, 55);
             btn_scan.TabIndex = 11;
             btn_scan.Text = "   Scan QR";
             btn_scan.TextAlign = ContentAlignment.MiddleLeft;
@@ -125,7 +152,7 @@
             btn_blacklist.Location = new Point(0, 240);
             btn_blacklist.Name = "btn_blacklist";
             btn_blacklist.Padding = new Padding(12, 0, 0, 0);
-            btn_blacklist.Size = new Size(200, 55);
+            btn_blacklist.Size = new Size(198, 55);
             btn_blacklist.TabIndex = 10;
             btn_blacklist.Text = "   Blacklist Visitors";
             btn_blacklist.TextAlign = ContentAlignment.MiddleLeft;
@@ -147,7 +174,7 @@
             btn_info.Location = new Point(0, 185);
             btn_info.Name = "btn_info";
             btn_info.Padding = new Padding(12, 0, 0, 0);
-            btn_info.Size = new Size(200, 55);
+            btn_info.Size = new Size(198, 55);
             btn_info.TabIndex = 8;
             btn_info.Text = "   Visitor Info";
             btn_info.TextAlign = ContentAlignment.MiddleLeft;
@@ -169,7 +196,7 @@
             btn_logs.Location = new Point(0, 130);
             btn_logs.Name = "btn_logs";
             btn_logs.Padding = new Padding(12, 0, 0, 0);
-            btn_logs.Size = new Size(200, 55);
+            btn_logs.Size = new Size(198, 55);
             btn_logs.TabIndex = 7;
             btn_logs.Text = "   Visitor Logs";
             btn_logs.TextAlign = ContentAlignment.MiddleLeft;
@@ -191,7 +218,7 @@
             button1.Location = new Point(0, 75);
             button1.Name = "button1";
             button1.Padding = new Padding(12, 0, 0, 0);
-            button1.Size = new Size(200, 55);
+            button1.Size = new Size(198, 55);
             button1.TabIndex = 1;
             button1.Text = "   Dashboard";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -202,15 +229,27 @@
             // panelLogo
             // 
             panelLogo.BackColor = SystemColors.GradientActiveCaption;
+            panelLogo.Controls.Add(pictureBox1);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(200, 75);
+            panelLogo.Size = new Size(198, 75);
             panelLogo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(61, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(73, 64);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // panelTitle
             // 
             panelTitle.BackColor = SystemColors.ActiveCaption;
+            panelTitle.Controls.Add(label1);
             panelTitle.Controls.Add(Title);
             panelTitle.Controls.Add(panel3);
             panelTitle.Dock = DockStyle.Top;
@@ -218,6 +257,17 @@
             panelTitle.Name = "panelTitle";
             panelTitle.Size = new Size(1053, 47);
             panelTitle.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(340, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(373, 21);
+            label1.TabIndex = 8;
+            label1.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
             // 
             // Title
             // 
@@ -259,33 +309,12 @@
             // 
             // panelContainer
             // 
+            panelContainer.BackColor = SystemColors.GradientInactiveCaption;
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(200, 47);
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(1053, 525);
             panelContainer.TabIndex = 2;
-            // 
-            // btn_realTime
-            // 
-            btn_realTime.Dock = DockStyle.Top;
-            btn_realTime.FlatAppearance.BorderSize = 0;
-            btn_realTime.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_realTime.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btn_realTime.FlatStyle = FlatStyle.Flat;
-            btn_realTime.Font = new Font("Segoe UI", 9F);
-            btn_realTime.ForeColor = SystemColors.ControlText;
-            btn_realTime.Image = (Image)resources.GetObject("btn_realTime.Image");
-            btn_realTime.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_realTime.Location = new Point(0, 350);
-            btn_realTime.Name = "btn_realTime";
-            btn_realTime.Padding = new Padding(12, 0, 0, 0);
-            btn_realTime.Size = new Size(200, 55);
-            btn_realTime.TabIndex = 13;
-            btn_realTime.Text = "  Real-Time Tracking";
-            btn_realTime.TextAlign = ContentAlignment.MiddleLeft;
-            btn_realTime.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_realTime.UseVisualStyleBackColor = true;
-            btn_realTime.Click += btn_realTime_Click;
             // 
             // Employee
             // 
@@ -299,7 +328,10 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Employee";
             panelTabs.ResumeLayout(false);
+            panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelTitle.ResumeLayout(false);
+            panelTitle.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbClose).EndInit();
@@ -323,5 +355,7 @@
         private Button button1;
         private Panel panelContainer;
         private Button btn_realTime;
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }

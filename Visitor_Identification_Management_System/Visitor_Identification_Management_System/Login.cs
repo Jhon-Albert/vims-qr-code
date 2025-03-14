@@ -10,8 +10,12 @@ namespace Visitor_Identification_Management_System
         {
             InitializeComponent();
         }
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
 
-        private void btn_Login_Click(object sender, EventArgs e)
+        }
+
+        private void btn_Login_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -67,7 +71,7 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-        private void cb_Pass_CheckedChanged(object sender, EventArgs e)
+        private void cb_Pass_CheckedChanged_1(object sender, EventArgs e)
         {
             if (cb_Pass.Checked)
             {
