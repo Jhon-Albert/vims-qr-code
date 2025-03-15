@@ -62,13 +62,17 @@
             // btn_back
             // 
             btn_back.AutoSize = true;
+            btn_back.BackColor = Color.FromArgb(52, 152, 219);
+            btn_back.FlatAppearance.BorderSize = 0;
+            btn_back.FlatStyle = FlatStyle.Flat;
             btn_back.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_back.ForeColor = SystemColors.Control;
             btn_back.Location = new Point(91, 407);
             btn_back.Name = "btn_back";
-            btn_back.Size = new Size(89, 31);
+            btn_back.Size = new Size(89, 33);
             btn_back.TabIndex = 48;
             btn_back.Text = "Back";
-            btn_back.UseVisualStyleBackColor = true;
+            btn_back.UseVisualStyleBackColor = false;
             btn_back.Click += btn_back_Click;
             // 
             // cmb_camera
@@ -83,13 +87,17 @@
             // btn_camera
             // 
             btn_camera.AutoSize = true;
+            btn_camera.BackColor = Color.FromArgb(52, 152, 219);
+            btn_camera.FlatAppearance.BorderSize = 0;
+            btn_camera.FlatStyle = FlatStyle.Flat;
             btn_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_camera.ForeColor = SystemColors.Control;
             btn_camera.Location = new Point(76, 369);
             btn_camera.Name = "btn_camera";
-            btn_camera.Size = new Size(116, 31);
+            btn_camera.Size = new Size(118, 33);
             btn_camera.TabIndex = 33;
             btn_camera.Text = "Open Camera";
-            btn_camera.UseVisualStyleBackColor = true;
+            btn_camera.UseVisualStyleBackColor = false;
             btn_camera.Click += btn_camera_Click;
             // 
             // pb_scan
@@ -151,25 +159,33 @@
             // btn_checkOut
             // 
             btn_checkOut.AutoSize = true;
+            btn_checkOut.BackColor = Color.FromArgb(52, 152, 219);
+            btn_checkOut.FlatAppearance.BorderSize = 0;
+            btn_checkOut.FlatStyle = FlatStyle.Flat;
             btn_checkOut.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_checkOut.ForeColor = SystemColors.Control;
             btn_checkOut.Location = new Point(394, 78);
             btn_checkOut.Name = "btn_checkOut";
-            btn_checkOut.Size = new Size(92, 31);
+            btn_checkOut.Size = new Size(94, 33);
             btn_checkOut.TabIndex = 71;
             btn_checkOut.Text = "Check Out";
-            btn_checkOut.UseVisualStyleBackColor = true;
+            btn_checkOut.UseVisualStyleBackColor = false;
             btn_checkOut.Click += btn_checkOut_Click;
             // 
             // btn_confirm
             // 
             btn_confirm.AutoSize = true;
+            btn_confirm.BackColor = Color.FromArgb(52, 152, 219);
+            btn_confirm.FlatAppearance.BorderSize = 0;
+            btn_confirm.FlatStyle = FlatStyle.Flat;
             btn_confirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_confirm.ForeColor = SystemColors.Control;
             btn_confirm.Location = new Point(394, 41);
             btn_confirm.Name = "btn_confirm";
-            btn_confirm.Size = new Size(92, 31);
+            btn_confirm.Size = new Size(92, 33);
             btn_confirm.TabIndex = 70;
             btn_confirm.Text = "Check In";
-            btn_confirm.UseVisualStyleBackColor = true;
+            btn_confirm.UseVisualStyleBackColor = false;
             btn_confirm.Click += btn_confirm_Click;
             // 
             // txt_lastName

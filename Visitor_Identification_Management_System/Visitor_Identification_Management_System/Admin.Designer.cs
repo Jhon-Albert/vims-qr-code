@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
-            panelTabs = new Panel();
+            panel2 = new Panel();
+            btn_minimize = new Button();
+            btn_maximize = new Button();
+            btn_close = new Button();
+            panel1 = new Panel();
             btn_logout = new Button();
             btn_blacklistManagement = new Button();
             btn_visitorReports = new Button();
@@ -38,36 +42,89 @@
             btn_admin_dashboard = new Button();
             panelLogo = new Panel();
             pictureBox1 = new PictureBox();
-            panelTitle = new Panel();
-            Title = new Label();
-            panel3 = new Panel();
-            lbl_name = new Label();
-            pbClose = new PictureBox();
-            panelContainer = new Panel();
-            panelTabs.SuspendLayout();
+            panel4 = new Panel();
+            label2 = new Label();
+            panel5 = new Panel();
+            label1 = new Label();
+            pictureBox2 = new PictureBox();
+            adminPanelContainer = new Panel();
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panelTitle.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbClose).BeginInit();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // panelTabs
+            // panel2
             // 
-            panelTabs.BackColor = Color.Beige;
-            panelTabs.BorderStyle = BorderStyle.FixedSingle;
-            panelTabs.Controls.Add(btn_logout);
-            panelTabs.Controls.Add(btn_blacklistManagement);
-            panelTabs.Controls.Add(btn_visitorReports);
-            panelTabs.Controls.Add(btn_employeeManagement);
-            panelTabs.Controls.Add(btn_visitorManagement);
-            panelTabs.Controls.Add(btn_admin_dashboard);
-            panelTabs.Controls.Add(panelLogo);
-            panelTabs.Dock = DockStyle.Left;
-            panelTabs.Location = new Point(0, 0);
-            panelTabs.Name = "panelTabs";
-            panelTabs.Size = new Size(200, 572);
-            panelTabs.TabIndex = 1;
+            panel2.BackColor = Color.FromArgb(33, 150, 243);
+            panel2.Controls.Add(btn_minimize);
+            panel2.Controls.Add(btn_maximize);
+            panel2.Controls.Add(btn_close);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1253, 41);
+            panel2.TabIndex = 35;
+            panel2.MouseDown += panel2_MouseDown;
+            // 
+            // btn_minimize
+            // 
+            btn_minimize.Dock = DockStyle.Right;
+            btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatStyle = FlatStyle.Flat;
+            btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
+            btn_minimize.Location = new Point(1130, 0);
+            btn_minimize.Name = "btn_minimize";
+            btn_minimize.Size = new Size(41, 41);
+            btn_minimize.TabIndex = 36;
+            btn_minimize.UseVisualStyleBackColor = true;
+            btn_minimize.Click += btn_minimize_Click;
+            // 
+            // btn_maximize
+            // 
+            btn_maximize.Dock = DockStyle.Right;
+            btn_maximize.FlatAppearance.BorderSize = 0;
+            btn_maximize.FlatStyle = FlatStyle.Flat;
+            btn_maximize.ForeColor = SystemColors.ControlText;
+            btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
+            btn_maximize.Location = new Point(1171, 0);
+            btn_maximize.Name = "btn_maximize";
+            btn_maximize.Size = new Size(41, 41);
+            btn_maximize.TabIndex = 35;
+            btn_maximize.UseVisualStyleBackColor = true;
+            btn_maximize.Click += btn_maximize_Click;
+            // 
+            // btn_close
+            // 
+            btn_close.Dock = DockStyle.Right;
+            btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatStyle = FlatStyle.Flat;
+            btn_close.Image = (Image)resources.GetObject("btn_close.Image");
+            btn_close.Location = new Point(1212, 0);
+            btn_close.Name = "btn_close";
+            btn_close.Size = new Size(41, 41);
+            btn_close.TabIndex = 34;
+            btn_close.UseVisualStyleBackColor = true;
+            btn_close.Click += btn_close_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Cornsilk;
+            panel1.Controls.Add(btn_logout);
+            panel1.Controls.Add(btn_blacklistManagement);
+            panel1.Controls.Add(btn_visitorReports);
+            panel1.Controls.Add(btn_employeeManagement);
+            panel1.Controls.Add(btn_visitorManagement);
+            panel1.Controls.Add(btn_admin_dashboard);
+            panel1.Controls.Add(panelLogo);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 41);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 574);
+            panel1.TabIndex = 36;
             // 
             // btn_logout
             // 
@@ -80,11 +137,11 @@
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_logout.Location = new Point(0, 515);
+            btn_logout.Location = new Point(0, 519);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(12, 0, 0, 0);
-            btn_logout.Size = new Size(198, 55);
-            btn_logout.TabIndex = 12;
+            btn_logout.Size = new Size(200, 55);
+            btn_logout.TabIndex = 19;
             btn_logout.Text = "   Log Out";
             btn_logout.TextAlign = ContentAlignment.MiddleLeft;
             btn_logout.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -105,8 +162,8 @@
             btn_blacklistManagement.Location = new Point(0, 295);
             btn_blacklistManagement.Name = "btn_blacklistManagement";
             btn_blacklistManagement.Padding = new Padding(12, 0, 0, 0);
-            btn_blacklistManagement.Size = new Size(198, 55);
-            btn_blacklistManagement.TabIndex = 10;
+            btn_blacklistManagement.Size = new Size(200, 55);
+            btn_blacklistManagement.TabIndex = 18;
             btn_blacklistManagement.Text = "   Blacklist Management";
             btn_blacklistManagement.TextAlign = ContentAlignment.MiddleLeft;
             btn_blacklistManagement.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -127,8 +184,8 @@
             btn_visitorReports.Location = new Point(0, 240);
             btn_visitorReports.Name = "btn_visitorReports";
             btn_visitorReports.Padding = new Padding(12, 0, 0, 0);
-            btn_visitorReports.Size = new Size(198, 55);
-            btn_visitorReports.TabIndex = 9;
+            btn_visitorReports.Size = new Size(200, 55);
+            btn_visitorReports.TabIndex = 17;
             btn_visitorReports.Text = "   Visitor Reports";
             btn_visitorReports.TextAlign = ContentAlignment.MiddleLeft;
             btn_visitorReports.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -149,8 +206,8 @@
             btn_employeeManagement.Location = new Point(0, 185);
             btn_employeeManagement.Name = "btn_employeeManagement";
             btn_employeeManagement.Padding = new Padding(12, 0, 0, 0);
-            btn_employeeManagement.Size = new Size(198, 55);
-            btn_employeeManagement.TabIndex = 8;
+            btn_employeeManagement.Size = new Size(200, 55);
+            btn_employeeManagement.TabIndex = 16;
             btn_employeeManagement.Text = "   Employee Management";
             btn_employeeManagement.TextAlign = ContentAlignment.MiddleLeft;
             btn_employeeManagement.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -171,8 +228,8 @@
             btn_visitorManagement.Location = new Point(0, 130);
             btn_visitorManagement.Name = "btn_visitorManagement";
             btn_visitorManagement.Padding = new Padding(12, 0, 0, 0);
-            btn_visitorManagement.Size = new Size(198, 55);
-            btn_visitorManagement.TabIndex = 7;
+            btn_visitorManagement.Size = new Size(200, 55);
+            btn_visitorManagement.TabIndex = 15;
             btn_visitorManagement.Text = "   Visitor Management";
             btn_visitorManagement.TextAlign = ContentAlignment.MiddleLeft;
             btn_visitorManagement.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -193,8 +250,8 @@
             btn_admin_dashboard.Location = new Point(0, 75);
             btn_admin_dashboard.Name = "btn_admin_dashboard";
             btn_admin_dashboard.Padding = new Padding(12, 0, 0, 0);
-            btn_admin_dashboard.Size = new Size(198, 55);
-            btn_admin_dashboard.TabIndex = 1;
+            btn_admin_dashboard.Size = new Size(200, 55);
+            btn_admin_dashboard.TabIndex = 14;
             btn_admin_dashboard.Text = "   Dashboard";
             btn_admin_dashboard.TextAlign = ContentAlignment.MiddleLeft;
             btn_admin_dashboard.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -208,8 +265,8 @@
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(198, 75);
-            panelLogo.TabIndex = 0;
+            panelLogo.Size = new Size(200, 75);
+            panelLogo.TabIndex = 13;
             // 
             // pictureBox1
             // 
@@ -221,93 +278,99 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // panelTitle
+            // panel4
             // 
-            panelTitle.BackColor = Color.LemonChiffon;
-            panelTitle.Controls.Add(Title);
-            panelTitle.Controls.Add(panel3);
-            panelTitle.Dock = DockStyle.Top;
-            panelTitle.Location = new Point(200, 0);
-            panelTitle.Name = "panelTitle";
-            panelTitle.Size = new Size(1053, 47);
-            panelTitle.TabIndex = 2;
+            panel4.BackColor = Color.LemonChiffon;
+            panel4.Controls.Add(label2);
+            panel4.Controls.Add(panel5);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(200, 41);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1053, 47);
+            panel4.TabIndex = 37;
             // 
-            // Title
+            // label2
             // 
-            Title.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            Title.AutoSize = true;
-            Title.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Title.Location = new Point(340, 13);
-            Title.Name = "Title";
-            Title.Size = new Size(373, 21);
-            Title.TabIndex = 8;
-            Title.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(340, 13);
+            label2.Name = "label2";
+            label2.Size = new Size(373, 21);
+            label2.TabIndex = 11;
+            label2.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
             // 
-            // panel3
+            // panel5
             // 
-            panel3.Controls.Add(lbl_name);
-            panel3.Controls.Add(pbClose);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(899, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(154, 47);
-            panel3.TabIndex = 6;
+            panel5.Controls.Add(label1);
+            panel5.Controls.Add(pictureBox2);
+            panel5.Dock = DockStyle.Right;
+            panel5.Location = new Point(899, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(154, 47);
+            panel5.TabIndex = 7;
             // 
-            // lbl_name
+            // label1
             // 
-            lbl_name.AutoSize = true;
-            lbl_name.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_name.Location = new Point(67, 17);
-            lbl_name.Name = "lbl_name";
-            lbl_name.Size = new Size(53, 20);
-            lbl_name.TabIndex = 6;
-            lbl_name.Text = "Admin";
-            lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(67, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(53, 20);
+            label1.TabIndex = 6;
+            label1.Text = "Admin";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pbClose
+            // pictureBox2
             // 
-            pbClose.Image = (Image)resources.GetObject("pbClose.Image");
-            pbClose.Location = new Point(19, 9);
-            pbClose.Name = "pbClose";
-            pbClose.Size = new Size(33, 32);
-            pbClose.SizeMode = PictureBoxSizeMode.Zoom;
-            pbClose.TabIndex = 5;
-            pbClose.TabStop = false;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(19, 9);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(33, 32);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 5;
+            pictureBox2.TabStop = false;
             // 
-            // panelContainer
+            // adminPanelContainer
             // 
-            panelContainer.BackColor = Color.Beige;
-            panelContainer.Dock = DockStyle.Fill;
-            panelContainer.Location = new Point(200, 47);
-            panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(1053, 525);
-            panelContainer.TabIndex = 3;
+            adminPanelContainer.BackColor = Color.Beige;
+            adminPanelContainer.Dock = DockStyle.Fill;
+            adminPanelContainer.Location = new Point(200, 88);
+            adminPanelContainer.Name = "adminPanelContainer";
+            adminPanelContainer.Size = new Size(1053, 527);
+            adminPanelContainer.TabIndex = 38;
             // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1253, 572);
-            Controls.Add(panelContainer);
-            Controls.Add(panelTitle);
-            Controls.Add(panelTabs);
+            ClientSize = new Size(1253, 615);
+            Controls.Add(adminPanelContainer);
+            Controls.Add(panel4);
+            Controls.Add(panel1);
+            Controls.Add(panel2);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Admin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin";
-            panelTabs.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panelTitle.ResumeLayout(false);
-            panelTitle.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbClose).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panelTabs;
+        private Panel panel2;
+        private Button btn_minimize;
+        private Button btn_maximize;
+        private Button btn_close;
+        private Panel panel1;
         private Button btn_logout;
         private Button btn_blacklistManagement;
         private Button btn_visitorReports;
@@ -315,12 +378,12 @@
         private Button btn_visitorManagement;
         private Button btn_admin_dashboard;
         private Panel panelLogo;
-        private Panel panelTitle;
-        private Panel panel3;
-        private Label lbl_name;
-        private PictureBox pbClose;
-        private Panel panelContainer;
-        private Label Title;
         private PictureBox pictureBox1;
+        private Panel panel4;
+        private Panel panel5;
+        private Label label1;
+        private PictureBox pictureBox2;
+        private Label label2;
+        private Panel adminPanelContainer;
     }
 }

@@ -14,6 +14,10 @@ using System.Reflection.Metadata;
 using ZXing.OneD;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Font = iTextSharp.text.Font;
+using Document = iTextSharp.text.Document;
+using Image = iTextSharp.text.Image;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace Visitor_Identification_Management_System
 {
@@ -76,33 +80,130 @@ namespace Visitor_Identification_Management_System
                 {
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
-                        iTextSharp.text.Document doc = new iTextSharp.text.Document(PageSize.A4);
-                        PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                        Document doc = new Document(PageSize.A4, 20f, 20f, 40f, 40f);
+                        PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
                         doc.Open();
 
-                        PdfPTable table = new PdfPTable(dgv_reports.Columns.Count);
+                        // Create a table with 2 columns (Logo + Title)
+                        PdfPTable headerTable = new PdfPTable(2)
+                        {
+                            WidthPercentage = 100
+                        };
+                        headerTable.SetWidths(new float[] { 1f, 3f }); // Set column widths (logo smaller)
+
+                        // Add System Logo (if exists)
+                        string logoPath = "C:\\Users\\Jhon Albert Ogana\\Pictures\\VIMS logo circle.PNG"; // Change path
+                        PdfPCell logoCell = new PdfPCell();
+                        if (File.Exists(logoPath))
+                        {
+                            Image logo = Image.GetInstance(logoPath);
+                            logo.ScaleAbsolute(70f, 70f); // Resize
+                            logoCell = new PdfPCell(logo)
+                            {
+                                Border = Rectangle.NO_BORDER,
+                                HorizontalAlignment = Element.ALIGN_LEFT,
+                                PaddingLeft = 10f
+                            };
+                        }
+
+                        // Title: Visitor Identification Management System
+                        Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
+                        Paragraph title = new Paragraph("Visitor Identification Management System", titleFont)
+                        {
+                            Alignment = Element.ALIGN_LEFT
+                        };
+                        PdfPCell titleCell = new PdfPCell(title)
+                        {
+                            Border = Rectangle.NO_BORDER,
+                            HorizontalAlignment = Element.ALIGN_LEFT,
+                            VerticalAlignment = Element.ALIGN_MIDDLE
+                        };
+
+                        // Add cells to the header table
+                        headerTable.AddCell(logoCell);
+                        headerTable.AddCell(titleCell);
+                        doc.Add(headerTable);
+
+                        // Subtitle: Report Title
+                        Font reportTitleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.DARK_GRAY);
+                        Paragraph reportTitle = new Paragraph("Visitor Report", reportTitleFont)
+                        {
+                            Alignment = Element.ALIGN_CENTER,
+                            SpacingAfter = 20f
+                        };
+                        doc.Add(reportTitle);
+
+                        // Table
+                        PdfPTable table = new PdfPTable(dgv_reports.Columns.Count)
+                        {
+                            WidthPercentage = 100,
+                            SpacingBefore = 10f
+                        };
+
+                        // Set Column Widths
+                        float[] columnWidths = new float[dgv_reports.Columns.Count];
+                        for (int i = 0; i < dgv_reports.Columns.Count; i++)
+                        {
+                            columnWidths[i] = 1.5f;
+                        }
+                        table.SetWidths(columnWidths);
+
+                        // Header Styling
+                        Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+                        BaseColor headerColor = new BaseColor(0, 102, 204); // Blue background
+
                         foreach (DataGridViewColumn col in dgv_reports.Columns)
                         {
-                            table.AddCell(new Phrase(col.HeaderText));
+                            PdfPCell headerCell = new PdfPCell(new Phrase(col.HeaderText, headerFont))
+                            {
+                                BackgroundColor = headerColor,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                Padding = 5
+                            };
+                            table.AddCell(headerCell);
                         }
+
+                        // Row Styling
+                        Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.BLACK);
+                        BaseColor rowColor1 = new BaseColor(240, 240, 240); // Light gray
+                        BaseColor rowColor2 = BaseColor.WHITE;
+                        bool alternate = false;
 
                         foreach (DataGridViewRow row in dgv_reports.Rows)
                         {
                             foreach (DataGridViewCell cell in row.Cells)
                             {
-                                table.AddCell(cell.Value?.ToString() ?? "");
+                                PdfPCell dataCell = new PdfPCell(new Phrase(cell.Value?.ToString() ?? "", cellFont))
+                                {
+                                    BackgroundColor = alternate ? rowColor1 : rowColor2,
+                                    Padding = 5,
+                                    HorizontalAlignment = Element.ALIGN_CENTER
+                                };
+                                table.AddCell(dataCell);
                             }
+                            alternate = !alternate; // Alternate row colors
                         }
 
                         doc.Add(table);
+
+                        // Footer with timestamp
+                        Font footerFont = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+                        Paragraph footer = new Paragraph("Generated on: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), footerFont)
+                        {
+                            Alignment = Element.ALIGN_RIGHT,
+                            SpacingBefore = 10f
+                        };
+                        doc.Add(footer);
+
                         doc.Close();
+                        writer.Close();
                         MessageBox.Show("Exported to PDF successfully!");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Message: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
@@ -59,7 +59,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(32, 65);
+            label2.Location = new Point(26, 60);
             label2.Name = "label2";
             label2.Size = new Size(134, 21);
             label2.TabIndex = 23;
@@ -69,7 +69,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(23, 20);
+            label1.Location = new Point(17, 15);
             label1.Name = "label1";
             label1.Size = new Size(351, 45);
             label1.TabIndex = 22;
@@ -91,16 +91,16 @@
             panel1.Controls.Add(txt_blacklistID);
             panel1.Controls.Add(txt_reason);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(760, 0);
+            panel1.Location = new Point(732, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(293, 525);
+            panel1.Size = new Size(321, 525);
             panel1.TabIndex = 24;
             // 
             // txt_dateAdded
             // 
             txt_dateAdded.Anchor = AnchorStyles.None;
             txt_dateAdded.Font = new Font("Segoe UI", 12F);
-            txt_dateAdded.Location = new Point(30, 398);
+            txt_dateAdded.Location = new Point(46, 393);
             txt_dateAdded.Name = "txt_dateAdded";
             txt_dateAdded.Size = new Size(232, 29);
             txt_dateAdded.TabIndex = 84;
@@ -116,7 +116,7 @@
             btn_delete.FlatStyle = FlatStyle.Flat;
             btn_delete.Font = new Font("Segoe UI", 12F);
             btn_delete.ForeColor = Color.White;
-            btn_delete.Location = new Point(205, 476);
+            btn_delete.Location = new Point(223, 443);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(77, 33);
             btn_delete.TabIndex = 83;
@@ -135,7 +135,7 @@
             btn_update.FlatStyle = FlatStyle.Flat;
             btn_update.Font = new Font("Segoe UI", 12F);
             btn_update.ForeColor = Color.White;
-            btn_update.Location = new Point(107, 476);
+            btn_update.Location = new Point(125, 443);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(77, 33);
             btn_update.TabIndex = 82;
@@ -154,7 +154,7 @@
             btn_add.FlatStyle = FlatStyle.Flat;
             btn_add.Font = new Font("Segoe UI", 12F);
             btn_add.ForeColor = Color.White;
-            btn_add.Location = new Point(10, 476);
+            btn_add.Location = new Point(28, 443);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(77, 33);
             btn_add.TabIndex = 81;
@@ -167,7 +167,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(30, 374);
+            label6.Location = new Point(46, 369);
             label6.Name = "label6";
             label6.Size = new Size(91, 21);
             label6.TabIndex = 80;
@@ -178,7 +178,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(32, 175);
+            label7.Location = new Point(48, 170);
             label7.Name = "label7";
             label7.Size = new Size(86, 21);
             label7.TabIndex = 79;
@@ -188,7 +188,7 @@
             // 
             txt_blacklistFirstname.Anchor = AnchorStyles.None;
             txt_blacklistFirstname.Font = new Font("Segoe UI", 12F);
-            txt_blacklistFirstname.Location = new Point(32, 199);
+            txt_blacklistFirstname.Location = new Point(48, 194);
             txt_blacklistFirstname.Name = "txt_blacklistFirstname";
             txt_blacklistFirstname.Size = new Size(232, 29);
             txt_blacklistFirstname.TabIndex = 78;
@@ -198,7 +198,7 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(30, 248);
+            label5.Location = new Point(46, 243);
             label5.Name = "label5";
             label5.Size = new Size(84, 21);
             label5.TabIndex = 76;
@@ -208,7 +208,7 @@
             // 
             txt_blacklistLastname.Anchor = AnchorStyles.None;
             txt_blacklistLastname.Font = new Font("Segoe UI", 12F);
-            txt_blacklistLastname.Location = new Point(30, 272);
+            txt_blacklistLastname.Location = new Point(46, 267);
             txt_blacklistLastname.Name = "txt_blacklistLastname";
             txt_blacklistLastname.Size = new Size(232, 29);
             txt_blacklistLastname.TabIndex = 74;
@@ -218,7 +218,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(30, 313);
+            label3.Location = new Point(46, 308);
             label3.Name = "label3";
             label3.Size = new Size(61, 21);
             label3.TabIndex = 73;
@@ -229,7 +229,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(30, 105);
+            label8.Location = new Point(46, 100);
             label8.Name = "label8";
             label8.Size = new Size(85, 21);
             label8.TabIndex = 72;
@@ -239,7 +239,7 @@
             // 
             txt_blacklistID.Anchor = AnchorStyles.None;
             txt_blacklistID.Font = new Font("Segoe UI", 12F);
-            txt_blacklistID.Location = new Point(30, 129);
+            txt_blacklistID.Location = new Point(46, 124);
             txt_blacklistID.Name = "txt_blacklistID";
             txt_blacklistID.Size = new Size(232, 29);
             txt_blacklistID.TabIndex = 70;
@@ -248,7 +248,7 @@
             // 
             txt_reason.Anchor = AnchorStyles.None;
             txt_reason.Font = new Font("Segoe UI", 12F);
-            txt_reason.Location = new Point(30, 337);
+            txt_reason.Location = new Point(46, 332);
             txt_reason.Name = "txt_reason";
             txt_reason.Size = new Size(232, 29);
             txt_reason.TabIndex = 71;
@@ -260,7 +260,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(760, 105);
+            panel2.Size = new Size(732, 100);
             panel2.TabIndex = 25;
             // 
             // panel3
@@ -268,9 +268,9 @@
             panel3.Controls.Add(txt_search_blacklist);
             panel3.Controls.Add(dgv_blacklist);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 105);
+            panel3.Location = new Point(0, 100);
             panel3.Name = "panel3";
-            panel3.Size = new Size(760, 420);
+            panel3.Size = new Size(732, 425);
             panel3.TabIndex = 26;
             // 
             // txt_search_blacklist
@@ -289,15 +289,16 @@
             dgv_blacklist.AllowUserToResizeColumns = false;
             dgv_blacklist.AllowUserToResizeRows = false;
             dgv_blacklist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_blacklist.BackgroundColor = SystemColors.Info;
             dgv_blacklist.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgv_blacklist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgv_blacklist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgv_blacklist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_blacklist.Location = new Point(75, 55);
             dgv_blacklist.Name = "dgv_blacklist";

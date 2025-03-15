@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel3 = new Panel();
             panel5 = new Panel();
             dgv_visitorManagement = new DataGridView();
@@ -89,17 +89,18 @@
             dgv_visitorManagement.AllowUserToResizeColumns = false;
             dgv_visitorManagement.AllowUserToResizeRows = false;
             dgv_visitorManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_visitorManagement.BackgroundColor = SystemColors.Info;
             dgv_visitorManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_visitorManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_visitorManagement.Location = new Point(43, 47);
+            dgv_visitorManagement.Location = new Point(75, 55);
             dgv_visitorManagement.Name = "dgv_visitorManagement";
             dgv_visitorManagement.RowHeadersVisible = false;
             dgv_visitorManagement.Size = new Size(602, 321);

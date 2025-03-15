@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Runtime.InteropServices;
 
 namespace Visitor_Identification_Management_System
 {
@@ -80,6 +81,41 @@ namespace Visitor_Identification_Management_System
             else
             {
                 txt_Password.PasswordChar = '*';
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_maximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0xA1, 0x2, 0);
             }
         }
     }

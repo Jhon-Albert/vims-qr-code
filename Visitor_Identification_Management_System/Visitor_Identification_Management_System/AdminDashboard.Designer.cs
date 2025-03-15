@@ -57,7 +57,6 @@
             // 
             // panel4
             // 
-            panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;

@@ -87,6 +87,7 @@
             dgv_logs.AllowUserToResizeColumns = false;
             dgv_logs.AllowUserToResizeRows = false;
             dgv_logs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_logs.BackgroundColor = SystemColors.GradientActiveCaption;
             dgv_logs.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;

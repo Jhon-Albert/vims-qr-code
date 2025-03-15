@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
-            txt_search_blacklist = new TextBox();
             dgv_blacklist = new DataGridView();
+            txt_search_blacklist = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_blacklist).BeginInit();
@@ -80,6 +80,30 @@
             panel2.Size = new Size(1053, 425);
             panel2.TabIndex = 18;
             // 
+            // dgv_blacklist
+            // 
+            dgv_blacklist.AllowUserToAddRows = false;
+            dgv_blacklist.AllowUserToDeleteRows = false;
+            dgv_blacklist.AllowUserToResizeColumns = false;
+            dgv_blacklist.AllowUserToResizeRows = false;
+            dgv_blacklist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_blacklist.BackgroundColor = SystemColors.GradientActiveCaption;
+            dgv_blacklist.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_blacklist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgv_blacklist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_blacklist.Location = new Point(107, 52);
+            dgv_blacklist.Name = "dgv_blacklist";
+            dgv_blacklist.RowHeadersVisible = false;
+            dgv_blacklist.Size = new Size(838, 321);
+            dgv_blacklist.TabIndex = 18;
+            // 
             // txt_search_blacklist
             // 
             txt_search_blacklist.Location = new Point(107, 23);
@@ -88,29 +112,6 @@
             txt_search_blacklist.Size = new Size(204, 23);
             txt_search_blacklist.TabIndex = 17;
             txt_search_blacklist.TextChanged += txt_search_blacklist_TextChanged;
-            // 
-            // dgv_blacklist
-            // 
-            dgv_blacklist.AllowUserToAddRows = false;
-            dgv_blacklist.AllowUserToDeleteRows = false;
-            dgv_blacklist.AllowUserToResizeColumns = false;
-            dgv_blacklist.AllowUserToResizeRows = false;
-            dgv_blacklist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_blacklist.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv_blacklist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgv_blacklist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_blacklist.Location = new Point(107, 52);
-            dgv_blacklist.Name = "dgv_blacklist";
-            dgv_blacklist.RowHeadersVisible = false;
-            dgv_blacklist.Size = new Size(838, 321);
-            dgv_blacklist.TabIndex = 18;
             // 
             // Blacklist
             // 
