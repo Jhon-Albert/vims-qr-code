@@ -159,11 +159,11 @@
             btn_Login.AutoSize = true;
             btn_Login.BackColor = Color.FromArgb(52, 152, 219);
             btn_Login.FlatAppearance.BorderSize = 0;
-            btn_Login.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_Login.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_Login.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 65, 163);
+            btn_Login.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 86, 210);
             btn_Login.FlatStyle = FlatStyle.Flat;
             btn_Login.Font = new Font("Segoe UI", 12F);
-            btn_Login.ForeColor = SystemColors.Control;
+            btn_Login.ForeColor = Color.White;
             btn_Login.Location = new Point(219, 259);
             btn_Login.Name = "btn_Login";
             btn_Login.Size = new Size(75, 33);
@@ -262,6 +262,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

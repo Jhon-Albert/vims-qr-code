@@ -7,6 +7,7 @@ using AForge.Video.DirectShow;
 using ZXing;
 using ZXing.Windows.Compatibility;
 using Microsoft.Data.SqlClient;
+using System.Runtime.InteropServices;
 
 namespace Visitor_Identification_Management_System
 {
@@ -20,6 +21,7 @@ namespace Visitor_Identification_Management_System
         {
             InitializeComponent();
         }
+
         private void ScanQR_Load(object sender, EventArgs e)
         {
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -27,40 +29,44 @@ namespace Visitor_Identification_Management_System
             {
                 cmb_camera.Items.Add(device.Name);
             }
-            if (cmb_camera.Items.Count > 0)
+
+            int droidCamIndex = -1;
+            for (int i = 0; i < cmb_camera.Items.Count; i++)
             {
-                cmb_camera.SelectedIndex = 0;
+                if (cmb_camera.Items[i].ToString().ToLower().Contains("droidcam"))
+                {
+                    droidCamIndex = i;
+                    break;
+                }
+            }
+            if (droidCamIndex != -1)
+            {
+                cmb_camera.SelectedIndex = droidCamIndex;
             }
 
             lbl_date.Text = "Date: " + DateTime.Now.ToLongDateString();
             timer1.Interval = 1000;
             timer1.Start();
         }
+
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             pb_scan.Image = (Bitmap)eventArgs.Frame.Clone();
         }
-        private void ScanQR_FormClosing(object sender, FormClosingEventArgs e)
+        private void StopCamera()
         {
             if (FinalFrame != null && FinalFrame.IsRunning)
             {
                 FinalFrame.SignalToStop();
                 FinalFrame.WaitForStop();
+                FinalFrame = null;
             }
         }
-        private void btn_camera_Click(object sender, EventArgs e)
+        private void ScanQR_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (CaptureDevice.Count > 0)
-            {
-                FinalFrame = new VideoCaptureDevice(CaptureDevice[cmb_camera.SelectedIndex].MonikerString);
-                FinalFrame.NewFrame += FinalFrame_NewFrame;
-                FinalFrame.Start();
-            }
-            else
-            {
-                MessageBox.Show("No camera device found.");
-            }
+            StopCamera();
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lbl_time.Text = "Time: " + DateTime.Now.ToLongTimeString();
@@ -128,6 +134,7 @@ namespace Visitor_Identification_Management_System
                 }
             }
         }
+
         private void ClearTextFields()
         {
             txt_visitorID.Clear();
@@ -138,7 +145,24 @@ namespace Visitor_Identification_Management_System
             txt_purpose.Clear();
             txt_email.Clear();
         }
+
         //BUTTON
+        private void btn_camera_Click(object sender, EventArgs e)
+        {
+            StopCamera();
+            if (CaptureDevice.Count > 0)
+            {
+                FinalFrame = new VideoCaptureDevice(CaptureDevice[cmb_camera.SelectedIndex].MonikerString);
+                FinalFrame.NewFrame += FinalFrame_NewFrame;
+                FinalFrame.Start();
+            }
+            else
+            {
+                MessageBox.Show("No camera device found.");
+                return;
+            }
+        }
+
         private void btn_back_Click(object sender, EventArgs e)
         {
             Close();
@@ -172,6 +196,7 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Error Message: " + ex.Message);
             }
         }
+
         private void btn_checkOut_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_visitorID.Text))
@@ -203,6 +228,47 @@ namespace Visitor_Identification_Management_System
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+        }
+
+        private void btn_refreshCamera_Click(object sender, EventArgs e)
+        {
+            StopCamera();
+            pb_scan.Image = null;
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btn_maximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0xA1, 0x2, 0);
             }
         }
     }

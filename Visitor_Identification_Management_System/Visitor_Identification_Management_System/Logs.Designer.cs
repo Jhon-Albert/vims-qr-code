@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -86,6 +87,7 @@
             dgv_logs.AllowUserToDeleteRows = false;
             dgv_logs.AllowUserToResizeColumns = false;
             dgv_logs.AllowUserToResizeRows = false;
+            dgv_logs.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgv_logs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_logs.BackgroundColor = SystemColors.GradientActiveCaption;
             dgv_logs.BorderStyle = BorderStyle.None;
@@ -98,6 +100,14 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgv_logs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_logs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgv_logs.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_logs.Location = new Point(107, 52);
             dgv_logs.Name = "dgv_logs";
             dgv_logs.RowHeadersVisible = false;

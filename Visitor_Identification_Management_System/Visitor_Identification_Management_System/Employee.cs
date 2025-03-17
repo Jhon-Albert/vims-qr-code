@@ -68,6 +68,14 @@ namespace Visitor_Identification_Management_System
 
         private void btn_scan_Click_1(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is ScanQR)
+                {
+                    form.BringToFront();  // Bring the existing form to the front
+                    return;  // Exit the method, preventing a new instance from being created
+                }
+            }
             ScanQR uc = new ScanQR();
             uc.Show();
         }
@@ -112,6 +120,10 @@ namespace Visitor_Identification_Management_System
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        
+
+        private void Employee_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

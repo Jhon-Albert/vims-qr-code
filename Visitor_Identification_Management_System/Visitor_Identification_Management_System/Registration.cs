@@ -42,7 +42,7 @@ namespace Visitor_Identification_Management_System
             int lastVisitorNumber = 10000;
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
                     string query = "SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC";
@@ -62,7 +62,7 @@ namespace Visitor_Identification_Management_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error fetching last VisitorID: " + ex.Message);
+                MessageBox.Show("Error fetching last VisitorID: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return "V" + (lastVisitorNumber + 1);
         }
@@ -87,14 +87,14 @@ namespace Visitor_Identification_Management_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating QR Code: " + ex.Message);
+                MessageBox.Show("Error generating QR Code: " + ex.Message, "QR Code Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         //SEND VISITOR QR CODE TO EMAIL
         private bool SendEmailWithQRCode(string recipientEmail, string qrFilePath)
         {
-            try
+            /*try
             {
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(senderEmail);
@@ -132,12 +132,53 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error sending email: " + ex.Message);
                 return false;
+            }*/
+            try
+            {
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress(senderEmail);
+                    mail.To.Add(recipientEmail);
+                    mail.Subject = "Your Visitor QR Code";
+                    mail.Body = "Dear Visitor,\n\nAttached is your generated QR Code for verification upon arrival.\n\nThank you!";
+                    mail.Attachments.Add(new Attachment(qrFilePath));
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new NetworkCredential(senderEmail, senderPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
+
+                // Delete QR code file after sending email
+                if (File.Exists(qrFilePath))
+                {
+                    File.Delete(qrFilePath);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error sending email: " + ex.Message, "Email Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
         //BUTTONS
         private void btn_register_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txt_email.Text) ||
+                string.IsNullOrWhiteSpace(txt_firstName.Text) ||
+                string.IsNullOrWhiteSpace(txt_lastName.Text) ||
+                string.IsNullOrWhiteSpace(txt_address.Text) ||
+                string.IsNullOrWhiteSpace(txt_contactNumber.Text) ||
+                string.IsNullOrWhiteSpace(cmb_purpose.Text))
+            {
+                MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 string visitorID = GenerateVisitorID();
@@ -176,23 +217,8 @@ namespace Visitor_Identification_Management_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message, "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void txt_firstName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

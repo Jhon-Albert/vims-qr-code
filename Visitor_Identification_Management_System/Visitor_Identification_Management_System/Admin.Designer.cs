@@ -350,6 +350,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Admin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin";

@@ -73,7 +73,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(529, 501);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // btn_register
             // 
@@ -81,8 +80,8 @@
             btn_register.AutoSize = true;
             btn_register.BackColor = Color.FromArgb(52, 152, 219);
             btn_register.FlatAppearance.BorderSize = 0;
-            btn_register.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_register.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_register.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 65, 163);
+            btn_register.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 86, 210);
             btn_register.FlatStyle = FlatStyle.Flat;
             btn_register.Font = new Font("Segoe UI", 12F);
             btn_register.ForeColor = Color.White;
@@ -197,7 +196,6 @@
             label2.Size = new Size(48, 21);
             label2.TabIndex = 43;
             label2.Text = "Email";
-            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -218,7 +216,6 @@
             txt_firstName.Name = "txt_firstName";
             txt_firstName.Size = new Size(232, 29);
             txt_firstName.TabIndex = 40;
-            txt_firstName.TextChanged += txt_firstName_TextChanged;
             // 
             // txt_email
             // 

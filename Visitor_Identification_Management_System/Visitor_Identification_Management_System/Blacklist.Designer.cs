@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -86,6 +87,7 @@
             dgv_blacklist.AllowUserToDeleteRows = false;
             dgv_blacklist.AllowUserToResizeColumns = false;
             dgv_blacklist.AllowUserToResizeRows = false;
+            dgv_blacklist.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgv_blacklist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_blacklist.BackgroundColor = SystemColors.GradientActiveCaption;
             dgv_blacklist.BorderStyle = BorderStyle.None;
@@ -98,6 +100,14 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgv_blacklist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_blacklist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgv_blacklist.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_blacklist.Location = new Point(107, 52);
             dgv_blacklist.Name = "dgv_blacklist";
             dgv_blacklist.RowHeadersVisible = false;

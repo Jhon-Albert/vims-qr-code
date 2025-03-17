@@ -46,6 +46,7 @@ namespace Visitor_Identification_Management_System
             txt_blacklistFirstname.Text = dgv_blacklist.Rows[e.RowIndex].Cells[1].Value.ToString();
             txt_blacklistLastname.Text = dgv_blacklist.Rows[e.RowIndex].Cells[2].Value.ToString();
             txt_reason.Text = dgv_blacklist.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_dateAdded.Text = dgv_blacklist.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
         private void ClearTextFields()
         {
@@ -53,6 +54,7 @@ namespace Visitor_Identification_Management_System
             txt_blacklistFirstname.Clear();
             txt_blacklistLastname.Clear();
             txt_reason.Clear();
+            txt_dateAdded.Clear();
         }
         private void searchData(string search)
         {
@@ -181,5 +183,9 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            ClearTextFields();
+        }
     }
 }

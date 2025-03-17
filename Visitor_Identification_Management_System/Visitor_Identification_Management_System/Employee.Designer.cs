@@ -374,9 +374,11 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Employee";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Employee";
+            Load += Employee_Load;
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);

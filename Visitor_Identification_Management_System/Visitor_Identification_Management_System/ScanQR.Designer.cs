@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScanQR));
             btn_back = new Button();
             cmb_camera = new ComboBox();
             btn_camera = new Button();
@@ -55,8 +56,14 @@
             lbl_date = new Label();
             lbl_time = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            btn_refreshCamera = new Button();
+            panel2 = new Panel();
+            btn_minimize = new Button();
+            btn_maximize = new Button();
+            btn_close = new Button();
             ((System.ComponentModel.ISupportInitialize)pb_scan).BeginInit();
             gb_visitor_information.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // btn_back
@@ -67,7 +74,7 @@
             btn_back.FlatStyle = FlatStyle.Flat;
             btn_back.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_back.ForeColor = SystemColors.Control;
-            btn_back.Location = new Point(91, 407);
+            btn_back.Location = new Point(86, 426);
             btn_back.Name = "btn_back";
             btn_back.Size = new Size(89, 33);
             btn_back.TabIndex = 48;
@@ -79,7 +86,7 @@
             // 
             cmb_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmb_camera.FormattingEnabled = true;
-            cmb_camera.Location = new Point(26, 103);
+            cmb_camera.Location = new Point(21, 122);
             cmb_camera.Name = "cmb_camera";
             cmb_camera.Size = new Size(232, 29);
             cmb_camera.TabIndex = 35;
@@ -92,7 +99,7 @@
             btn_camera.FlatStyle = FlatStyle.Flat;
             btn_camera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_camera.ForeColor = SystemColors.Control;
-            btn_camera.Location = new Point(76, 369);
+            btn_camera.Location = new Point(71, 388);
             btn_camera.Name = "btn_camera";
             btn_camera.Size = new Size(118, 33);
             btn_camera.TabIndex = 33;
@@ -103,7 +110,7 @@
             // pb_scan
             // 
             pb_scan.BorderStyle = BorderStyle.FixedSingle;
-            pb_scan.Location = new Point(26, 173);
+            pb_scan.Location = new Point(21, 192);
             pb_scan.Name = "pb_scan";
             pb_scan.Size = new Size(232, 190);
             pb_scan.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -114,7 +121,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(26, 60);
+            label2.Location = new Point(21, 79);
             label2.Name = "label2";
             label2.Size = new Size(134, 21);
             label2.TabIndex = 31;
@@ -124,7 +131,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 15);
+            label1.Location = new Point(12, 34);
             label1.Name = "label1";
             label1.Size = new Size(229, 45);
             label1.TabIndex = 30;
@@ -149,7 +156,7 @@
             gb_visitor_information.Controls.Add(label5);
             gb_visitor_information.Controls.Add(label3);
             gb_visitor_information.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gb_visitor_information.Location = new Point(284, 73);
+            gb_visitor_information.Location = new Point(279, 92);
             gb_visitor_information.Name = "gb_visitor_information";
             gb_visitor_information.Size = new Size(504, 365);
             gb_visitor_information.TabIndex = 49;
@@ -319,7 +326,7 @@
             // 
             lbl_date.AutoSize = true;
             lbl_date.Font = new Font("Segoe UI", 12F);
-            lbl_date.Location = new Point(570, 34);
+            lbl_date.Location = new Point(565, 53);
             lbl_date.Name = "lbl_date";
             lbl_date.Size = new Size(46, 21);
             lbl_date.TabIndex = 50;
@@ -329,7 +336,7 @@
             // 
             lbl_time.AutoSize = true;
             lbl_time.Font = new Font("Segoe UI", 12F);
-            lbl_time.Location = new Point(660, 60);
+            lbl_time.Location = new Point(655, 79);
             lbl_time.Name = "lbl_time";
             lbl_time.Size = new Size(44, 21);
             lbl_time.TabIndex = 51;
@@ -339,12 +346,83 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
+            // btn_refreshCamera
+            // 
+            btn_refreshCamera.AutoSize = true;
+            btn_refreshCamera.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refreshCamera.FlatAppearance.BorderSize = 0;
+            btn_refreshCamera.FlatStyle = FlatStyle.Flat;
+            btn_refreshCamera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_refreshCamera.ForeColor = SystemColors.Control;
+            btn_refreshCamera.Location = new Point(71, 153);
+            btn_refreshCamera.Name = "btn_refreshCamera";
+            btn_refreshCamera.Size = new Size(131, 33);
+            btn_refreshCamera.TabIndex = 52;
+            btn_refreshCamera.Text = "Refresh Camera";
+            btn_refreshCamera.UseVisualStyleBackColor = false;
+            btn_refreshCamera.Click += btn_refreshCamera_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(33, 150, 243);
+            panel2.Controls.Add(btn_minimize);
+            panel2.Controls.Add(btn_maximize);
+            panel2.Controls.Add(btn_close);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(835, 31);
+            panel2.TabIndex = 53;
+            panel2.MouseDown += panel2_MouseDown;
+            // 
+            // btn_minimize
+            // 
+            btn_minimize.Dock = DockStyle.Right;
+            btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatStyle = FlatStyle.Flat;
+            btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
+            btn_minimize.Location = new Point(712, 0);
+            btn_minimize.Name = "btn_minimize";
+            btn_minimize.Size = new Size(41, 31);
+            btn_minimize.TabIndex = 36;
+            btn_minimize.UseVisualStyleBackColor = true;
+            btn_minimize.Click += btn_minimize_Click;
+            // 
+            // btn_maximize
+            // 
+            btn_maximize.Dock = DockStyle.Right;
+            btn_maximize.FlatAppearance.BorderSize = 0;
+            btn_maximize.FlatStyle = FlatStyle.Flat;
+            btn_maximize.ForeColor = SystemColors.ControlText;
+            btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
+            btn_maximize.Location = new Point(753, 0);
+            btn_maximize.Name = "btn_maximize";
+            btn_maximize.Size = new Size(41, 31);
+            btn_maximize.TabIndex = 35;
+            btn_maximize.UseVisualStyleBackColor = true;
+            btn_maximize.Click += btn_maximize_Click;
+            // 
+            // btn_close
+            // 
+            btn_close.Dock = DockStyle.Right;
+            btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatStyle = FlatStyle.Flat;
+            btn_close.Image = (Image)resources.GetObject("btn_close.Image");
+            btn_close.Location = new Point(794, 0);
+            btn_close.Name = "btn_close";
+            btn_close.Size = new Size(41, 31);
+            btn_close.TabIndex = 34;
+            btn_close.UseVisualStyleBackColor = true;
+            btn_close.Click += btn_close_Click;
+            // 
             // ScanQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(835, 485);
+            Controls.Add(panel2);
+            Controls.Add(btn_refreshCamera);
             Controls.Add(lbl_time);
             Controls.Add(lbl_date);
             Controls.Add(gb_visitor_information);
@@ -354,13 +432,17 @@
             Controls.Add(pb_scan);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ScanQR";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "ScanQR";
             FormClosing += ScanQR_FormClosing;
             Load += ScanQR_Load;
             ((System.ComponentModel.ISupportInitialize)pb_scan).EndInit();
             gb_visitor_information.ResumeLayout(false);
             gb_visitor_information.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -393,5 +475,10 @@
         private Label label4;
         private Button btn_confirm;
         private Button btn_checkOut;
+        private Button btn_refreshCamera;
+        private Panel panel2;
+        private Button btn_minimize;
+        private Button btn_maximize;
+        private Button btn_close;
     }
 }

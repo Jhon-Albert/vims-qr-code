@@ -55,10 +55,10 @@ namespace Visitor_Identification_Management_System
             txt_visitorID.Clear();
             txt_firstName.Clear();
             txt_lastName.Clear();
-            txt_address.Clear();
+            txt_email.Clear();
             txt_contactNumber.Clear();
             txt_purpose.Clear();
-            txt_email.Clear();
+            txt_address.Clear();
         }
         //BUTTONS
         private void btn_add_Click(object sender, EventArgs e)
@@ -169,6 +169,11 @@ namespace Visitor_Identification_Management_System
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            ClearTextFields();
         }
     }
 }

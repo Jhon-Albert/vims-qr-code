@@ -152,5 +152,10 @@ namespace Visitor_Identification_Management_System
                 con.Close();
             }
         }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            ClearTextFields();
+        }
     }
 }
