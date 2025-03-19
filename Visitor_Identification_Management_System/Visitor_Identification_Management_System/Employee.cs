@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualBasic.Logging;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+using Google.Apis.Sheets.v4;
+using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,17 +12,33 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Visitor_Identification_Management_System
 {
     public partial class Employee : Form
     {
+        private static System.Timers.Timer syncTimer;
         public Employee()
         {
             InitializeComponent();
             EmployeeDashboard employeeDashboard = new EmployeeDashboard();
             addUserControl(employeeDashboard);
+        }
+
+        private void StartAutoSync()
+        {
+            syncTimer = new System.Timers.Timer(10000);
+            syncTimer.Elapsed += OnSyncTimerElapsed;
+            syncTimer.AutoReset = true;
+            syncTimer.Enabled = true;
+        }
+
+        private async void OnSyncTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            //await GoogleSync.SyncGoogleSheetData(); // Call the sync function from a separate class
+            await Task.Run(async () => await GoogleSync.SyncGoogleSheetData());
         }
 
         private void addUserControl(UserControl userControl)
@@ -85,6 +105,19 @@ namespace Visitor_Identification_Management_System
             RealTime uc = new RealTime();
             addUserControl(uc);
         }
+        private void btn_register_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is Registration)
+                {
+                    form.BringToFront();  // Bring the existing form to the front
+                    return;  // Exit the method, preventing a new instance from being created
+                }
+            }
+            Registration uc = new Registration();
+            uc.Show();
+        }
 
         private void btn_logout_Click_1(object sender, EventArgs e)
         {
@@ -123,7 +156,95 @@ namespace Visitor_Identification_Management_System
 
         private void Employee_Load(object sender, EventArgs e)
         {
+            StartAutoSync();  // Start syncing when the Employee form loads
+        }
+    }
+    public class GoogleSync
+    {
+        private static string CredentialsPath = @"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\vims-visitor-registration-4e7c2a747133.json";
+        private static string SpreadsheetId = "1KwmzK33uVxx7txW3LDAoEFhD2SXkVsR728C4KE_O2kA";
+        private static string SheetName = "VisitorSheet";
 
+        public static async Task SyncGoogleSheetData()
+        {
+            try
+            {
+                var credential = GoogleCredential.FromFile(CredentialsPath)
+                    .CreateScoped(new[] { SheetsService.Scope.SpreadsheetsReadonly });
+
+                using (var service = new SheetsService(new BaseClientService.Initializer
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "Visitor_Identification_Management_System"
+                }))
+                {
+                    var range = $"{SheetName}!B:G";
+                    var request = service.Spreadsheets.Values.Get(SpreadsheetId, range);
+                    var response = await request.ExecuteAsync();
+
+                    if (response.Values != null && response.Values.Count > 0)
+                    {
+                        using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                        {
+                            con.Open();
+                            foreach (var row in response.Values.Skip(1))
+                            {
+                                if (row.Count >= 6)
+                                {
+                                    string visitorID = Registration.GenerateVisitorID();
+                                    string firstName = row[0].ToString();
+                                    string lastName = row[1].ToString();
+                                    string email = row[2].ToString();
+                                    string contactNumber = row[3].ToString();
+                                    string address = row[4].ToString();
+                                    string purpose = row[5].ToString();
+
+                                    // Prevent duplicate entries
+                                    string checkQuery = "SELECT COUNT(*) FROM Registration WHERE Email = @Email";
+                                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, con))
+                                    {
+                                        checkCmd.Parameters.AddWithValue("@Email", email);
+                                        int count = (int)checkCmd.ExecuteScalar();
+                                        if (count > 0) continue;
+                                    }
+
+                                    // Insert new record
+                                    string query = "INSERT INTO Registration (VisitorID, Email, FirstName, LastName, Address, ContactNumber, Purpose) VALUES (@VisitorID, @Email, @FirstName, @LastName, @Address, @ContactNumber, @Purpose)";
+                                    using (SqlCommand cmd = new SqlCommand(query, con))
+                                    {
+                                        cmd.Parameters.AddWithValue("@VisitorID", visitorID);
+                                        cmd.Parameters.AddWithValue("@Email", email);
+                                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                                        cmd.Parameters.AddWithValue("@LastName", lastName);
+                                        cmd.Parameters.AddWithValue("@Address", address);
+                                        cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                                        cmd.Parameters.AddWithValue("@Purpose", purpose);
+                                        cmd.ExecuteNonQuery();
+                                    }
+
+                                    // Generate and send QR code
+                                    string visitorData = $"{visitorID}|{firstName}|{lastName}|{address}|{contactNumber}|{purpose}";
+                                    string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
+                                    QRCodeHelper.GenerateQRCode(visitorData, visitorID);
+
+                                    if (QRCodeHelper.SendEmailWithQRCode(email, filePath))
+                                    {
+                                        MessageBox.Show($"QR Code sent to {email}");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Failed to send QR Code to {email}");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error syncing Google Sheets data: " + ex.Message, "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

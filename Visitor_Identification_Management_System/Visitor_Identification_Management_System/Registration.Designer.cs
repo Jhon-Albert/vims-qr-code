@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
-            panel1 = new Panel();
             btn_register = new Button();
             cmb_purpose = new ComboBox();
             label6 = new Label();
@@ -44,35 +43,16 @@
             label1 = new Label();
             txt_firstName = new TextBox();
             txt_email = new TextBox();
-            pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            btn_minimize = new Button();
+            btn_maximize = new Button();
+            btn_close = new Button();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ControlLightLight;
-            panel1.Controls.Add(btn_register);
-            panel1.Controls.Add(cmb_purpose);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(txt_lastName);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(txt_contactNumber);
-            panel1.Controls.Add(txt_address);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txt_firstName);
-            panel1.Controls.Add(txt_email);
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(517, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(529, 501);
-            panel1.TabIndex = 0;
             // 
             // btn_register
             // 
@@ -85,7 +65,7 @@
             btn_register.FlatStyle = FlatStyle.Flat;
             btn_register.Font = new Font("Segoe UI", 12F);
             btn_register.ForeColor = Color.White;
-            btn_register.Location = new Point(235, 438);
+            btn_register.Location = new Point(731, 446);
             btn_register.Name = "btn_register";
             btn_register.Size = new Size(77, 33);
             btn_register.TabIndex = 54;
@@ -98,7 +78,7 @@
             cmb_purpose.Anchor = AnchorStyles.None;
             cmb_purpose.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmb_purpose.FormattingEnabled = true;
-            cmb_purpose.Location = new Point(275, 210);
+            cmb_purpose.Location = new Point(771, 218);
             cmb_purpose.Name = "cmb_purpose";
             cmb_purpose.Size = new Size(232, 29);
             cmb_purpose.TabIndex = 53;
@@ -108,7 +88,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(275, 186);
+            label6.Location = new Point(771, 194);
             label6.Name = "label6";
             label6.Size = new Size(119, 21);
             label6.TabIndex = 52;
@@ -119,7 +99,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(275, 116);
+            label7.Location = new Point(771, 124);
             label7.Name = "label7";
             label7.Size = new Size(84, 21);
             label7.TabIndex = 51;
@@ -129,7 +109,7 @@
             // 
             txt_lastName.Anchor = AnchorStyles.None;
             txt_lastName.Font = new Font("Segoe UI", 12F);
-            txt_lastName.Location = new Point(275, 140);
+            txt_lastName.Location = new Point(771, 148);
             txt_lastName.Name = "txt_lastName";
             txt_lastName.Size = new Size(232, 29);
             txt_lastName.TabIndex = 49;
@@ -139,7 +119,7 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(275, 259);
+            label4.Location = new Point(771, 267);
             label4.Name = "label4";
             label4.Size = new Size(66, 21);
             label4.TabIndex = 48;
@@ -150,7 +130,7 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(14, 259);
+            label5.Location = new Point(510, 267);
             label5.Name = "label5";
             label5.Size = new Size(125, 21);
             label5.TabIndex = 47;
@@ -160,7 +140,7 @@
             // 
             txt_contactNumber.Anchor = AnchorStyles.None;
             txt_contactNumber.Font = new Font("Segoe UI", 12F);
-            txt_contactNumber.Location = new Point(14, 283);
+            txt_contactNumber.Location = new Point(510, 291);
             txt_contactNumber.Name = "txt_contactNumber";
             txt_contactNumber.Size = new Size(232, 29);
             txt_contactNumber.TabIndex = 45;
@@ -169,7 +149,7 @@
             // 
             txt_address.Anchor = AnchorStyles.None;
             txt_address.Font = new Font("Segoe UI", 12F);
-            txt_address.Location = new Point(275, 283);
+            txt_address.Location = new Point(771, 291);
             txt_address.Multiline = true;
             txt_address.Name = "txt_address";
             txt_address.Size = new Size(232, 134);
@@ -180,7 +160,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(89, 36);
+            label3.Location = new Point(585, 44);
             label3.Name = "label3";
             label3.Size = new Size(379, 45);
             label3.TabIndex = 44;
@@ -191,7 +171,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(14, 186);
+            label2.Location = new Point(510, 194);
             label2.Name = "label2";
             label2.Size = new Size(48, 21);
             label2.TabIndex = 43;
@@ -202,7 +182,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(14, 116);
+            label1.Location = new Point(510, 124);
             label1.Name = "label1";
             label1.Size = new Size(86, 21);
             label1.TabIndex = 42;
@@ -212,7 +192,7 @@
             // 
             txt_firstName.Anchor = AnchorStyles.None;
             txt_firstName.Font = new Font("Segoe UI", 12F);
-            txt_firstName.Location = new Point(14, 140);
+            txt_firstName.Location = new Point(510, 148);
             txt_firstName.Name = "txt_firstName";
             txt_firstName.Size = new Size(232, 29);
             txt_firstName.TabIndex = 40;
@@ -221,53 +201,118 @@
             // 
             txt_email.Anchor = AnchorStyles.None;
             txt_email.Font = new Font("Segoe UI", 12F);
-            txt_email.Location = new Point(14, 210);
+            txt_email.Location = new Point(510, 218);
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(232, 29);
             txt_email.TabIndex = 41;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Gray;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, -11);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(525, 546);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 55;
-            pictureBox1.TabStop = false;
-            // 
             // panel2
             // 
-            panel2.Controls.Add(pictureBox1);
-            panel2.Dock = DockStyle.Fill;
+            panel2.BackColor = Color.FromArgb(33, 150, 243);
+            panel2.Controls.Add(btn_minimize);
+            panel2.Controls.Add(btn_maximize);
+            panel2.Controls.Add(btn_close);
+            panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(517, 501);
-            panel2.TabIndex = 1;
+            panel2.Size = new Size(1046, 41);
+            panel2.TabIndex = 55;
+            panel2.MouseDown += panel2_MouseDown;
+            // 
+            // btn_minimize
+            // 
+            btn_minimize.Dock = DockStyle.Right;
+            btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatStyle = FlatStyle.Flat;
+            btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
+            btn_minimize.Location = new Point(923, 0);
+            btn_minimize.Name = "btn_minimize";
+            btn_minimize.Size = new Size(41, 41);
+            btn_minimize.TabIndex = 36;
+            btn_minimize.UseVisualStyleBackColor = true;
+            btn_minimize.Click += btn_minimize_Click;
+            // 
+            // btn_maximize
+            // 
+            btn_maximize.Dock = DockStyle.Right;
+            btn_maximize.FlatAppearance.BorderSize = 0;
+            btn_maximize.FlatStyle = FlatStyle.Flat;
+            btn_maximize.ForeColor = SystemColors.ControlText;
+            btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
+            btn_maximize.Location = new Point(964, 0);
+            btn_maximize.Name = "btn_maximize";
+            btn_maximize.Size = new Size(41, 41);
+            btn_maximize.TabIndex = 35;
+            btn_maximize.UseVisualStyleBackColor = true;
+            btn_maximize.Click += btn_maximize_Click;
+            // 
+            // btn_close
+            // 
+            btn_close.Dock = DockStyle.Right;
+            btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatStyle = FlatStyle.Flat;
+            btn_close.Image = (Image)resources.GetObject("btn_close.Image");
+            btn_close.Location = new Point(1005, 0);
+            btn_close.Name = "btn_close";
+            btn_close.Size = new Size(41, 41);
+            btn_close.TabIndex = 34;
+            btn_close.UseVisualStyleBackColor = true;
+            btn_close.Click += btn_close_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(pictureBox1);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 41);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(467, 460);
+            panel1.TabIndex = 56;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(467, 460);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // Registration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1046, 501);
-            Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(panel2);
+            Controls.Add(btn_register);
+            Controls.Add(cmb_purpose);
+            Controls.Add(label3);
+            Controls.Add(label6);
+            Controls.Add(txt_email);
+            Controls.Add(label7);
+            Controls.Add(txt_firstName);
+            Controls.Add(txt_lastName);
+            Controls.Add(label1);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(label5);
+            Controls.Add(txt_address);
+            Controls.Add(txt_contactNumber);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Registration";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registration Form";
             Load += Registration_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
         private ComboBox cmb_purpose;
         private Label label6;
         private Label label7;
@@ -282,7 +327,11 @@
         private TextBox txt_firstName;
         private TextBox txt_email;
         private Button btn_register;
-        private PictureBox pictureBox1;
         private Panel panel2;
+        private Button btn_minimize;
+        private Button btn_maximize;
+        private Button btn_close;
+        private Panel panel1;
+        private PictureBox pictureBox1;
     }
 }

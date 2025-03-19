@@ -7,6 +7,12 @@ using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
+using System.Runtime.InteropServices;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
+using System.Timers;
 
 namespace Visitor_Identification_Management_System
 {
@@ -14,6 +20,7 @@ namespace Visitor_Identification_Management_System
     {
         private string senderEmail;
         private string senderPassword;
+        private System.Timers.Timer syncTimer;
 
         public Registration()
         {
@@ -37,8 +44,9 @@ namespace Visitor_Identification_Management_System
         }
 
         //GENERATE VISITOR ID
-        private string GenerateVisitorID()
+        public static string GenerateVisitorID()
         {
+            /*
             int lastVisitorNumber = 10000;
             try
             {
@@ -64,7 +72,35 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error fetching last VisitorID: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return "V" + (lastVisitorNumber + 1);
+            return "V" + (lastVisitorNumber + 1);*/
+
+            int lastVisitorNumber = 10000; // Start from V10001
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                {
+                    con.Open();
+                    string query = "SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        var result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            string lastVisitorID = result.ToString();
+                            if (lastVisitorID.StartsWith("V") && int.TryParse(lastVisitorID.Substring(1), out int visitorNumber))
+                            {
+                                lastVisitorNumber = visitorNumber; // Get the last used number
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching last VisitorID: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return $"V{(lastVisitorNumber + 1):D5}"; // Ensure it's always "V10001", "V10002", etc.
         }
 
         //GENERATE VISITOR QR CODE
@@ -165,11 +201,26 @@ namespace Visitor_Identification_Management_System
                 return false;
             }
         }
+        private bool IsValidEmail(string email)
+    {
+        try { return new MailAddress(email).Address == email; }
+        catch { return false; }
+    }
 
+        private void ClearTextFields()
+        {
+            txt_firstName.Clear();
+            txt_lastName.Clear();
+            txt_email.Clear();
+            txt_contactNumber.Clear();
+            txt_address.Clear();
+            cmb_purpose.SelectedIndex = -1;
+        }
         //BUTTONS
         private void btn_register_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txt_email.Text) ||
+            if (!IsValidEmail(txt_email.Text)|| 
+                string.IsNullOrWhiteSpace(txt_email.Text) ||
                 string.IsNullOrWhiteSpace(txt_firstName.Text) ||
                 string.IsNullOrWhiteSpace(txt_lastName.Text) ||
                 string.IsNullOrWhiteSpace(txt_address.Text) ||
@@ -179,6 +230,7 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             try
             {
                 string visitorID = GenerateVisitorID();
@@ -214,10 +266,50 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Visitor registered, but QR code email failed to send.");
                 }
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ClearTextFields();
+            }
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btn_maximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0xA1, 0x2, 0);
             }
         }
     }

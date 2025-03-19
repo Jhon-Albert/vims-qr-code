@@ -61,6 +61,7 @@
             btn_minimize = new Button();
             btn_maximize = new Button();
             btn_close = new Button();
+            btn_clear = new Button();
             ((System.ComponentModel.ISupportInitialize)pb_scan).BeginInit();
             gb_visitor_information.SuspendLayout();
             panel2.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // gb_visitor_information
             // 
+            gb_visitor_information.Controls.Add(btn_clear);
             gb_visitor_information.Controls.Add(btn_checkOut);
             gb_visitor_information.Controls.Add(btn_confirm);
             gb_visitor_information.Controls.Add(txt_lastName);
@@ -171,11 +173,11 @@
             btn_checkOut.FlatStyle = FlatStyle.Flat;
             btn_checkOut.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_checkOut.ForeColor = SystemColors.Control;
-            btn_checkOut.Location = new Point(394, 78);
+            btn_checkOut.Location = new Point(385, 78);
             btn_checkOut.Name = "btn_checkOut";
-            btn_checkOut.Size = new Size(94, 33);
+            btn_checkOut.Size = new Size(103, 33);
             btn_checkOut.TabIndex = 71;
-            btn_checkOut.Text = "Check Out";
+            btn_checkOut.Text = "CHECK OUT";
             btn_checkOut.UseVisualStyleBackColor = false;
             btn_checkOut.Click += btn_checkOut_Click;
             // 
@@ -187,11 +189,11 @@
             btn_confirm.FlatStyle = FlatStyle.Flat;
             btn_confirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_confirm.ForeColor = SystemColors.Control;
-            btn_confirm.Location = new Point(394, 41);
+            btn_confirm.Location = new Point(385, 41);
             btn_confirm.Name = "btn_confirm";
-            btn_confirm.Size = new Size(92, 33);
+            btn_confirm.Size = new Size(101, 33);
             btn_confirm.TabIndex = 70;
-            btn_confirm.Text = "Check In";
+            btn_confirm.Text = "CHECK IN";
             btn_confirm.UseVisualStyleBackColor = false;
             btn_confirm.Click += btn_confirm_Click;
             // 
@@ -415,6 +417,25 @@
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click;
             // 
+            // btn_clear
+            // 
+            btn_clear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_clear.AutoSize = true;
+            btn_clear.BackColor = Color.FromArgb(52, 152, 219);
+            btn_clear.FlatAppearance.BorderSize = 0;
+            btn_clear.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_clear.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_clear.FlatStyle = FlatStyle.Flat;
+            btn_clear.Font = new Font("Segoe UI", 12F);
+            btn_clear.ForeColor = Color.White;
+            btn_clear.Location = new Point(385, 117);
+            btn_clear.Name = "btn_clear";
+            btn_clear.Size = new Size(103, 33);
+            btn_clear.TabIndex = 86;
+            btn_clear.Text = "CLEAR";
+            btn_clear.UseVisualStyleBackColor = false;
+            btn_clear.Click += btn_clear_Click;
+            // 
             // ScanQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -480,5 +501,6 @@
         private Button btn_minimize;
         private Button btn_maximize;
         private Button btn_close;
+        private Button btn_clear;
     }
 }

@@ -49,6 +49,7 @@
             label3 = new Label();
             pictureBox1 = new PictureBox();
             panelContainer = new Panel();
+            btn_register = new Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -114,6 +115,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.GradientActiveCaption;
+            panel1.Controls.Add(btn_register);
             panel1.Controls.Add(btn_realTime);
             panel1.Controls.Add(btn_logout);
             panel1.Controls.Add(btn_scan);
@@ -144,7 +146,7 @@
             btn_realTime.Padding = new Padding(12, 0, 0, 0);
             btn_realTime.Size = new Size(200, 55);
             btn_realTime.TabIndex = 21;
-            btn_realTime.Text = "  Real-Time Tracking";
+            btn_realTime.Text = " Real-Time Tracking";
             btn_realTime.TextAlign = ContentAlignment.MiddleLeft;
             btn_realTime.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_realTime.UseVisualStyleBackColor = true;
@@ -364,6 +366,28 @@
             panelContainer.Size = new Size(1053, 527);
             panelContainer.TabIndex = 37;
             // 
+            // btn_register
+            // 
+            btn_register.Dock = DockStyle.Top;
+            btn_register.FlatAppearance.BorderSize = 0;
+            btn_register.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            btn_register.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_register.FlatStyle = FlatStyle.Flat;
+            btn_register.Font = new Font("Segoe UI", 9F);
+            btn_register.ForeColor = SystemColors.ControlText;
+            btn_register.Image = (Image)resources.GetObject("btn_register.Image");
+            btn_register.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_register.Location = new Point(0, 405);
+            btn_register.Name = "btn_register";
+            btn_register.Padding = new Padding(12, 0, 0, 0);
+            btn_register.Size = new Size(200, 55);
+            btn_register.TabIndex = 22;
+            btn_register.Text = "   Register Visitor";
+            btn_register.TextAlign = ContentAlignment.MiddleLeft;
+            btn_register.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_register.UseVisualStyleBackColor = true;
+            btn_register.Click += btn_register_Click;
+            // 
             // Employee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -412,5 +436,6 @@
         private Label label3;
         private PictureBox pictureBox1;
         private Panel panelContainer;
+        private Button btn_register;
     }
 }

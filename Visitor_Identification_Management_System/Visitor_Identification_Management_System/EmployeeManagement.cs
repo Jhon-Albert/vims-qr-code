@@ -24,7 +24,7 @@ namespace Visitor_Identification_Management_System
             try
             {
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("select * from Registration", con);
+                SqlDataAdapter sda = new SqlDataAdapter("select * from Employee", con);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 dgv_employeeManagement.DataSource = dt;
@@ -65,6 +65,7 @@ namespace Visitor_Identification_Management_System
                 cmd.Parameters.AddWithValue("@Email", txt_employeeEmail.Text);
                 cmd.Parameters.AddWithValue("@Password", txt_employeePassword.Text);
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 MessageBox.Show("Employee added successfully!");
                 ClearTextFields();
@@ -74,6 +75,7 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
+            
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -100,15 +102,13 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Employee not found!");
                 }
+                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
-            finally
-            {
-                con.Close();
-            }
+            
         }
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -141,16 +141,14 @@ namespace Visitor_Identification_Management_System
                     {
                         MessageBox.Show("Employee not found!");
                     }
+                    con.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
-            finally
-            {
-                con.Close();
-            }
+           
         }
 
         private void btn_clear_Click(object sender, EventArgs e)

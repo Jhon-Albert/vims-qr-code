@@ -75,6 +75,7 @@ namespace Visitor_Identification_Management_System
                 cmd.Parameters.AddWithValue("@Purpose", txt_purpose.Text);
                 cmd.Parameters.AddWithValue("@Address", txt_address.Text);
                 cmd.ExecuteNonQuery();
+                con.Close();
 
                 MessageBox.Show("Visitor added successfully!");
                 ClearTextFields();
@@ -84,6 +85,7 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
+            
         }
         private void btn_update_Click(object sender, EventArgs e)
         {
@@ -112,15 +114,13 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Visitor not found!");
                 }
+                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
-            finally
-            {
-                con.Close();
-            }
+            
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -154,15 +154,12 @@ namespace Visitor_Identification_Management_System
                     {
                         MessageBox.Show("Visitor not found!");
                     }
+                    con.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
-            }
-            finally
-            {
-                con.Close();
             }
         }
 

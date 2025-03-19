@@ -189,11 +189,15 @@ namespace Visitor_Identification_Management_System
                 con.Close();
 
                 MessageBox.Show("Visitor Checked In Successfully");
-                ClearTextFields();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                ClearTextFields();
             }
         }
 
@@ -223,11 +227,15 @@ namespace Visitor_Identification_Management_System
                     MessageBox.Show("No active check-in found for this visitor.");
                 }
 
-                ClearTextFields();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                ClearTextFields();
             }
         }
 
@@ -270,6 +278,11 @@ namespace Visitor_Identification_Management_System
                 ReleaseCapture();
                 SendMessage(this.Handle, 0xA1, 0x2, 0);
             }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            ClearTextFields();
         }
     }
 }
