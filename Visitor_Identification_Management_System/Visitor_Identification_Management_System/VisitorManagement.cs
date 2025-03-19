@@ -28,16 +28,21 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("select * from Registration", con);
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Registration", con);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 dgv_visitorManagement.DataSource = dt;
-                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
         private void dgv_visitorManagement_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,7 +70,9 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                con.Open();
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
                 SqlCommand cmd = new SqlCommand("INSERT INTO Registration VALUES(@VisitorID, @FirstName, @LastName, @Email, @ContactNumber, @Purpose, @Address)", con);
                 cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);
@@ -75,7 +82,6 @@ namespace Visitor_Identification_Management_System
                 cmd.Parameters.AddWithValue("@Purpose", txt_purpose.Text);
                 cmd.Parameters.AddWithValue("@Address", txt_address.Text);
                 cmd.ExecuteNonQuery();
-                con.Close();
 
                 MessageBox.Show("Visitor added successfully!");
                 ClearTextFields();
@@ -84,6 +90,10 @@ namespace Visitor_Identification_Management_System
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
             
         }
@@ -114,13 +124,15 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Visitor not found!");
                 }
-                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
-            
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -154,12 +166,15 @@ namespace Visitor_Identification_Management_System
                     {
                         MessageBox.Show("Visitor not found!");
                     }
-                    con.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 

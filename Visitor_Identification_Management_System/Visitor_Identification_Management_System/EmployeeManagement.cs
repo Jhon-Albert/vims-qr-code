@@ -23,16 +23,21 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("select * from Employee", con);
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Employee", con);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 dgv_employeeManagement.DataSource = dt;
-                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
         private void label5_Click(object sender, EventArgs e)
@@ -58,7 +63,9 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                con.Open();
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
                 SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EmployeeID, @Name, @Email, @Password)", con);
                 cmd.Parameters.AddWithValue("@EmployeeID", txt_employeeID.Text);
                 cmd.Parameters.AddWithValue("@Name", txt_employeeName.Text);
@@ -74,6 +81,10 @@ namespace Visitor_Identification_Management_System
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
             
         }
@@ -102,11 +113,14 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Employee not found!");
                 }
-                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
             
         }
@@ -141,14 +155,17 @@ namespace Visitor_Identification_Management_System
                     {
                         MessageBox.Show("Employee not found!");
                     }
-                    con.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
-           
+            finally
+            {
+                con.Close();
+            }
+
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
