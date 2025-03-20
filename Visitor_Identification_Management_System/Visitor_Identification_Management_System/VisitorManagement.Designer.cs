@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel3 = new Panel();
             panel5 = new Panel();
             dgv_visitorManagement = new DataGridView();
@@ -94,23 +94,23 @@
             dgv_visitorManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_visitorManagement.BackgroundColor = SystemColors.Info;
             dgv_visitorManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgv_visitorManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle4;
             dgv_visitorManagement.Location = new Point(17, 37);
             dgv_visitorManagement.Name = "dgv_visitorManagement";
             dgv_visitorManagement.RowHeadersVisible = false;
@@ -188,8 +188,8 @@
             btn_clear.AutoSize = true;
             btn_clear.BackColor = Color.FromArgb(52, 152, 219);
             btn_clear.FlatAppearance.BorderSize = 0;
-            btn_clear.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_clear.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_clear.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_clear.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_clear.FlatStyle = FlatStyle.Flat;
             btn_clear.Font = new Font("Segoe UI", 12F);
             btn_clear.ForeColor = Color.White;
@@ -270,8 +270,8 @@
             btn_delete.AutoSize = true;
             btn_delete.BackColor = Color.FromArgb(52, 152, 219);
             btn_delete.FlatAppearance.BorderSize = 0;
-            btn_delete.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_delete.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_delete.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_delete.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_delete.FlatStyle = FlatStyle.Flat;
             btn_delete.Font = new Font("Segoe UI", 12F);
             btn_delete.ForeColor = Color.White;
@@ -288,8 +288,8 @@
             btn_update.AutoSize = true;
             btn_update.BackColor = Color.FromArgb(52, 152, 219);
             btn_update.FlatAppearance.BorderSize = 0;
-            btn_update.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_update.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_update.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_update.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_update.FlatStyle = FlatStyle.Flat;
             btn_update.Font = new Font("Segoe UI", 12F);
             btn_update.ForeColor = Color.White;
@@ -306,8 +306,8 @@
             btn_add.AutoSize = true;
             btn_add.BackColor = Color.FromArgb(52, 152, 219);
             btn_add.FlatAppearance.BorderSize = 0;
-            btn_add.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_add.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_add.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_add.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_add.FlatStyle = FlatStyle.Flat;
             btn_add.Font = new Font("Segoe UI", 12F);
             btn_add.ForeColor = Color.White;

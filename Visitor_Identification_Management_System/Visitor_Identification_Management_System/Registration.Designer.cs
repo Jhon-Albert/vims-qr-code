@@ -60,8 +60,8 @@
             btn_register.AutoSize = true;
             btn_register.BackColor = Color.FromArgb(52, 152, 219);
             btn_register.FlatAppearance.BorderSize = 0;
-            btn_register.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 65, 163);
-            btn_register.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 86, 210);
+            btn_register.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_register.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_register.FlatStyle = FlatStyle.Flat;
             btn_register.Font = new Font("Segoe UI", 12F);
             btn_register.ForeColor = Color.White;
@@ -208,7 +208,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(33, 150, 243);
+            panel2.BackColor = Color.FromArgb(191, 219, 254);
             panel2.Controls.Add(btn_minimize);
             panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
@@ -223,6 +223,8 @@
             // 
             btn_minimize.Dock = DockStyle.Right;
             btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
             btn_minimize.Location = new Point(923, 0);
@@ -236,6 +238,8 @@
             // 
             btn_maximize.Dock = DockStyle.Right;
             btn_maximize.FlatAppearance.BorderSize = 0;
+            btn_maximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_maximize.FlatStyle = FlatStyle.Flat;
             btn_maximize.ForeColor = SystemColors.ControlText;
             btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
@@ -250,6 +254,8 @@
             // 
             btn_close.Dock = DockStyle.Right;
             btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
             btn_close.Location = new Point(1005, 0);
@@ -283,6 +289,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(147, 197, 253);
             ClientSize = new Size(1046, 501);
             Controls.Add(panel1);
             Controls.Add(panel2);

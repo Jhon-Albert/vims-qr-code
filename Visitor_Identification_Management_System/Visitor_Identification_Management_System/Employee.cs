@@ -209,13 +209,13 @@ namespace Visitor_Identification_Management_System
                                     }
 
                                     // Insert new record
-                                    string query = "INSERT INTO Registration (VisitorID, Email, FirstName, LastName, Address, ContactNumber, Purpose) VALUES (@VisitorID, @Email, @FirstName, @LastName, @Address, @ContactNumber, @Purpose)";
+                                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose)";
                                     using (SqlCommand cmd = new SqlCommand(query, con))
                                     {
                                         cmd.Parameters.AddWithValue("@VisitorID", visitorID);
-                                        cmd.Parameters.AddWithValue("@Email", email);
                                         cmd.Parameters.AddWithValue("@FirstName", firstName);
                                         cmd.Parameters.AddWithValue("@LastName", lastName);
+                                        cmd.Parameters.AddWithValue("@Email", email);
                                         cmd.Parameters.AddWithValue("@Address", address);
                                         cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
                                         cmd.Parameters.AddWithValue("@Purpose", purpose);

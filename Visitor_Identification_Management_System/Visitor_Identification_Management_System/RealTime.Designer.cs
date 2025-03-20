@@ -123,13 +123,18 @@
             // btn_liveCamera
             // 
             btn_liveCamera.AutoSize = true;
+            btn_liveCamera.BackColor = Color.FromArgb(52, 152, 219);
+            btn_liveCamera.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_liveCamera.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_liveCamera.FlatStyle = FlatStyle.Flat;
             btn_liveCamera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_liveCamera.ForeColor = Color.White;
             btn_liveCamera.Location = new Point(863, 205);
             btn_liveCamera.Name = "btn_liveCamera";
-            btn_liveCamera.Size = new Size(116, 31);
+            btn_liveCamera.Size = new Size(118, 33);
             btn_liveCamera.TabIndex = 34;
             btn_liveCamera.Text = "Open Camera";
-            btn_liveCamera.UseVisualStyleBackColor = true;
+            btn_liveCamera.UseVisualStyleBackColor = false;
             btn_liveCamera.Click += btn_liveCamera_Click;
             // 
             // panel3

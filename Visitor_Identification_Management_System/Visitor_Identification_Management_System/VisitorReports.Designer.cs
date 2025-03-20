@@ -93,8 +93,8 @@
             btn_print.AutoSize = true;
             btn_print.BackColor = Color.FromArgb(52, 152, 219);
             btn_print.FlatAppearance.BorderSize = 0;
-            btn_print.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_print.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_print.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_print.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_print.FlatStyle = FlatStyle.Flat;
             btn_print.Font = new Font("Segoe UI", 12F);
             btn_print.ForeColor = Color.White;
@@ -112,8 +112,8 @@
             btn_export.AutoSize = true;
             btn_export.BackColor = Color.FromArgb(52, 152, 219);
             btn_export.FlatAppearance.BorderSize = 0;
-            btn_export.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_export.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_export.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_export.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_export.FlatStyle = FlatStyle.Flat;
             btn_export.Font = new Font("Segoe UI", 12F);
             btn_export.ForeColor = Color.White;
@@ -131,8 +131,8 @@
             btn_refresh.AutoSize = true;
             btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
             btn_refresh.FlatAppearance.BorderSize = 0;
-            btn_refresh.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_refresh.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_refresh.FlatStyle = FlatStyle.Flat;
             btn_refresh.Font = new Font("Segoe UI", 12F);
             btn_refresh.ForeColor = Color.White;

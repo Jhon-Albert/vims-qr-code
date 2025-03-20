@@ -34,6 +34,7 @@
             btn_maximize = new Button();
             btn_close = new Button();
             panel1 = new Panel();
+            btn_register = new Button();
             btn_realTime = new Button();
             btn_logout = new Button();
             btn_scan = new Button();
@@ -49,7 +50,6 @@
             label3 = new Label();
             pictureBox1 = new PictureBox();
             panelContainer = new Panel();
-            btn_register = new Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(33, 150, 243);
+            panel2.BackColor = Color.FromArgb(191, 219, 254);
             panel2.Controls.Add(btn_minimize);
             panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
@@ -76,6 +76,8 @@
             // 
             btn_minimize.Dock = DockStyle.Right;
             btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
             btn_minimize.Location = new Point(1130, 0);
@@ -89,6 +91,8 @@
             // 
             btn_maximize.Dock = DockStyle.Right;
             btn_maximize.FlatAppearance.BorderSize = 0;
+            btn_maximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_maximize.FlatStyle = FlatStyle.Flat;
             btn_maximize.ForeColor = SystemColors.ControlText;
             btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
@@ -103,6 +107,8 @@
             // 
             btn_close.Dock = DockStyle.Right;
             btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
             btn_close.Location = new Point(1212, 0);
@@ -114,7 +120,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.GradientActiveCaption;
+            panel1.BackColor = Color.FromArgb(147, 197, 253);
             panel1.Controls.Add(btn_register);
             panel1.Controls.Add(btn_realTime);
             panel1.Controls.Add(btn_logout);
@@ -130,12 +136,34 @@
             panel1.Size = new Size(200, 574);
             panel1.TabIndex = 35;
             // 
+            // btn_register
+            // 
+            btn_register.Dock = DockStyle.Top;
+            btn_register.FlatAppearance.BorderSize = 0;
+            btn_register.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_register.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_register.FlatStyle = FlatStyle.Flat;
+            btn_register.Font = new Font("Segoe UI", 9F);
+            btn_register.ForeColor = SystemColors.ControlText;
+            btn_register.Image = (Image)resources.GetObject("btn_register.Image");
+            btn_register.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_register.Location = new Point(0, 405);
+            btn_register.Name = "btn_register";
+            btn_register.Padding = new Padding(12, 0, 0, 0);
+            btn_register.Size = new Size(200, 55);
+            btn_register.TabIndex = 22;
+            btn_register.Text = "   Register Visitor";
+            btn_register.TextAlign = ContentAlignment.MiddleLeft;
+            btn_register.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_register.UseVisualStyleBackColor = true;
+            btn_register.Click += btn_register_Click;
+            // 
             // btn_realTime
             // 
             btn_realTime.Dock = DockStyle.Top;
             btn_realTime.FlatAppearance.BorderSize = 0;
-            btn_realTime.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_realTime.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_realTime.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_realTime.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_realTime.FlatStyle = FlatStyle.Flat;
             btn_realTime.Font = new Font("Segoe UI", 9F);
             btn_realTime.ForeColor = SystemColors.ControlText;
@@ -156,8 +184,8 @@
             // 
             btn_logout.Dock = DockStyle.Bottom;
             btn_logout.FlatAppearance.BorderSize = 0;
-            btn_logout.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_logout.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_logout.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_logout.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_logout.FlatStyle = FlatStyle.Flat;
             btn_logout.Font = new Font("Segoe UI", 9F);
             btn_logout.ForeColor = SystemColors.ControlText;
@@ -178,8 +206,8 @@
             // 
             btn_scan.Dock = DockStyle.Top;
             btn_scan.FlatAppearance.BorderSize = 0;
-            btn_scan.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_scan.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_scan.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_scan.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_scan.FlatStyle = FlatStyle.Flat;
             btn_scan.Font = new Font("Segoe UI", 9F);
             btn_scan.ForeColor = SystemColors.ControlText;
@@ -200,8 +228,8 @@
             // 
             btn_blacklist.Dock = DockStyle.Top;
             btn_blacklist.FlatAppearance.BorderSize = 0;
-            btn_blacklist.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_blacklist.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_blacklist.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_blacklist.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_blacklist.FlatStyle = FlatStyle.Flat;
             btn_blacklist.Font = new Font("Segoe UI", 9F);
             btn_blacklist.ForeColor = SystemColors.ControlText;
@@ -222,8 +250,8 @@
             // 
             btn_info.Dock = DockStyle.Top;
             btn_info.FlatAppearance.BorderSize = 0;
-            btn_info.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_info.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_info.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_info.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_info.FlatStyle = FlatStyle.Flat;
             btn_info.Font = new Font("Segoe UI", 9F);
             btn_info.ForeColor = SystemColors.ControlText;
@@ -244,8 +272,8 @@
             // 
             btn_logs.Dock = DockStyle.Top;
             btn_logs.FlatAppearance.BorderSize = 0;
-            btn_logs.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_logs.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_logs.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_logs.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_logs.FlatStyle = FlatStyle.Flat;
             btn_logs.Font = new Font("Segoe UI", 9F);
             btn_logs.ForeColor = SystemColors.ControlText;
@@ -266,8 +294,8 @@
             // 
             btn_dashboard.Dock = DockStyle.Top;
             btn_dashboard.FlatAppearance.BorderSize = 0;
-            btn_dashboard.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_dashboard.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
+            btn_dashboard.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_dashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_dashboard.FlatStyle = FlatStyle.Flat;
             btn_dashboard.Font = new Font("Segoe UI", 9F);
             btn_dashboard.ForeColor = SystemColors.ControlText;
@@ -286,7 +314,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.ActiveCaption;
+            panel4.BackColor = Color.FromArgb(96, 165, 250);
             panel4.Controls.Add(pictureBox2);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
@@ -306,7 +334,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = SystemColors.ActiveCaption;
+            panel5.BackColor = Color.FromArgb(96, 165, 250);
             panel5.Controls.Add(label2);
             panel5.Controls.Add(panel6);
             panel5.Dock = DockStyle.Top;
@@ -359,34 +387,12 @@
             // 
             // panelContainer
             // 
-            panelContainer.BackColor = SystemColors.GradientInactiveCaption;
+            panelContainer.BackColor = Color.FromArgb(191, 219, 254);
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(200, 88);
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(1053, 527);
             panelContainer.TabIndex = 37;
-            // 
-            // btn_register
-            // 
-            btn_register.Dock = DockStyle.Top;
-            btn_register.FlatAppearance.BorderSize = 0;
-            btn_register.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            btn_register.FlatAppearance.MouseOverBackColor = SystemColors.GradientActiveCaption;
-            btn_register.FlatStyle = FlatStyle.Flat;
-            btn_register.Font = new Font("Segoe UI", 9F);
-            btn_register.ForeColor = SystemColors.ControlText;
-            btn_register.Image = (Image)resources.GetObject("btn_register.Image");
-            btn_register.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_register.Location = new Point(0, 405);
-            btn_register.Name = "btn_register";
-            btn_register.Padding = new Padding(12, 0, 0, 0);
-            btn_register.Size = new Size(200, 55);
-            btn_register.TabIndex = 22;
-            btn_register.Text = "   Register Visitor";
-            btn_register.TextAlign = ContentAlignment.MiddleLeft;
-            btn_register.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_register.UseVisualStyleBackColor = true;
-            btn_register.Click += btn_register_Click;
             // 
             // Employee
             // 

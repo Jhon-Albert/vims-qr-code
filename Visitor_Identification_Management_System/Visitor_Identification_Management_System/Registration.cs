@@ -237,13 +237,13 @@ namespace Visitor_Identification_Management_System
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
                 {
                     con.Open();
-                    string query = "INSERT INTO Registration (VisitorID, Email, FirstName, LastName, Address, ContactNumber, Purpose) VALUES (@VisitorID, @Email, @FirstName, @LastName, @Address, @ContactNumber, @Purpose)";
+                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@VisitorID", visitorID.Trim());
-                        cmd.Parameters.AddWithValue("@Email", txt_email.Text.Trim());
                         cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text.Trim());
                         cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Email", txt_email.Text.Trim());
                         cmd.Parameters.AddWithValue("@Address", txt_address.Text.Trim());
                         cmd.Parameters.AddWithValue("@ContactNumber", txt_contactNumber.Text.Trim());
                         cmd.Parameters.AddWithValue("@Purpose", cmb_purpose.Text.Trim());

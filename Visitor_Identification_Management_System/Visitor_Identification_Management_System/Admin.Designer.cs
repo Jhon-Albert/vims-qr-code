@@ -59,7 +59,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(33, 150, 243);
+            panel2.BackColor = Color.FromArgb(191, 219, 254);
             panel2.Controls.Add(btn_minimize);
             panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
@@ -74,6 +74,8 @@
             // 
             btn_minimize.Dock = DockStyle.Right;
             btn_minimize.FlatAppearance.BorderSize = 0;
+            btn_minimize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
             btn_minimize.Location = new Point(1130, 0);
@@ -87,6 +89,8 @@
             // 
             btn_maximize.Dock = DockStyle.Right;
             btn_maximize.FlatAppearance.BorderSize = 0;
+            btn_maximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_maximize.FlatStyle = FlatStyle.Flat;
             btn_maximize.ForeColor = SystemColors.ControlText;
             btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
@@ -101,6 +105,8 @@
             // 
             btn_close.Dock = DockStyle.Right;
             btn_close.FlatAppearance.BorderSize = 0;
+            btn_close.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
             btn_close.Location = new Point(1212, 0);
@@ -112,7 +118,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Cornsilk;
+            panel1.BackColor = Color.FromArgb(254, 240, 138);
             panel1.Controls.Add(btn_logout);
             panel1.Controls.Add(btn_blacklistManagement);
             panel1.Controls.Add(btn_visitorReports);
@@ -260,7 +266,7 @@
             // 
             // panelLogo
             // 
-            panelLogo.BackColor = Color.LightGoldenrodYellow;
+            panelLogo.BackColor = Color.FromArgb(250, 204, 21);
             panelLogo.Controls.Add(pictureBox1);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
@@ -280,7 +286,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.LemonChiffon;
+            panel4.BackColor = Color.FromArgb(250, 204, 21);
             panel4.Controls.Add(label2);
             panel4.Controls.Add(panel5);
             panel4.Dock = DockStyle.Top;
@@ -333,7 +339,7 @@
             // 
             // adminPanelContainer
             // 
-            adminPanelContainer.BackColor = Color.Beige;
+            adminPanelContainer.BackColor = Color.FromArgb(254, 249, 195);
             adminPanelContainer.Dock = DockStyle.Fill;
             adminPanelContainer.Location = new Point(200, 88);
             adminPanelContainer.Name = "adminPanelContainer";
