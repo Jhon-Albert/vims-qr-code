@@ -8,9 +8,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
@@ -162,7 +165,7 @@ namespace Visitor_Identification_Management_System
     public class GoogleSync
     {
         private static string CredentialsPath = @"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\vims-visitor-registration-4e7c2a747133.json";
-        private static string SpreadsheetId = "1KwmzK33uVxx7txW3LDAoEFhD2SXkVsR728C4KE_O2kA";
+        private static string SpreadsheetId = "1FOcW7o8FLkPQumPZJzzefux3HyAfvcWKXv6AF_3frgc";
         private static string SheetName = "VisitorSheet";
 
         public static async Task SyncGoogleSheetData()
@@ -178,7 +181,7 @@ namespace Visitor_Identification_Management_System
                     ApplicationName = "Visitor_Identification_Management_System"
                 }))
                 {
-                    var range = $"{SheetName}!B:G";
+                    var range = $"{SheetName}!B:H";
                     var request = service.Spreadsheets.Values.Get(SpreadsheetId, range);
                     var response = await request.ExecuteAsync();
 
@@ -189,7 +192,7 @@ namespace Visitor_Identification_Management_System
                             con.Open();
                             foreach (var row in response.Values.Skip(1))
                             {
-                                if (row.Count >= 6)
+                                if (row.Count >= 7)
                                 {
                                     string visitorID = Registration.GenerateVisitorID();
                                     string firstName = row[0].ToString();
@@ -198,6 +201,7 @@ namespace Visitor_Identification_Management_System
                                     string contactNumber = row[3].ToString();
                                     string address = row[4].ToString();
                                     string purpose = row[5].ToString();
+                                    string profilePicture = row[6].ToString();
 
                                     // Prevent duplicate entries
                                     string checkQuery = "SELECT COUNT(*) FROM Registration WHERE Email = @Email";
@@ -207,9 +211,9 @@ namespace Visitor_Identification_Management_System
                                         int count = (int)checkCmd.ExecuteScalar();
                                         if (count > 0) continue;
                                     }
-
+                                    
                                     // Insert new record
-                                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose)";
+                                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
                                     using (SqlCommand cmd = new SqlCommand(query, con))
                                     {
                                         cmd.Parameters.AddWithValue("@VisitorID", visitorID);
@@ -219,6 +223,27 @@ namespace Visitor_Identification_Management_System
                                         cmd.Parameters.AddWithValue("@Address", address);
                                         cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
                                         cmd.Parameters.AddWithValue("@Purpose", purpose);
+                                        if (!string.IsNullOrEmpty(profilePicture))
+                                        {
+                                            try
+                                            {
+                                                using (var httpClient = new HttpClient())
+                                                {
+                                                    byte[] imageBytes = await httpClient.GetByteArrayAsync(profilePicture);
+                                                    cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = imageBytes;
+                                                }
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                MessageBox.Show($"Failed to download image: {ex.Message}", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = DBNull.Value;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = DBNull.Value;
+                                        }
+
                                         cmd.ExecuteNonQuery();
                                     }
 

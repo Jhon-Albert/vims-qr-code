@@ -33,6 +33,14 @@
             label2 = new Label();
             label1 = new Label();
             panel5 = new Panel();
+            panelVisitors = new Panel();
+            panel9 = new Panel();
+            lbl_time = new Label();
+            panel8 = new Panel();
+            lbl_Name = new Label();
+            panel7 = new Panel();
+            lbl_status = new Label();
+            pb_displayProfile = new PictureBox();
             panel3 = new Panel();
             lbl_current = new Label();
             pictureBox3 = new PictureBox();
@@ -47,6 +55,11 @@
             label3 = new Label();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panelVisitors.SuspendLayout();
+            panel9.SuspendLayout();
+            panel8.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_displayProfile).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
@@ -87,6 +100,7 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(panelVisitors);
             panel5.Controls.Add(panel3);
             panel5.Controls.Add(panel2);
             panel5.Controls.Add(panel1);
@@ -95,6 +109,89 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(1053, 425);
             panel5.TabIndex = 17;
+            // 
+            // panelVisitors
+            // 
+            panelVisitors.Controls.Add(panel9);
+            panelVisitors.Controls.Add(panel8);
+            panelVisitors.Controls.Add(panel7);
+            panelVisitors.Controls.Add(pb_displayProfile);
+            panelVisitors.Location = new Point(99, 175);
+            panelVisitors.Name = "panelVisitors";
+            panelVisitors.Size = new Size(537, 221);
+            panelVisitors.TabIndex = 19;
+            // 
+            // panel9
+            // 
+            panel9.Controls.Add(lbl_time);
+            panel9.Dock = DockStyle.Fill;
+            panel9.Location = new Point(200, 166);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(337, 55);
+            panel9.TabIndex = 3;
+            // 
+            // lbl_time
+            // 
+            lbl_time.AutoSize = true;
+            lbl_time.FlatStyle = FlatStyle.Flat;
+            lbl_time.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_time.Location = new Point(6, 13);
+            lbl_time.Name = "lbl_time";
+            lbl_time.Size = new Size(67, 32);
+            lbl_time.TabIndex = 2;
+            lbl_time.Text = "TIME";
+            lbl_time.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel8
+            // 
+            panel8.Controls.Add(lbl_Name);
+            panel8.Dock = DockStyle.Top;
+            panel8.Location = new Point(200, 51);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(337, 115);
+            panel8.TabIndex = 2;
+            // 
+            // lbl_Name
+            // 
+            lbl_Name.AutoSize = true;
+            lbl_Name.FlatStyle = FlatStyle.Flat;
+            lbl_Name.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_Name.Location = new Point(70, 38);
+            lbl_Name.Name = "lbl_Name";
+            lbl_Name.Size = new Size(191, 32);
+            lbl_Name.TabIndex = 1;
+            lbl_Name.Text = "VISITOR'S NAME";
+            lbl_Name.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(lbl_status);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(200, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(337, 51);
+            panel7.TabIndex = 1;
+            // 
+            // lbl_status
+            // 
+            lbl_status.AutoSize = true;
+            lbl_status.FlatStyle = FlatStyle.Flat;
+            lbl_status.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_status.Location = new Point(241, 9);
+            lbl_status.Name = "lbl_status";
+            lbl_status.Size = new Size(93, 32);
+            lbl_status.TabIndex = 0;
+            lbl_status.Text = "STATUS";
+            // 
+            // pb_displayProfile
+            // 
+            pb_displayProfile.BorderStyle = BorderStyle.FixedSingle;
+            pb_displayProfile.Dock = DockStyle.Left;
+            pb_displayProfile.Location = new Point(0, 0);
+            pb_displayProfile.Name = "pb_displayProfile";
+            pb_displayProfile.Size = new Size(200, 221);
+            pb_displayProfile.TabIndex = 0;
+            pb_displayProfile.TabStop = false;
             // 
             // panel3
             // 
@@ -230,6 +327,14 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
+            panelVisitors.ResumeLayout(false);
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_displayProfile).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -260,5 +365,13 @@
         private Label lbl_total_regis;
         private PictureBox pictureBox1;
         private Label label3;
+        private Panel panelVisitors;
+        private PictureBox pb_displayProfile;
+        private Panel panel7;
+        private Label lbl_status;
+        private Panel panel8;
+        private Label lbl_Name;
+        private Panel panel9;
+        private Label lbl_time;
     }
 }

@@ -13,6 +13,7 @@ using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using System.Timers;
+using System.Data;
 
 namespace Visitor_Identification_Management_System
 {
@@ -46,34 +47,6 @@ namespace Visitor_Identification_Management_System
         //GENERATE VISITOR ID
         public static string GenerateVisitorID()
         {
-            /*
-            int lastVisitorNumber = 10000;
-            try
-            {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
-                {
-                    con.Open();
-                    string query = "SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        var result = cmd.ExecuteScalar();
-                        if (result != null)
-                        {
-                            string lastVisitorID = result.ToString();
-                            if (int.TryParse(lastVisitorID.Substring(1), out int visitorNumber))
-                            {
-                                lastVisitorNumber = visitorNumber;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error fetching last VisitorID: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return "V" + (lastVisitorNumber + 1);*/
-
             int lastVisitorNumber = 10000; // Start from V10001
             try
             {
@@ -130,45 +103,6 @@ namespace Visitor_Identification_Management_System
         //SEND VISITOR QR CODE TO EMAIL
         private bool SendEmailWithQRCode(string recipientEmail, string qrFilePath)
         {
-            /*try
-            {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(senderEmail);
-                mail.To.Add(recipientEmail);
-                mail.Subject = "Your Visitor QR Code";
-                mail.Body = "Dear Visitor,\n\nAttached is your generated QR Code for verification upon arrival.\n\nThank you!";
-
-                Attachment attachment = new Attachment(qrFilePath);
-                mail.Attachments.Add(attachment);
-
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
-                {
-                    Credentials = new NetworkCredential(senderEmail, senderPassword),
-                    EnableSsl = true
-                };
-
-                smtp.Send(mail);
-
-                attachment.Dispose(); //CLEANUP ATTACHMENT AFTER SENDING EMAIL
-                try
-                {
-                    if (File.Exists(qrFilePath))
-                    {
-                        File.Delete(qrFilePath); // CLEANUP QR CODE FILE AFTER SENDING EMAIL
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error deleting QR code file: " + ex.Message);
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error sending email: " + ex.Message);
-                return false;
-            }*/
             try
             {
                 using (MailMessage mail = new MailMessage())
@@ -202,10 +136,10 @@ namespace Visitor_Identification_Management_System
             }
         }
         private bool IsValidEmail(string email)
-    {
-        try { return new MailAddress(email).Address == email; }
-        catch { return false; }
-    }
+        {
+            try { return new MailAddress(email).Address == email; }
+            catch { return false; }
+        }
 
         private void ClearTextFields()
         {
@@ -215,11 +149,23 @@ namespace Visitor_Identification_Management_System
             txt_contactNumber.Clear();
             txt_address.Clear();
             cmb_purpose.SelectedIndex = -1;
+            pb_uploadProfile.Image = null;
         }
+
+        //IMAGE
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
         //BUTTONS
         private void btn_register_Click(object sender, EventArgs e)
         {
-            if (!IsValidEmail(txt_email.Text)|| 
+            if (!IsValidEmail(txt_email.Text) ||
                 string.IsNullOrWhiteSpace(txt_email.Text) ||
                 string.IsNullOrWhiteSpace(txt_firstName.Text) ||
                 string.IsNullOrWhiteSpace(txt_lastName.Text) ||
@@ -234,10 +180,11 @@ namespace Visitor_Identification_Management_System
             try
             {
                 string visitorID = GenerateVisitorID();
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
+                byte[] profilePicture = pb_uploadProfile.Image != null ? ImageToByteArray(pb_uploadProfile.Image) : null;
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose)";
+                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@VisitorID", visitorID.Trim());
@@ -248,7 +195,16 @@ namespace Visitor_Identification_Management_System
                         cmd.Parameters.AddWithValue("@ContactNumber", txt_contactNumber.Text.Trim());
                         cmd.Parameters.AddWithValue("@Purpose", cmb_purpose.Text.Trim());
 
-                        cmd.ExecuteNonQuery();
+                        if(profilePicture != null)
+                        {
+                            cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = profilePicture;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = DBNull.Value;
+                        }
+
+                            cmd.ExecuteNonQuery();
                         MessageBox.Show("Data saved successfully.");
                     }
                 }
@@ -266,7 +222,7 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Visitor registered, but QR code email failed to send.");
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -310,6 +266,18 @@ namespace Visitor_Identification_Management_System
             {
                 ReleaseCapture();
                 SendMessage(this.Handle, 0xA1, 0x2, 0);
+            }
+        }
+
+        private void btn_upload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
+            };
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                pb_uploadProfile.Image = Image.FromFile(openFile.FileName);
             }
         }
     }

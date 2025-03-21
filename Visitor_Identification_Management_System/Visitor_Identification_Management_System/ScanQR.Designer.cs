@@ -37,6 +37,7 @@
             label2 = new Label();
             label1 = new Label();
             gb_visitor_information = new GroupBox();
+            pb_profilePic = new PictureBox();
             btn_clear = new Button();
             btn_checkOut = new Button();
             btn_confirm = new Button();
@@ -64,6 +65,7 @@
             btn_close = new Button();
             ((System.ComponentModel.ISupportInitialize)pb_scan).BeginInit();
             gb_visitor_information.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_profilePic).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -144,6 +146,7 @@
             // 
             // gb_visitor_information
             // 
+            gb_visitor_information.Controls.Add(pb_profilePic);
             gb_visitor_information.Controls.Add(btn_clear);
             gb_visitor_information.Controls.Add(btn_checkOut);
             gb_visitor_information.Controls.Add(btn_confirm);
@@ -164,10 +167,20 @@
             gb_visitor_information.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gb_visitor_information.Location = new Point(279, 92);
             gb_visitor_information.Name = "gb_visitor_information";
-            gb_visitor_information.Size = new Size(504, 365);
+            gb_visitor_information.Size = new Size(565, 365);
             gb_visitor_information.TabIndex = 49;
             gb_visitor_information.TabStop = false;
             gb_visitor_information.Text = "VISITOR INFORMATION";
+            // 
+            // pb_profilePic
+            // 
+            pb_profilePic.BorderStyle = BorderStyle.FixedSingle;
+            pb_profilePic.Location = new Point(359, 34);
+            pb_profilePic.Name = "pb_profilePic";
+            pb_profilePic.Size = new Size(200, 200);
+            pb_profilePic.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_profilePic.TabIndex = 87;
+            pb_profilePic.TabStop = false;
             // 
             // btn_clear
             // 
@@ -180,7 +193,7 @@
             btn_clear.FlatStyle = FlatStyle.Flat;
             btn_clear.Font = new Font("Segoe UI", 12F);
             btn_clear.ForeColor = Color.White;
-            btn_clear.Location = new Point(385, 117);
+            btn_clear.Location = new Point(403, 318);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(103, 33);
             btn_clear.TabIndex = 86;
@@ -198,7 +211,7 @@
             btn_checkOut.FlatStyle = FlatStyle.Flat;
             btn_checkOut.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_checkOut.ForeColor = SystemColors.Control;
-            btn_checkOut.Location = new Point(385, 78);
+            btn_checkOut.Location = new Point(403, 279);
             btn_checkOut.Name = "btn_checkOut";
             btn_checkOut.Size = new Size(103, 33);
             btn_checkOut.TabIndex = 71;
@@ -216,9 +229,9 @@
             btn_confirm.FlatStyle = FlatStyle.Flat;
             btn_confirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_confirm.ForeColor = SystemColors.Control;
-            btn_confirm.Location = new Point(385, 41);
+            btn_confirm.Location = new Point(403, 240);
             btn_confirm.Name = "btn_confirm";
-            btn_confirm.Size = new Size(101, 33);
+            btn_confirm.Size = new Size(103, 33);
             btn_confirm.TabIndex = 70;
             btn_confirm.Text = "CHECK IN";
             btn_confirm.UseVisualStyleBackColor = false;
@@ -402,7 +415,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(835, 31);
+            panel2.Size = new Size(926, 31);
             panel2.TabIndex = 53;
             panel2.MouseDown += panel2_MouseDown;
             // 
@@ -414,7 +427,7 @@
             btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
-            btn_minimize.Location = new Point(712, 0);
+            btn_minimize.Location = new Point(803, 0);
             btn_minimize.Name = "btn_minimize";
             btn_minimize.Size = new Size(41, 31);
             btn_minimize.TabIndex = 36;
@@ -430,7 +443,7 @@
             btn_maximize.FlatStyle = FlatStyle.Flat;
             btn_maximize.ForeColor = SystemColors.ControlText;
             btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
-            btn_maximize.Location = new Point(753, 0);
+            btn_maximize.Location = new Point(844, 0);
             btn_maximize.Name = "btn_maximize";
             btn_maximize.Size = new Size(41, 31);
             btn_maximize.TabIndex = 35;
@@ -445,7 +458,7 @@
             btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
-            btn_close.Location = new Point(794, 0);
+            btn_close.Location = new Point(885, 0);
             btn_close.Name = "btn_close";
             btn_close.Size = new Size(41, 31);
             btn_close.TabIndex = 34;
@@ -457,7 +470,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(147, 197, 253);
-            ClientSize = new Size(835, 485);
+            ClientSize = new Size(926, 485);
             Controls.Add(panel2);
             Controls.Add(btn_refreshCamera);
             Controls.Add(lbl_time);
@@ -479,6 +492,7 @@
             ((System.ComponentModel.ISupportInitialize)pb_scan).EndInit();
             gb_visitor_information.ResumeLayout(false);
             gb_visitor_information.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_profilePic).EndInit();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -518,5 +532,6 @@
         private Button btn_maximize;
         private Button btn_close;
         private Button btn_clear;
+        private PictureBox pb_profilePic;
     }
 }

@@ -107,6 +107,18 @@ namespace Visitor_Identification_Management_System
                                         if (dr.Read())
                                         {
                                             txt_email.Text = dr["Email"].ToString();
+                                            if (dr["ProfilePicture"] != DBNull.Value)
+                                            {
+                                                byte[] imageBytes = (byte[])dr["ProfilePicture"];
+                                                using (MemoryStream ms = new MemoryStream(imageBytes))
+                                                {
+                                                    pb_profilePic.Image = Image.FromStream(ms);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pb_profilePic.Image = null;
+                                            }
                                         }
                                         else
                                         {
@@ -144,6 +156,7 @@ namespace Visitor_Identification_Management_System
             txt_contactNumber.Clear();
             txt_purpose.Clear();
             txt_email.Clear();
+            pb_profilePic.Image = null;
         }
 
         //BUTTON

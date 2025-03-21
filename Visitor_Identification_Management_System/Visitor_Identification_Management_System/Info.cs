@@ -17,7 +17,7 @@ namespace Visitor_Identification_Management_System
         public Info()
         {
             InitializeComponent();
-            displayData();
+            displayData2();
         }
 
         private void txt_search_info_TextChanged(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Visitor_Identification_Management_System
         }
         public void displayData()
         {
-            try
+           try
             {
                 con.Open();
                 SqlDataAdapter sda = new SqlDataAdapter("select * from Registration", con);
@@ -53,6 +53,33 @@ namespace Visitor_Identification_Management_System
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
+            }
+        }
+        public void displayData2()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                {
+                    con.Open();
+                    string query = "SELECT * FROM Registration";
+                    SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+
+                    dgv_info.DataSource = dt;
+
+                    if (dgv_info.Columns["ProfilePicture"] != null && dgv_info.Columns["ProfilePicture"] is DataGridViewImageColumn)
+                    {
+                        DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)dgv_info.Columns["ProfilePicture"];
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
