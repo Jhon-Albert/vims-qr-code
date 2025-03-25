@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employee));
             panel2 = new Panel();
             btn_minimize = new Button();
-            btn_maximize = new Button();
             btn_close = new Button();
             panel1 = new Panel();
             btn_register = new Button();
@@ -63,12 +62,11 @@
             // 
             panel2.BackColor = Color.FromArgb(191, 219, 254);
             panel2.Controls.Add(btn_minimize);
-            panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1253, 41);
+            panel2.Size = new Size(1280, 31);
             panel2.TabIndex = 34;
             panel2.MouseDown += panel2_MouseDown;
             // 
@@ -80,28 +78,12 @@
             btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
-            btn_minimize.Location = new Point(1130, 0);
+            btn_minimize.Location = new Point(1198, 0);
             btn_minimize.Name = "btn_minimize";
-            btn_minimize.Size = new Size(41, 41);
+            btn_minimize.Size = new Size(41, 31);
             btn_minimize.TabIndex = 36;
             btn_minimize.UseVisualStyleBackColor = true;
             btn_minimize.Click += btn_minimize_Click;
-            // 
-            // btn_maximize
-            // 
-            btn_maximize.Dock = DockStyle.Right;
-            btn_maximize.FlatAppearance.BorderSize = 0;
-            btn_maximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
-            btn_maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
-            btn_maximize.FlatStyle = FlatStyle.Flat;
-            btn_maximize.ForeColor = SystemColors.ControlText;
-            btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
-            btn_maximize.Location = new Point(1171, 0);
-            btn_maximize.Name = "btn_maximize";
-            btn_maximize.Size = new Size(41, 41);
-            btn_maximize.TabIndex = 35;
-            btn_maximize.UseVisualStyleBackColor = true;
-            btn_maximize.Click += btn_maximize_Click;
             // 
             // btn_close
             // 
@@ -111,9 +93,9 @@
             btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
-            btn_close.Location = new Point(1212, 0);
+            btn_close.Location = new Point(1239, 0);
             btn_close.Name = "btn_close";
-            btn_close.Size = new Size(41, 41);
+            btn_close.Size = new Size(41, 31);
             btn_close.TabIndex = 34;
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click;
@@ -131,9 +113,9 @@
             panel1.Controls.Add(btn_dashboard);
             panel1.Controls.Add(panel4);
             panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 41);
+            panel1.Location = new Point(0, 31);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 574);
+            panel1.Size = new Size(200, 689);
             panel1.TabIndex = 35;
             // 
             // btn_register
@@ -191,7 +173,7 @@
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_logout.Location = new Point(0, 519);
+            btn_logout.Location = new Point(0, 634);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(12, 0, 0, 0);
             btn_logout.Size = new Size(200, 55);
@@ -338,9 +320,9 @@
             panel5.Controls.Add(label2);
             panel5.Controls.Add(panel6);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(200, 41);
+            panel5.Location = new Point(200, 31);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1053, 47);
+            panel5.Size = new Size(1080, 47);
             panel5.TabIndex = 36;
             // 
             // label2
@@ -359,7 +341,7 @@
             panel6.Controls.Add(label3);
             panel6.Controls.Add(pictureBox1);
             panel6.Dock = DockStyle.Right;
-            panel6.Location = new Point(899, 0);
+            panel6.Location = new Point(926, 0);
             panel6.Name = "panel6";
             panel6.Size = new Size(154, 47);
             panel6.TabIndex = 9;
@@ -389,16 +371,16 @@
             // 
             panelContainer.BackColor = Color.FromArgb(191, 219, 254);
             panelContainer.Dock = DockStyle.Fill;
-            panelContainer.Location = new Point(200, 88);
+            panelContainer.Location = new Point(200, 78);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(1053, 527);
+            panelContainer.Size = new Size(1080, 642);
             panelContainer.TabIndex = 37;
             // 
             // Employee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1253, 615);
+            ClientSize = new Size(1280, 720);
             Controls.Add(panelContainer);
             Controls.Add(panel5);
             Controls.Add(panel1);
@@ -424,7 +406,6 @@
         #endregion
         private Panel panel2;
         private Button btn_minimize;
-        private Button btn_maximize;
         private Button btn_close;
         private Panel panel1;
         private Button btn_realTime;

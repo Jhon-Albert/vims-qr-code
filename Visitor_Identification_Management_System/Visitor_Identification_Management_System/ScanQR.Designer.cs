@@ -61,7 +61,6 @@
             btn_refreshCamera = new Button();
             panel2 = new Panel();
             btn_minimize = new Button();
-            btn_maximize = new Button();
             btn_close = new Button();
             ((System.ComponentModel.ISupportInitialize)pb_scan).BeginInit();
             gb_visitor_information.SuspendLayout();
@@ -408,14 +407,13 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(191, 219, 254);
+            panel2.BackColor = Color.FromArgb(59, 130, 246);
             panel2.Controls.Add(btn_minimize);
-            panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(926, 31);
+            panel2.Size = new Size(960, 31);
             panel2.TabIndex = 53;
             panel2.MouseDown += panel2_MouseDown;
             // 
@@ -427,28 +425,12 @@
             btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
-            btn_minimize.Location = new Point(803, 0);
+            btn_minimize.Location = new Point(878, 0);
             btn_minimize.Name = "btn_minimize";
             btn_minimize.Size = new Size(41, 31);
             btn_minimize.TabIndex = 36;
             btn_minimize.UseVisualStyleBackColor = true;
             btn_minimize.Click += btn_minimize_Click;
-            // 
-            // btn_maximize
-            // 
-            btn_maximize.Dock = DockStyle.Right;
-            btn_maximize.FlatAppearance.BorderSize = 0;
-            btn_maximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
-            btn_maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
-            btn_maximize.FlatStyle = FlatStyle.Flat;
-            btn_maximize.ForeColor = SystemColors.ControlText;
-            btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
-            btn_maximize.Location = new Point(844, 0);
-            btn_maximize.Name = "btn_maximize";
-            btn_maximize.Size = new Size(41, 31);
-            btn_maximize.TabIndex = 35;
-            btn_maximize.UseVisualStyleBackColor = true;
-            btn_maximize.Click += btn_maximize_Click;
             // 
             // btn_close
             // 
@@ -458,7 +440,7 @@
             btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
-            btn_close.Location = new Point(885, 0);
+            btn_close.Location = new Point(919, 0);
             btn_close.Name = "btn_close";
             btn_close.Size = new Size(41, 31);
             btn_close.TabIndex = 34;
@@ -470,7 +452,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(147, 197, 253);
-            ClientSize = new Size(926, 485);
+            ClientSize = new Size(960, 540);
             Controls.Add(panel2);
             Controls.Add(btn_refreshCamera);
             Controls.Add(lbl_time);
@@ -529,7 +511,6 @@
         private Button btn_refreshCamera;
         private Panel panel2;
         private Button btn_minimize;
-        private Button btn_maximize;
         private Button btn_close;
         private Button btn_clear;
         private PictureBox pb_profilePic;

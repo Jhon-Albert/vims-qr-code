@@ -41,10 +41,9 @@
             txt_Email = new TextBox();
             rbtn_Employee = new RadioButton();
             panel2 = new Panel();
-            btn_minimize = new Button();
-            btn_maximize = new Button();
-            btn_close = new Button();
             label4 = new Label();
+            btn_minimize = new Button();
+            btn_close = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -54,7 +53,7 @@
             // 
             pictureBox2.Anchor = AnchorStyles.None;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(455, 62);
+            pictureBox2.Location = new Point(382, 72);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(136, 136);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -74,7 +73,7 @@
             panel1.Controls.Add(btn_Login);
             panel1.Controls.Add(txt_Email);
             panel1.Controls.Add(rbtn_Employee);
-            panel1.Location = new Point(278, 204);
+            panel1.Location = new Point(205, 214);
             panel1.Name = "panel1";
             panel1.Size = new Size(491, 315);
             panel1.TabIndex = 31;
@@ -204,14 +203,23 @@
             panel2.BackColor = Color.FromArgb(191, 219, 254);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(btn_minimize);
-            panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1046, 41);
+            panel2.Size = new Size(900, 31);
             panel2.TabIndex = 33;
             panel2.MouseDown += panel2_MouseDown;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 3);
+            label4.Name = "label4";
+            label4.Size = new Size(373, 21);
+            label4.TabIndex = 37;
+            label4.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
             // 
             // btn_minimize
             // 
@@ -221,28 +229,12 @@
             btn_minimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_minimize.FlatStyle = FlatStyle.Flat;
             btn_minimize.Image = (Image)resources.GetObject("btn_minimize.Image");
-            btn_minimize.Location = new Point(923, 0);
+            btn_minimize.Location = new Point(818, 0);
             btn_minimize.Name = "btn_minimize";
-            btn_minimize.Size = new Size(41, 41);
+            btn_minimize.Size = new Size(41, 31);
             btn_minimize.TabIndex = 36;
             btn_minimize.UseVisualStyleBackColor = true;
             btn_minimize.Click += btn_minimize_Click;
-            // 
-            // btn_maximize
-            // 
-            btn_maximize.Dock = DockStyle.Right;
-            btn_maximize.FlatAppearance.BorderSize = 0;
-            btn_maximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
-            btn_maximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
-            btn_maximize.FlatStyle = FlatStyle.Flat;
-            btn_maximize.ForeColor = SystemColors.ControlText;
-            btn_maximize.Image = (Image)resources.GetObject("btn_maximize.Image");
-            btn_maximize.Location = new Point(964, 0);
-            btn_maximize.Name = "btn_maximize";
-            btn_maximize.Size = new Size(41, 41);
-            btn_maximize.TabIndex = 35;
-            btn_maximize.UseVisualStyleBackColor = true;
-            btn_maximize.Click += btn_maximize_Click;
             // 
             // btn_close
             // 
@@ -252,22 +244,12 @@
             btn_close.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_close.FlatStyle = FlatStyle.Flat;
             btn_close.Image = (Image)resources.GetObject("btn_close.Image");
-            btn_close.Location = new Point(1005, 0);
+            btn_close.Location = new Point(859, 0);
             btn_close.Name = "btn_close";
-            btn_close.Size = new Size(41, 41);
+            btn_close.Size = new Size(41, 31);
             btn_close.TabIndex = 34;
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(12, 9);
-            label4.Name = "label4";
-            label4.Size = new Size(373, 21);
-            label4.TabIndex = 37;
-            label4.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
             // 
             // frmLogin
             // 
@@ -275,7 +257,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(96, 165, 250);
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1046, 581);
+            ClientSize = new Size(900, 600);
             Controls.Add(panel2);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
@@ -307,7 +289,6 @@
         private RadioButton rbtn_Employee;
         private Panel panel2;
         private Button btn_minimize;
-        private Button btn_maximize;
         private Button btn_close;
         private Label label4;
     }

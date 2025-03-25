@@ -105,9 +105,20 @@ namespace Visitor_Identification_Management_System
 
         private void btn_realTime_Click_1(object sender, EventArgs e)
         {
-            RealTime uc = new RealTime();
-            addUserControl(uc);
+            //RealTime uc = new RealTime();
+            //addUserControl(uc);
+            foreach(Form form in Application.OpenForms)
+            {
+                if (form is RealTimeTracking)
+                {
+                    form.BringToFront();
+                    return;
+                }
+            }
+            RealTimeTracking fc = new RealTimeTracking();
+            fc.Show();
         }
+
         private void btn_register_Click(object sender, EventArgs e)
         {
             foreach (Form form in Application.OpenForms)

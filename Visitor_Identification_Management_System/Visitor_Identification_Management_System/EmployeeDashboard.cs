@@ -12,6 +12,7 @@ using Timer = System.Windows.Forms.Timer;
 
 
 
+
 namespace Visitor_Identification_Management_System
 {
     public partial class EmployeeDashboard: UserControl
@@ -26,6 +27,7 @@ namespace Visitor_Identification_Management_System
             LoadStats();
             LoadCheckedInVisitors();
             StartVisitorRotation();
+            LoadRecentCheckOutVisitor();
         }
 
         private void LoadStats()
@@ -42,6 +44,8 @@ namespace Visitor_Identification_Management_System
             lbl_current.Text = current_visitor_cmd .ExecuteScalar().ToString();
             con.Close();
         }
+
+        //CHECK IN VISITOR
         private void LoadCheckedInVisitors()
         {
             checkedInVisitors.Clear(); // Clear the previous list
@@ -79,6 +83,47 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        // RECENT CHECK OUT VISITOR
+        private void LoadRecentCheckOutVisitor()
+        {
+            try
+            {
+                con.Open();
+                string query = "SELECT TOP 1 r.FirstName, r.LastName, v.CheckOutTime, r.ProfilePicture " +
+                               "FROM VisitorLogs v " +
+                               "INNER JOIN Registration r ON v.VisitorID = r.VisitorID " +
+                               "WHERE v.CheckOutTime IS NOT NULL " +
+                               "ORDER BY v.CheckOutTime DESC"; // Get the most recent check-out
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var recentVisitor = new Visitor
+                            {
+                                FullName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
+                                CheckOutTime = Convert.ToDateTime(reader["CheckOutTime"]).ToString("hh:mm tt"),
+                                ImageData = reader["ProfilePicture"] != DBNull.Value ? (byte[])reader["ProfilePicture"] : null
+                            };
+
+                            DisplayRecentCheckOut(recentVisitor);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading recent check-out: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
         private void StartVisitorRotation()
         {
             if (checkedInVisitors.Count > 0)
@@ -100,6 +145,7 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        //CURRENT VISITOR
         private void DisplayVisitor(int index)
         {
             if (checkedInVisitors.Count == 0) return;
@@ -122,12 +168,33 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        //RECENT VISITOR
+        private void DisplayRecentCheckOut(Visitor visitor)
+        {
+            lbl_recentStatus.Text = "Last Checked Out";  // Label for status
+            lbl_recentVisitorName.Text = visitor.FullName;
+            lbl_recentTime.Text = "Checked Out: " + visitor.CheckOutTime;
+
+            if (visitor.ImageData != null)
+            {
+                using (MemoryStream ms = new MemoryStream(visitor.ImageData))
+                {
+                    pb_recentDisplayProfile.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                pb_recentDisplayProfile.Image = Properties.Resources.default_image; // Default image
+            }
+        }
+
+
         private class Visitor
         {
             public string FullName { get; set; }
             public string CheckInTime { get; set; }
             public byte[] ImageData { get; set; }
+            public string CheckOutTime { get; set; }
         }
-
     }
 }
