@@ -203,6 +203,9 @@ namespace Visitor_Identification_Management_System
                                     string purpose = row[5].ToString();
                                     string profilePicture = row[6].ToString();
 
+                                    string imageUrl = ConvertGoogleDriveLink(profilePicture);
+                                    byte[] imageBytes = null;
+
                                     // Prevent duplicate entries
                                     string checkQuery = "SELECT COUNT(*) FROM Registration WHERE Email = @Email";
                                     using (SqlCommand checkCmd = new SqlCommand(checkQuery, con))
@@ -223,14 +226,17 @@ namespace Visitor_Identification_Management_System
                                         cmd.Parameters.AddWithValue("@Address", address);
                                         cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
                                         cmd.Parameters.AddWithValue("@Purpose", purpose);
+
                                         if (!string.IsNullOrEmpty(profilePicture))
                                         {
                                             try
                                             {
                                                 using (var httpClient = new HttpClient())
                                                 {
-                                                    byte[] imageBytes = await httpClient.GetByteArrayAsync(profilePicture);
-                                                    cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = imageBytes;
+                                                    imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
+                                                    //byte[] imageBytes = await httpClient.GetByteArrayAsync(profilePicture);
+                                                    //cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = imageBytes;
+                                                    cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = imageBytes ?? (object)DBNull.Value;
                                                 }
                                             }
                                             catch (Exception ex)
@@ -270,6 +276,21 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error syncing Google Sheets data: " + ex.Message, "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private static string ConvertGoogleDriveLink(string driveLink)
+        {
+            if (string.IsNullOrWhiteSpace(driveLink)) return null;
+
+            string pattern = @"(?:id=|\/d\/)([a-zA-Z0-9_-]+)";
+            Match match = Regex.Match(driveLink, pattern);
+
+            if (match.Success)
+            {
+                string fileId = match.Groups[1].Value;
+                return $"https://drive.google.com/uc?export=download&id={fileId}";
+            }
+
+            return null;
         }
     }
 }

@@ -51,9 +51,10 @@ namespace Visitor_Identification_Management_System
             txt_firstName.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[1].Value.ToString();
             txt_lastName.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[2].Value.ToString();
             txt_email.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txt_contactNumber.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txt_purpose.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txt_address.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[6].Value.ToString();
+            txt_address.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_contactNumber.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txt_purpose.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[6].Value.ToString();
+            
         }
         private void ClearTextFields()
         {

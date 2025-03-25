@@ -44,6 +44,7 @@
             btn_minimize = new Button();
             btn_maximize = new Button();
             btn_close = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -201,6 +202,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(191, 219, 254);
+            panel2.Controls.Add(label4);
             panel2.Controls.Add(btn_minimize);
             panel2.Controls.Add(btn_maximize);
             panel2.Controls.Add(btn_close);
@@ -257,6 +259,16 @@
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(12, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(373, 21);
+            label4.TabIndex = 37;
+            label4.Text = "VISITOR IDENTIFICATION MANAGEMENT SYSTEM";
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -277,6 +289,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -296,5 +309,6 @@
         private Button btn_minimize;
         private Button btn_maximize;
         private Button btn_close;
+        private Label label4;
     }
 }

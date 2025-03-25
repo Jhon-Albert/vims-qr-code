@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using System.Net;
 
 namespace Visitor_Identification_Management_System
 {
@@ -62,7 +63,7 @@ namespace Visitor_Identification_Management_System
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "SELECT * FROM Registration";
+                    string query = "SELECT VisitorID, FirstName, LastName, Email, ContactNumber, Address, Purpose, ProfilePicture FROM Registration";
                     SqlDataAdapter sda = new SqlDataAdapter(query, con);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
@@ -74,12 +75,66 @@ namespace Visitor_Identification_Management_System
                         DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)dgv_info.Columns["ProfilePicture"];
                         imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                     }
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void displayData3()
+        {
+            using (SqlConnection con = new SqlConnection(@"Your_Connection_String"))
+            {
+                string query = "SELECT VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture FROM Registration";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    // Convert 'ProfilePicture' column to store images
+                    if (dt.Columns.Contains("ProfilePicture"))
+                    {
+                        dt.Columns["ProfilePicture"].DataType = typeof(Image);
+                    }
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string imageUrl = row["ProfilePicture"]?.ToString();
+                        if (!string.IsNullOrEmpty(imageUrl))
+                        {
+                            try
+                            {
+                                using (var webClient = new WebClient())
+                                {
+                                    byte[] imageBytes = webClient.DownloadData(imageUrl);
+                                    using (var ms = new MemoryStream(imageBytes))
+                                    {
+                                        row["ProfilePicture"] = Image.FromStream(ms);
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                row["ProfilePicture"] = Properties.Resources.default_image; // Use default image on failure
+                            }
+                        }
+                        else
+                        {
+                            row["ProfilePicture"] = Properties.Resources.default_image; // Use default image if no URL
+                        }
+                    }
+
+                    // Bind updated DataTable with image data
+                    dgv_info.DataSource = dt;
+
+                    // Set 'ProfilePicture' column layout for proper image display
+                    if (dgv_info.Columns["ProfilePicture"] is DataGridViewImageColumn imgColumn)
+                    {
+                        imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                        imgColumn.Width = 100; // Adjust width for better display
+                    }
+                }
             }
         }
     }

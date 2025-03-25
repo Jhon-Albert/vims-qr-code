@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel3 = new Panel();
             panel5 = new Panel();
             dgv_visitorManagement = new DataGridView();
@@ -94,23 +94,23 @@
             dgv_visitorManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_visitorManagement.BackgroundColor = SystemColors.Info;
             dgv_visitorManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_visitorManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_visitorManagement.Location = new Point(17, 37);
             dgv_visitorManagement.Name = "dgv_visitorManagement";
             dgv_visitorManagement.RowHeadersVisible = false;
@@ -205,7 +205,7 @@
             // 
             txt_purpose.Enabled = false;
             txt_purpose.Font = new Font("Segoe UI", 12F);
-            txt_purpose.Location = new Point(58, 327);
+            txt_purpose.Location = new Point(58, 429);
             txt_purpose.Name = "txt_purpose";
             txt_purpose.Size = new Size(232, 29);
             txt_purpose.TabIndex = 76;
@@ -214,7 +214,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(58, 303);
+            label6.Location = new Point(58, 405);
             label6.Name = "label6";
             label6.Size = new Size(119, 21);
             label6.TabIndex = 75;
@@ -224,7 +224,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(60, 247);
+            label5.Location = new Point(60, 349);
             label5.Name = "label5";
             label5.Size = new Size(125, 21);
             label5.TabIndex = 74;
@@ -233,7 +233,7 @@
             // txt_contactNumber
             // 
             txt_contactNumber.Font = new Font("Segoe UI", 12F);
-            txt_contactNumber.Location = new Point(60, 271);
+            txt_contactNumber.Location = new Point(60, 373);
             txt_contactNumber.Name = "txt_contactNumber";
             txt_contactNumber.Size = new Size(232, 29);
             txt_contactNumber.TabIndex = 73;
@@ -341,7 +341,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(58, 359);
+            label4.Location = new Point(60, 247);
             label4.Name = "label4";
             label4.Size = new Size(66, 21);
             label4.TabIndex = 61;
@@ -350,7 +350,7 @@
             // txt_address
             // 
             txt_address.Font = new Font("Segoe UI", 12F);
-            txt_address.Location = new Point(58, 383);
+            txt_address.Location = new Point(60, 271);
             txt_address.Multiline = true;
             txt_address.Name = "txt_address";
             txt_address.Size = new Size(232, 75);
