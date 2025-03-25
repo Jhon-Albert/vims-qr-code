@@ -35,6 +35,12 @@ namespace Visitor_Identification_Management_System
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 dgv_visitorManagement.DataSource = dt;
+
+                if (dgv_visitorManagement.Columns["ProfilePicture"] != null && dgv_visitorManagement.Columns["ProfilePicture"] is DataGridViewImageColumn)
+                {
+                    DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)dgv_visitorManagement.Columns["ProfilePicture"];
+                    imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                }
             }
             catch (Exception ex)
             {

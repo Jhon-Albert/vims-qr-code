@@ -37,7 +37,7 @@
             panel9 = new Panel();
             lbl_time = new Label();
             panel8 = new Panel();
-            lbl_Name = new Label();
+            lbl_visitorName = new Label();
             panel7 = new Panel();
             lbl_status = new Label();
             pb_displayProfile = new PictureBox();
@@ -144,24 +144,24 @@
             // 
             // panel8
             // 
-            panel8.Controls.Add(lbl_Name);
+            panel8.Controls.Add(lbl_visitorName);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(200, 51);
             panel8.Name = "panel8";
             panel8.Size = new Size(337, 115);
             panel8.TabIndex = 2;
             // 
-            // lbl_Name
+            // lbl_visitorName
             // 
-            lbl_Name.AutoSize = true;
-            lbl_Name.FlatStyle = FlatStyle.Flat;
-            lbl_Name.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Name.Location = new Point(70, 38);
-            lbl_Name.Name = "lbl_Name";
-            lbl_Name.Size = new Size(191, 32);
-            lbl_Name.TabIndex = 1;
-            lbl_Name.Text = "VISITOR'S NAME";
-            lbl_Name.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_visitorName.AutoSize = true;
+            lbl_visitorName.FlatStyle = FlatStyle.Flat;
+            lbl_visitorName.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_visitorName.Location = new Point(70, 38);
+            lbl_visitorName.Name = "lbl_visitorName";
+            lbl_visitorName.Size = new Size(205, 32);
+            lbl_visitorName.TabIndex = 1;
+            lbl_visitorName.Text = "VISITOR'S NAME";
+            lbl_visitorName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
@@ -177,7 +177,7 @@
             lbl_status.AutoSize = true;
             lbl_status.FlatStyle = FlatStyle.Flat;
             lbl_status.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_status.Location = new Point(241, 9);
+            lbl_status.Location = new Point(6, 9);
             lbl_status.Name = "lbl_status";
             lbl_status.Size = new Size(93, 32);
             lbl_status.TabIndex = 0;
@@ -190,6 +190,7 @@
             pb_displayProfile.Location = new Point(0, 0);
             pb_displayProfile.Name = "pb_displayProfile";
             pb_displayProfile.Size = new Size(200, 221);
+            pb_displayProfile.SizeMode = PictureBoxSizeMode.Zoom;
             pb_displayProfile.TabIndex = 0;
             pb_displayProfile.TabStop = false;
             // 
@@ -370,7 +371,7 @@
         private Panel panel7;
         private Label lbl_status;
         private Panel panel8;
-        private Label lbl_Name;
+        private Label lbl_visitorName;
         private Panel panel9;
         private Label lbl_time;
     }
