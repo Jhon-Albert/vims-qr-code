@@ -33,10 +33,20 @@
             label2 = new Label();
             label1 = new Label();
             panel5 = new Panel();
+            panel6 = new Panel();
+            panel10 = new Panel();
+            lbl_recentTime = new Label();
+            panel11 = new Panel();
+            lbl_recentVisitorName = new Label();
+            panel12 = new Panel();
+            lbl_recentStatus = new Label();
+            pb_recentDisplayProfile = new PictureBox();
             panel3 = new Panel();
+            pictureBox4 = new PictureBox();
             lbl_current = new Label();
             label6 = new Label();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             lbl_today = new Label();
             label5 = new Label();
             panel1 = new Panel();
@@ -51,20 +61,17 @@
             panel7 = new Panel();
             lbl_status = new Label();
             pb_displayProfile = new PictureBox();
-            panel6 = new Panel();
-            panel10 = new Panel();
-            lbl_recentTime = new Label();
-            panel11 = new Panel();
-            lbl_recentVisitorName = new Label();
-            panel12 = new Panel();
-            lbl_recentStatus = new Label();
-            pb_recentDisplayProfile = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox4 = new PictureBox();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel10.SuspendLayout();
+            panel11.SuspendLayout();
+            panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_recentDisplayProfile).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelVisitors.SuspendLayout();
@@ -72,13 +79,6 @@
             panel8.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_displayProfile).BeginInit();
-            panel6.SuspendLayout();
-            panel10.SuspendLayout();
-            panel11.SuspendLayout();
-            panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pb_recentDisplayProfile).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // panel4
@@ -124,6 +124,95 @@
             panel5.Size = new Size(1053, 425);
             panel5.TabIndex = 17;
             // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(96, 165, 250);
+            panel6.Controls.Add(panel10);
+            panel6.Controls.Add(panel11);
+            panel6.Controls.Add(panel12);
+            panel6.Controls.Add(pb_recentDisplayProfile);
+            panel6.Location = new Point(537, 183);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(485, 221);
+            panel6.TabIndex = 20;
+            // 
+            // panel10
+            // 
+            panel10.Controls.Add(lbl_recentTime);
+            panel10.Dock = DockStyle.Fill;
+            panel10.Location = new Point(200, 166);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(285, 55);
+            panel10.TabIndex = 3;
+            // 
+            // lbl_recentTime
+            // 
+            lbl_recentTime.AutoSize = true;
+            lbl_recentTime.FlatStyle = FlatStyle.Flat;
+            lbl_recentTime.Font = new Font("Nirmala UI", 12F, FontStyle.Bold);
+            lbl_recentTime.ForeColor = Color.FromArgb(23, 37, 84);
+            lbl_recentTime.Location = new Point(6, 3);
+            lbl_recentTime.Name = "lbl_recentTime";
+            lbl_recentTime.Size = new Size(48, 21);
+            lbl_recentTime.TabIndex = 2;
+            lbl_recentTime.Text = "TIME";
+            lbl_recentTime.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            panel11.Controls.Add(lbl_recentVisitorName);
+            panel11.Dock = DockStyle.Top;
+            panel11.Location = new Point(200, 51);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(285, 115);
+            panel11.TabIndex = 2;
+            // 
+            // lbl_recentVisitorName
+            // 
+            lbl_recentVisitorName.AutoSize = true;
+            lbl_recentVisitorName.FlatStyle = FlatStyle.Flat;
+            lbl_recentVisitorName.Font = new Font("Nirmala UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_recentVisitorName.ForeColor = Color.FromArgb(23, 37, 84);
+            lbl_recentVisitorName.Location = new Point(6, 41);
+            lbl_recentVisitorName.Name = "lbl_recentVisitorName";
+            lbl_recentVisitorName.Size = new Size(205, 32);
+            lbl_recentVisitorName.TabIndex = 1;
+            lbl_recentVisitorName.Text = "VISITOR'S NAME";
+            lbl_recentVisitorName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel12
+            // 
+            panel12.Controls.Add(lbl_recentStatus);
+            panel12.Dock = DockStyle.Top;
+            panel12.Location = new Point(200, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(285, 51);
+            panel12.TabIndex = 1;
+            // 
+            // lbl_recentStatus
+            // 
+            lbl_recentStatus.AutoSize = true;
+            lbl_recentStatus.FlatStyle = FlatStyle.Flat;
+            lbl_recentStatus.Font = new Font("Nirmala UI", 12F, FontStyle.Bold);
+            lbl_recentStatus.ForeColor = Color.FromArgb(23, 37, 84);
+            lbl_recentStatus.Location = new Point(6, 27);
+            lbl_recentStatus.Name = "lbl_recentStatus";
+            lbl_recentStatus.Size = new Size(67, 21);
+            lbl_recentStatus.TabIndex = 0;
+            lbl_recentStatus.Text = "STATUS";
+            // 
+            // pb_recentDisplayProfile
+            // 
+            pb_recentDisplayProfile.BorderStyle = BorderStyle.FixedSingle;
+            pb_recentDisplayProfile.Dock = DockStyle.Left;
+            pb_recentDisplayProfile.Image = (Image)resources.GetObject("pb_recentDisplayProfile.Image");
+            pb_recentDisplayProfile.Location = new Point(0, 0);
+            pb_recentDisplayProfile.Name = "pb_recentDisplayProfile";
+            pb_recentDisplayProfile.Size = new Size(200, 221);
+            pb_recentDisplayProfile.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_recentDisplayProfile.TabIndex = 0;
+            pb_recentDisplayProfile.TabStop = false;
+            // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(96, 165, 250);
@@ -134,6 +223,16 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(273, 142);
             panel3.TabIndex = 18;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(20, 36);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(60, 60);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 9;
+            pictureBox4.TabStop = false;
             // 
             // lbl_current
             // 
@@ -167,6 +266,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(273, 142);
             panel2.TabIndex = 17;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(20, 36);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(60, 60);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 9;
+            pictureBox2.TabStop = false;
             // 
             // lbl_today
             // 
@@ -258,11 +367,11 @@
             // 
             lbl_time.AutoSize = true;
             lbl_time.FlatStyle = FlatStyle.Flat;
-            lbl_time.Font = new Font("Nirmala UI", 12F);
+            lbl_time.Font = new Font("Nirmala UI", 12F, FontStyle.Bold);
             lbl_time.ForeColor = Color.FromArgb(23, 37, 84);
-            lbl_time.Location = new Point(6, 13);
+            lbl_time.Location = new Point(6, 3);
             lbl_time.Name = "lbl_time";
-            lbl_time.Size = new Size(44, 21);
+            lbl_time.Size = new Size(48, 21);
             lbl_time.TabIndex = 2;
             lbl_time.Text = "TIME";
             lbl_time.TextAlign = ContentAlignment.MiddleCenter;
@@ -302,11 +411,11 @@
             // 
             lbl_status.AutoSize = true;
             lbl_status.FlatStyle = FlatStyle.Flat;
-            lbl_status.Font = new Font("Nirmala UI", 12F);
+            lbl_status.Font = new Font("Nirmala UI", 12F, FontStyle.Bold);
             lbl_status.ForeColor = Color.FromArgb(23, 37, 84);
-            lbl_status.Location = new Point(6, 9);
+            lbl_status.Location = new Point(6, 30);
             lbl_status.Name = "lbl_status";
-            lbl_status.Size = new Size(63, 21);
+            lbl_status.Size = new Size(67, 21);
             lbl_status.TabIndex = 0;
             lbl_status.Text = "STATUS";
             // 
@@ -314,120 +423,13 @@
             // 
             pb_displayProfile.BorderStyle = BorderStyle.FixedSingle;
             pb_displayProfile.Dock = DockStyle.Left;
+            pb_displayProfile.Image = (Image)resources.GetObject("pb_displayProfile.Image");
             pb_displayProfile.Location = new Point(0, 0);
             pb_displayProfile.Name = "pb_displayProfile";
             pb_displayProfile.Size = new Size(200, 221);
             pb_displayProfile.SizeMode = PictureBoxSizeMode.Zoom;
             pb_displayProfile.TabIndex = 0;
             pb_displayProfile.TabStop = false;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.FromArgb(96, 165, 250);
-            panel6.Controls.Add(panel10);
-            panel6.Controls.Add(panel11);
-            panel6.Controls.Add(panel12);
-            panel6.Controls.Add(pb_recentDisplayProfile);
-            panel6.Location = new Point(537, 183);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(485, 221);
-            panel6.TabIndex = 20;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(lbl_recentTime);
-            panel10.Dock = DockStyle.Fill;
-            panel10.Location = new Point(200, 166);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(285, 55);
-            panel10.TabIndex = 3;
-            // 
-            // lbl_recentTime
-            // 
-            lbl_recentTime.AutoSize = true;
-            lbl_recentTime.FlatStyle = FlatStyle.Flat;
-            lbl_recentTime.Font = new Font("Nirmala UI", 12F);
-            lbl_recentTime.ForeColor = Color.FromArgb(23, 37, 84);
-            lbl_recentTime.Location = new Point(6, 13);
-            lbl_recentTime.Name = "lbl_recentTime";
-            lbl_recentTime.Size = new Size(44, 21);
-            lbl_recentTime.TabIndex = 2;
-            lbl_recentTime.Text = "TIME";
-            lbl_recentTime.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel11
-            // 
-            panel11.Controls.Add(lbl_recentVisitorName);
-            panel11.Dock = DockStyle.Top;
-            panel11.Location = new Point(200, 51);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(285, 115);
-            panel11.TabIndex = 2;
-            // 
-            // lbl_recentVisitorName
-            // 
-            lbl_recentVisitorName.AutoSize = true;
-            lbl_recentVisitorName.FlatStyle = FlatStyle.Flat;
-            lbl_recentVisitorName.Font = new Font("Nirmala UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl_recentVisitorName.ForeColor = Color.FromArgb(23, 37, 84);
-            lbl_recentVisitorName.Location = new Point(6, 41);
-            lbl_recentVisitorName.Name = "lbl_recentVisitorName";
-            lbl_recentVisitorName.Size = new Size(205, 32);
-            lbl_recentVisitorName.TabIndex = 1;
-            lbl_recentVisitorName.Text = "VISITOR'S NAME";
-            lbl_recentVisitorName.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel12
-            // 
-            panel12.Controls.Add(lbl_recentStatus);
-            panel12.Dock = DockStyle.Top;
-            panel12.Location = new Point(200, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(285, 51);
-            panel12.TabIndex = 1;
-            // 
-            // lbl_recentStatus
-            // 
-            lbl_recentStatus.AutoSize = true;
-            lbl_recentStatus.FlatStyle = FlatStyle.Flat;
-            lbl_recentStatus.Font = new Font("Nirmala UI", 12F);
-            lbl_recentStatus.ForeColor = Color.FromArgb(23, 37, 84);
-            lbl_recentStatus.Location = new Point(6, 9);
-            lbl_recentStatus.Name = "lbl_recentStatus";
-            lbl_recentStatus.Size = new Size(63, 21);
-            lbl_recentStatus.TabIndex = 0;
-            lbl_recentStatus.Text = "STATUS";
-            // 
-            // pb_recentDisplayProfile
-            // 
-            pb_recentDisplayProfile.BorderStyle = BorderStyle.FixedSingle;
-            pb_recentDisplayProfile.Dock = DockStyle.Left;
-            pb_recentDisplayProfile.Location = new Point(0, 0);
-            pb_recentDisplayProfile.Name = "pb_recentDisplayProfile";
-            pb_recentDisplayProfile.Size = new Size(200, 221);
-            pb_recentDisplayProfile.SizeMode = PictureBoxSizeMode.Zoom;
-            pb_recentDisplayProfile.TabIndex = 0;
-            pb_recentDisplayProfile.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(20, 36);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(60, 60);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 9;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(20, 36);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(60, 60);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 9;
-            pictureBox4.TabStop = false;
             // 
             // EmployeeDashboard
             // 
@@ -440,10 +442,20 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
+            panel11.ResumeLayout(false);
+            panel11.PerformLayout();
+            panel12.ResumeLayout(false);
+            panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_recentDisplayProfile).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -455,16 +467,6 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_displayProfile).EndInit();
-            panel6.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pb_recentDisplayProfile).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 

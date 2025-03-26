@@ -174,6 +174,7 @@
             // pb_profilePic
             // 
             pb_profilePic.BorderStyle = BorderStyle.FixedSingle;
+            pb_profilePic.Image = (Image)resources.GetObject("pb_profilePic.Image");
             pb_profilePic.Location = new Point(359, 34);
             pb_profilePic.Name = "pb_profilePic";
             pb_profilePic.Size = new Size(200, 200);

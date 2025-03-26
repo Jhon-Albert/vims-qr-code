@@ -151,18 +151,6 @@ namespace Visitor_Identification_Management_System
             Application.Exit();
         }
 
-        private void btn_maximize_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
         private void btn_minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

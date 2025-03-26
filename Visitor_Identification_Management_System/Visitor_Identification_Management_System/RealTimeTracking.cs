@@ -10,13 +10,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Visitor_Identification_Management_System
 {
     public partial class RealTimeTracking : Form
     {
-        private VideoCapture capture1, capture2;
-        private string cameraUrl1, cameraUrl2;
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        private Timer refreshTimer;
+        private VideoCapture capture1;
+        private string cameraUrl1;
         public RealTimeTracking()
         {
             InitializeComponent();
@@ -27,6 +30,72 @@ namespace Visitor_Identification_Management_System
             lbl_date.Text = "Date: " + DateTime.Now.ToLongDateString();
             timer1.Interval = 1000;
             timer1.Start();
+            StartRealTimeTracking();
+        }
+        private void StartRealTimeTracking()
+        {
+            refreshTimer = new Timer();
+            refreshTimer.Interval = 1000;
+            refreshTimer.Tick += RefreshVisitorStatus;
+            refreshTimer.Start();
+            RefreshVisitorStatus(null, null);
+        }
+
+        private void RefreshVisitorStatus(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                string query = "SELECT TOP 1 r.FirstName, r.LastName, v.CheckInTime, v.CheckOutTime, r.ProfilePicture " +
+                               "FROM VisitorLogs v " +
+                               "INNER JOIN Registration r ON v.VisitorID = r.VisitorID " +
+                               "ORDER BY v.CheckInTime DESC"; // Get the latest visitor activity
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string fullName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString();
+                        DateTime? checkInTime = reader["CheckInTime"] as DateTime?;
+                        DateTime? checkOutTime = reader["CheckOutTime"] as DateTime?;
+                        byte[] imageData = reader["ProfilePicture"] != DBNull.Value ? (byte[])reader["ProfilePicture"] : null;
+
+                        lbl_visitorName.Text = fullName;
+
+                        if (checkOutTime == null)
+                        {
+                            lbl_visitorStatus.Text = "Checked In";
+                            lbl_visitorTime.Text = "Time: " + checkInTime?.ToString("hh:mm tt");
+                        }
+                        else
+                        {
+                            lbl_visitorStatus.Text = "Checked Out";
+                            lbl_visitorTime.Text = "Time: " + checkOutTime?.ToString("hh:mm tt");
+                        }
+
+                        if (imageData != null)
+                        {
+                            using (MemoryStream ms = new MemoryStream(imageData))
+                            {
+                                pb_visitorProfilePicture.Image = Image.FromStream(ms);
+                            }
+                        }
+                        else
+                        {
+                            pb_visitorProfilePicture.Image = Properties.Resources.default_image; // Use a default image
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating real-time tracking: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void btn_liveCamera_Click(object sender, EventArgs e)
@@ -57,9 +126,9 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Please enter a valid RTSP URL.");
             }
             */
-            if (!string.IsNullOrEmpty(txt_urlCamera1.Text))
+            if (!string.IsNullOrEmpty(toolStripTextBox1_urlCamera1.Text))
             {
-                cameraUrl1 = txt_urlCamera1.Text;
+                cameraUrl1 = toolStripTextBox1_urlCamera1.Text;
                 StartCamera1();
             }
             else
@@ -96,15 +165,6 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Please enter a valid RTSP URL.");
             }
             */
-            if (!string.IsNullOrEmpty(txt_urlCamera2.Text))
-            {
-                cameraUrl2 = txt_urlCamera2.Text;
-                StartCamera2();
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid RTSP URL for Camera 2.");
-            }
         }
         private void StartCamera1()
         {
@@ -128,32 +188,9 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-        private void StartCamera2()
-        {
-            try
-            {
-                StopCamera2(); // Ensure the previous instance is closed
-
-                capture2 = new VideoCapture(cameraUrl2);
-                if (!capture2.IsOpened)
-                {
-                    MessageBox.Show("Failed to open Camera 2.");
-                    return;
-                }
-
-                capture2.ImageGrabbed += Capture2_ImageGrabbed;
-                capture2.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to Camera 2: " + ex.Message);
-            }
-        }
-
         private void btn_stopCamera_Click(object sender, EventArgs e)
         {
             StopCamera1();
-            StopCamera2();
         }
         private void StopCamera1()
         {
@@ -162,15 +199,6 @@ namespace Visitor_Identification_Management_System
                 capture1.Stop();
                 capture1.Dispose();
                 capture1 = null;
-            }
-        }
-        private void StopCamera2()
-        {
-            if (capture2 != null)
-            {
-                capture2.Stop();
-                capture2.Dispose();
-                capture2 = null;
             }
         }
 
@@ -217,49 +245,6 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-        private void Capture2_ImageGrabbed(object sender, EventArgs e)
-        {
-            /*
-            try
-            {
-                using (Mat frame = new Mat())
-                {
-                    if (capture2 != null && capture2.IsOpened)
-                    {
-                        capture2.Retrieve(frame);
-                        pb_camera2.Image = frame.ToBitmap();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error capturing frame: " + ex.Message);
-            }
-            */
-            try
-            {
-                using (Mat frame = new Mat())
-                {
-                    if (capture2 != null && capture2.IsOpened)
-                    {
-                        capture2.Retrieve(frame);
-                        if (!frame.IsEmpty)
-                        {
-                            pb_camera2.Invoke((MethodInvoker)(() =>
-                            {
-                                pb_camera2.Image?.Dispose(); // Dispose old image to prevent memory leaks
-                                pb_camera2.Image = frame.ToBitmap();
-                            }));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error capturing frame from Camera 2: " + ex.Message);
-            }
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             lbl_time.Text = "Time: " + DateTime.Now.ToLongTimeString();
@@ -300,6 +285,11 @@ namespace Visitor_Identification_Management_System
                 ReleaseCapture();
                 SendMessage(this.Handle, 0xA1, 0x2, 0);
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

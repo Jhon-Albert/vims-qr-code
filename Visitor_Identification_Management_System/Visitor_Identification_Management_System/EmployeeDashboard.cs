@@ -188,7 +188,6 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-
         private class Visitor
         {
             public string FullName { get; set; }

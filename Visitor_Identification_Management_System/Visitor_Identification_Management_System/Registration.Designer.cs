@@ -275,6 +275,7 @@
             // pb_uploadProfile
             // 
             pb_uploadProfile.BorderStyle = BorderStyle.FixedSingle;
+            pb_uploadProfile.Image = (Image)resources.GetObject("pb_uploadProfile.Image");
             pb_uploadProfile.Location = new Point(389, 223);
             pb_uploadProfile.Name = "pb_uploadProfile";
             pb_uploadProfile.Size = new Size(150, 150);

@@ -16,10 +16,12 @@ namespace Visitor_Identification_Management_System
         private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
+        private RealTimeTracking trackingForm;
 
-        public ScanQR()
+        public ScanQR()//RealTimeTracking form)
         {
             InitializeComponent();
+            //trackingForm = form;
         }
 
         private void ScanQR_Load(object sender, EventArgs e)
@@ -119,6 +121,8 @@ namespace Visitor_Identification_Management_System
                                             {
                                                 pb_profilePic.Image = null;
                                             }
+
+                                            //trackingForm?.UpdateVisitorInfo(txt_visitorID.Text, txt_firstName.Text, txt_lastName.Text, txt_address.Text, txt_contactNumber.Text, txt_purpose.Text, profilePic);
                                         }
                                         else
                                         {
@@ -156,7 +160,8 @@ namespace Visitor_Identification_Management_System
             txt_contactNumber.Clear();
             txt_purpose.Clear();
             txt_email.Clear();
-            pb_profilePic.Image = null;
+            //pb_profilePic.Image = null;
+            pb_profilePic.Image = Image.FromFile(@"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\Resources\image.png");
         }
 
         //BUTTON

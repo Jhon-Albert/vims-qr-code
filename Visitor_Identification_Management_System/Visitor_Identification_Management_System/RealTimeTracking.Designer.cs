@@ -31,36 +31,47 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RealTimeTracking));
             panel2 = new Panel();
+            label1 = new Label();
             btn_minimize = new Button();
             btn_close = new Button();
-            panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
             panel3 = new Panel();
             panel5 = new Panel();
             btn_stopCamera = new Button();
-            btn_liveCamera2 = new Button();
-            txt_urlCamera2 = new TextBox();
             lbl_time = new Label();
             lbl_date = new Label();
             txt_urlCamera1 = new TextBox();
             btn_liveCamera = new Button();
             panel4 = new Panel();
-            pb_camera2 = new PictureBox();
+            panel1 = new Panel();
+            lbl_visitorTime = new Label();
+            panel6 = new Panel();
+            lbl_visitorName = new Label();
+            lbl_visitorStatus = new Label();
+            pb_visitorProfilePicture = new PictureBox();
             pb_camera1 = new PictureBox();
+            menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
+            settingToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            rSTPUrlToolStripMenuItem = new ToolStripMenuItem();
+            toolStripTextBox1_urlCamera1 = new ToolStripTextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             panel2.SuspendLayout();
-            panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pb_camera2).BeginInit();
+            panel1.SuspendLayout();
+            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_visitorProfilePicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pb_camera1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(59, 130, 246);
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(btn_minimize);
             panel2.Controls.Add(btn_close);
             panel2.Dock = DockStyle.Top;
@@ -69,6 +80,16 @@
             panel2.Size = new Size(960, 31);
             panel2.TabIndex = 56;
             panel2.MouseDown += panel2_MouseDown;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 3);
+            label1.Name = "label1";
+            label1.Size = new Size(142, 21);
+            label1.TabIndex = 24;
+            label1.Text = "Real-Time Tracking";
             // 
             // btn_minimize
             // 
@@ -100,59 +121,29 @@
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click;
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(label2);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 31);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(960, 100);
-            panel1.TabIndex = 57;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(307, 45);
-            label1.TabIndex = 24;
-            label1.Text = "Real-Time Tracking";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(26, 60);
-            label2.Name = "label2";
-            label2.Size = new Size(136, 21);
-            label2.TabIndex = 25;
-            label2.Text = "Manage | Tracking";
-            // 
             // panel3
             // 
+            panel3.Controls.Add(panel1);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
+            panel3.Controls.Add(menuStrip1);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 131);
+            panel3.Location = new Point(0, 31);
             panel3.Name = "panel3";
-            panel3.Size = new Size(960, 409);
+            panel3.Size = new Size(960, 509);
             panel3.TabIndex = 58;
             // 
             // panel5
             // 
             panel5.Controls.Add(btn_stopCamera);
-            panel5.Controls.Add(btn_liveCamera2);
-            panel5.Controls.Add(txt_urlCamera2);
             panel5.Controls.Add(lbl_time);
             panel5.Controls.Add(lbl_date);
             panel5.Controls.Add(txt_urlCamera1);
             panel5.Controls.Add(btn_liveCamera);
             panel5.Dock = DockStyle.Right;
-            panel5.Location = new Point(668, 0);
+            panel5.Location = new Point(707, 24);
             panel5.Name = "panel5";
-            panel5.Size = new Size(292, 409);
+            panel5.Size = new Size(253, 485);
             panel5.TabIndex = 1;
             // 
             // btn_stopCamera
@@ -165,7 +156,7 @@
             btn_stopCamera.FlatStyle = FlatStyle.Flat;
             btn_stopCamera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_stopCamera.ForeColor = Color.White;
-            btn_stopCamera.Location = new Point(80, 336);
+            btn_stopCamera.Location = new Point(77, 151);
             btn_stopCamera.Name = "btn_stopCamera";
             btn_stopCamera.Size = new Size(131, 33);
             btn_stopCamera.TabIndex = 71;
@@ -173,38 +164,11 @@
             btn_stopCamera.UseVisualStyleBackColor = false;
             btn_stopCamera.Click += btn_stopCamera_Click;
             // 
-            // btn_liveCamera2
-            // 
-            btn_liveCamera2.AutoSize = true;
-            btn_liveCamera2.BackColor = Color.FromArgb(52, 152, 219);
-            btn_liveCamera2.FlatAppearance.BorderSize = 0;
-            btn_liveCamera2.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
-            btn_liveCamera2.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
-            btn_liveCamera2.FlatStyle = FlatStyle.Flat;
-            btn_liveCamera2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_liveCamera2.ForeColor = Color.White;
-            btn_liveCamera2.Location = new Point(80, 279);
-            btn_liveCamera2.Name = "btn_liveCamera2";
-            btn_liveCamera2.Size = new Size(131, 33);
-            btn_liveCamera2.TabIndex = 70;
-            btn_liveCamera2.Text = "Open Camera 2";
-            btn_liveCamera2.UseVisualStyleBackColor = false;
-            btn_liveCamera2.Click += btn_liveCamera2_Click;
-            // 
-            // txt_urlCamera2
-            // 
-            txt_urlCamera2.Font = new Font("Segoe UI", 12F);
-            txt_urlCamera2.Location = new Point(39, 244);
-            txt_urlCamera2.Name = "txt_urlCamera2";
-            txt_urlCamera2.PlaceholderText = "RSTP Url Camera 2";
-            txt_urlCamera2.Size = new Size(218, 29);
-            txt_urlCamera2.TabIndex = 69;
-            // 
             // lbl_time
             // 
             lbl_time.AutoSize = true;
             lbl_time.Font = new Font("Segoe UI", 12F);
-            lbl_time.Location = new Point(133, 56);
+            lbl_time.Location = new Point(3, 36);
             lbl_time.Name = "lbl_time";
             lbl_time.Size = new Size(44, 21);
             lbl_time.TabIndex = 68;
@@ -214,7 +178,7 @@
             // 
             lbl_date.AutoSize = true;
             lbl_date.Font = new Font("Segoe UI", 12F);
-            lbl_date.Location = new Point(39, 24);
+            lbl_date.Location = new Point(3, 15);
             lbl_date.Name = "lbl_date";
             lbl_date.Size = new Size(46, 21);
             lbl_date.TabIndex = 67;
@@ -223,11 +187,12 @@
             // txt_urlCamera1
             // 
             txt_urlCamera1.Font = new Font("Segoe UI", 12F);
-            txt_urlCamera1.Location = new Point(39, 142);
+            txt_urlCamera1.Location = new Point(3, 60);
             txt_urlCamera1.Name = "txt_urlCamera1";
             txt_urlCamera1.PlaceholderText = "RSTP Url Camera 1";
-            txt_urlCamera1.Size = new Size(218, 29);
+            txt_urlCamera1.Size = new Size(205, 29);
             txt_urlCamera1.TabIndex = 66;
+            txt_urlCamera1.Visible = false;
             // 
             // btn_liveCamera
             // 
@@ -239,7 +204,7 @@
             btn_liveCamera.FlatStyle = FlatStyle.Flat;
             btn_liveCamera.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_liveCamera.ForeColor = Color.White;
-            btn_liveCamera.Location = new Point(80, 177);
+            btn_liveCamera.Location = new Point(77, 95);
             btn_liveCamera.Name = "btn_liveCamera";
             btn_liveCamera.Size = new Size(131, 33);
             btn_liveCamera.TabIndex = 65;
@@ -249,34 +214,144 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(pb_camera2);
+            panel4.Controls.Add(pb_visitorProfilePicture);
             panel4.Controls.Add(pb_camera1);
-            panel4.Location = new Point(26, 39);
+            panel4.Location = new Point(12, 60);
             panel4.Name = "panel4";
-            panel4.Size = new Size(636, 330);
+            panel4.Size = new Size(689, 330);
             panel4.TabIndex = 0;
             // 
-            // pb_camera2
+            // panel1
             // 
-            pb_camera2.BorderStyle = BorderStyle.FixedSingle;
-            pb_camera2.Dock = DockStyle.Right;
-            pb_camera2.Location = new Point(336, 0);
-            pb_camera2.Name = "pb_camera2";
-            pb_camera2.Size = new Size(300, 330);
-            pb_camera2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pb_camera2.TabIndex = 1;
-            pb_camera2.TabStop = false;
+            panel1.BackColor = Color.FromArgb(2, 132, 199);
+            panel1.Controls.Add(lbl_visitorTime);
+            panel1.Controls.Add(panel6);
+            panel1.Controls.Add(lbl_visitorStatus);
+            panel1.Location = new Point(361, 396);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(340, 101);
+            panel1.TabIndex = 3;
+            // 
+            // lbl_visitorTime
+            // 
+            lbl_visitorTime.AutoSize = true;
+            lbl_visitorTime.FlatStyle = FlatStyle.Flat;
+            lbl_visitorTime.Font = new Font("Nirmala UI", 12F, FontStyle.Bold);
+            lbl_visitorTime.ForeColor = Color.FromArgb(23, 37, 84);
+            lbl_visitorTime.Location = new Point(193, 73);
+            lbl_visitorTime.Name = "lbl_visitorTime";
+            lbl_visitorTime.Size = new Size(48, 21);
+            lbl_visitorTime.TabIndex = 5;
+            lbl_visitorTime.Text = "TIME";
+            lbl_visitorTime.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(186, 230, 253);
+            panel6.Controls.Add(lbl_visitorName);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(0, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(340, 70);
+            panel6.TabIndex = 0;
+            // 
+            // lbl_visitorName
+            // 
+            lbl_visitorName.AutoSize = true;
+            lbl_visitorName.FlatStyle = FlatStyle.Flat;
+            lbl_visitorName.Font = new Font("Nirmala UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_visitorName.ForeColor = Color.FromArgb(23, 37, 84);
+            lbl_visitorName.Location = new Point(67, 21);
+            lbl_visitorName.Name = "lbl_visitorName";
+            lbl_visitorName.Size = new Size(205, 32);
+            lbl_visitorName.TabIndex = 4;
+            lbl_visitorName.Text = "VISITOR'S NAME";
+            lbl_visitorName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbl_visitorStatus
+            // 
+            lbl_visitorStatus.AutoSize = true;
+            lbl_visitorStatus.FlatStyle = FlatStyle.Flat;
+            lbl_visitorStatus.Font = new Font("Nirmala UI", 12F, FontStyle.Bold);
+            lbl_visitorStatus.ForeColor = Color.FromArgb(23, 37, 84);
+            lbl_visitorStatus.Location = new Point(3, 73);
+            lbl_visitorStatus.Name = "lbl_visitorStatus";
+            lbl_visitorStatus.Size = new Size(67, 21);
+            lbl_visitorStatus.TabIndex = 3;
+            lbl_visitorStatus.Text = "STATUS";
+            // 
+            // pb_visitorProfilePicture
+            // 
+            pb_visitorProfilePicture.BorderStyle = BorderStyle.FixedSingle;
+            pb_visitorProfilePicture.Dock = DockStyle.Right;
+            pb_visitorProfilePicture.Image = (Image)resources.GetObject("pb_visitorProfilePicture.Image");
+            pb_visitorProfilePicture.Location = new Point(349, 0);
+            pb_visitorProfilePicture.Name = "pb_visitorProfilePicture";
+            pb_visitorProfilePicture.Size = new Size(340, 330);
+            pb_visitorProfilePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb_visitorProfilePicture.TabIndex = 1;
+            pb_visitorProfilePicture.TabStop = false;
             // 
             // pb_camera1
             // 
             pb_camera1.BorderStyle = BorderStyle.FixedSingle;
             pb_camera1.Dock = DockStyle.Left;
+            pb_camera1.Image = (Image)resources.GetObject("pb_camera1.Image");
             pb_camera1.Location = new Point(0, 0);
             pb_camera1.Name = "pb_camera1";
-            pb_camera1.Size = new Size(300, 330);
+            pb_camera1.Size = new Size(340, 330);
             pb_camera1.SizeMode = PictureBoxSizeMode.StretchImage;
             pb_camera1.TabIndex = 0;
             pb_camera1.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, settingToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(960, 24);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(92, 22);
+            exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // settingToolStripMenuItem
+            // 
+            settingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
+            settingToolStripMenuItem.Name = "settingToolStripMenuItem";
+            settingToolStripMenuItem.Size = new Size(61, 20);
+            settingToolStripMenuItem.Text = "Settings";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { rSTPUrlToolStripMenuItem });
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(124, 22);
+            toolStripMenuItem1.Text = "Camera 1";
+            // 
+            // rSTPUrlToolStripMenuItem
+            // 
+            rSTPUrlToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripTextBox1_urlCamera1 });
+            rSTPUrlToolStripMenuItem.Name = "rSTPUrlToolStripMenuItem";
+            rSTPUrlToolStripMenuItem.Size = new Size(119, 22);
+            rSTPUrlToolStripMenuItem.Text = "RSTP Url";
+            // 
+            // toolStripTextBox1_urlCamera1
+            // 
+            toolStripTextBox1_urlCamera1.Name = "toolStripTextBox1_urlCamera1";
+            toolStripTextBox1_urlCamera1.Size = new Size(100, 23);
             // 
             // timer1
             // 
@@ -289,23 +364,29 @@
             BackColor = Color.FromArgb(147, 197, 253);
             ClientSize = new Size(960, 540);
             Controls.Add(panel3);
-            Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "RealTimeTracking";
             StartPosition = FormStartPosition.CenterParent;
             Text = "RealTimeTracking";
             Load += RealTimeTracking_Load;
             panel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel2.PerformLayout();
             panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pb_camera2).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_visitorProfilePicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_camera1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -314,21 +395,29 @@
         private Panel panel2;
         private Button btn_minimize;
         private Button btn_close;
-        private Panel panel1;
         private Label label1;
-        private Label label2;
         private Panel panel3;
         private Panel panel4;
         private PictureBox pb_camera1;
-        private PictureBox pb_camera2;
+        private PictureBox pb_visitorProfilePicture;
         private Panel panel5;
         private Label lbl_time;
         private Label lbl_date;
         private TextBox txt_urlCamera1;
         private Button btn_liveCamera;
         private System.Windows.Forms.Timer timer1;
-        private TextBox txt_urlCamera2;
-        private Button btn_liveCamera2;
         private Button btn_stopCamera;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem settingToolStripMenuItem;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem rSTPUrlToolStripMenuItem;
+        private ToolStripTextBox toolStripTextBox1_urlCamera1;
+        private Panel panel1;
+        private Label lbl_visitorTime;
+        private Label lbl_visitorStatus;
+        private Label lbl_visitorName;
+        private Panel panel6;
     }
 }

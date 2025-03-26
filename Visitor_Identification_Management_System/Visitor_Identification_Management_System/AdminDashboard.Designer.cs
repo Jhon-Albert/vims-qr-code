@@ -102,27 +102,27 @@
             panel3.Controls.Add(lbl_admin);
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(461, 46);
+            panel3.Location = new Point(749, 22);
             panel3.Name = "panel3";
-            panel3.Size = new Size(175, 100);
+            panel3.Size = new Size(273, 142);
             panel3.TabIndex = 23;
             // 
             // lbl_admin
             // 
             lbl_admin.AutoSize = true;
-            lbl_admin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_admin.Location = new Point(102, 49);
+            lbl_admin.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            lbl_admin.Location = new Point(86, 44);
             lbl_admin.Name = "lbl_admin";
-            lbl_admin.Size = new Size(37, 21);
+            lbl_admin.Size = new Size(62, 31);
             lbl_admin.TabIndex = 8;
             lbl_admin.Text = "###";
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(19, 34);
+            pictureBox3.Location = new Point(20, 36);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(51, 50);
+            pictureBox3.Size = new Size(60, 60);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 8;
             pictureBox3.TabStop = false;
@@ -130,10 +130,10 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(0, 0);
+            label6.Font = new Font("Nirmala UI", 12F);
+            label6.Location = new Point(86, 75);
             label6.Name = "label6";
-            label6.Size = new Size(56, 20);
+            label6.Size = new Size(56, 21);
             label6.TabIndex = 0;
             label6.Text = "Admin";
             // 
@@ -143,27 +143,27 @@
             panel2.Controls.Add(lbl_employee);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label5);
-            panel2.Location = new Point(280, 46);
+            panel2.Location = new Point(388, 22);
             panel2.Name = "panel2";
-            panel2.Size = new Size(175, 100);
+            panel2.Size = new Size(273, 142);
             panel2.TabIndex = 22;
             // 
             // lbl_employee
             // 
             lbl_employee.AutoSize = true;
-            lbl_employee.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_employee.Location = new Point(102, 49);
+            lbl_employee.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            lbl_employee.Location = new Point(86, 44);
             lbl_employee.Name = "lbl_employee";
-            lbl_employee.Size = new Size(37, 21);
+            lbl_employee.Size = new Size(62, 31);
             lbl_employee.TabIndex = 8;
             lbl_employee.Text = "###";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(19, 34);
+            pictureBox2.Location = new Point(20, 36);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(51, 50);
+            pictureBox2.Size = new Size(60, 60);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
@@ -171,10 +171,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(0, 0);
+            label5.Font = new Font("Nirmala UI", 12F);
+            label5.Location = new Point(86, 75);
             label5.Name = "label5";
-            label5.Size = new Size(86, 21);
+            label5.Size = new Size(78, 21);
             label5.TabIndex = 0;
             label5.Text = "Employee";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -185,27 +185,27 @@
             panel5.Controls.Add(lbl_visitor_reg);
             panel5.Controls.Add(pictureBox1);
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(99, 46);
+            panel5.Location = new Point(26, 22);
             panel5.Name = "panel5";
-            panel5.Size = new Size(175, 100);
+            panel5.Size = new Size(273, 142);
             panel5.TabIndex = 21;
             // 
             // lbl_visitor_reg
             // 
             lbl_visitor_reg.AutoSize = true;
-            lbl_visitor_reg.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_visitor_reg.Location = new Point(102, 49);
+            lbl_visitor_reg.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
+            lbl_visitor_reg.Location = new Point(86, 44);
             lbl_visitor_reg.Name = "lbl_visitor_reg";
-            lbl_visitor_reg.Size = new Size(37, 21);
+            lbl_visitor_reg.Size = new Size(62, 31);
             lbl_visitor_reg.TabIndex = 8;
             lbl_visitor_reg.Text = "###";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(19, 34);
+            pictureBox1.Location = new Point(20, 36);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(51, 50);
+            pictureBox1.Size = new Size(60, 60);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
@@ -213,10 +213,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(0, 0);
+            label3.Font = new Font("Nirmala UI", 12F);
+            label3.Location = new Point(86, 75);
             label3.Name = "label3";
-            label3.Size = new Size(173, 20);
+            label3.Size = new Size(169, 21);
             label3.TabIndex = 0;
             label3.Text = "Total Visitor Registered";
             // 
