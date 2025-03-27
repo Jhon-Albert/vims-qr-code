@@ -180,7 +180,7 @@ namespace Visitor_Identification_Management_System
                     ApplicationName = "Visitor_Identification_Management_System"
                 }))
                 {
-                    var range = $"{SheetName}!B:H";
+                    var range = $"{SheetName}!B:I";
                     var request = service.Spreadsheets.Values.Get(SpreadsheetId, range);
                     var response = await request.ExecuteAsync();
 
@@ -191,16 +191,17 @@ namespace Visitor_Identification_Management_System
                             con.Open();
                             foreach (var row in response.Values.Skip(1))
                             {
-                                if (row.Count >= 7)
+                                if (row.Count >= 8)
                                 {
                                     string visitorID = Registration.GenerateVisitorID();
                                     string firstName = row[0].ToString();
-                                    string lastName = row[1].ToString();
-                                    string email = row[2].ToString();
-                                    string contactNumber = row[3].ToString();
-                                    string address = row[4].ToString();
-                                    string purpose = row[5].ToString();
-                                    string profilePicture = row[6].ToString();
+                                    string middleName = row[1].ToString();
+                                    string lastName = row[2].ToString();
+                                    string email = row[3].ToString();
+                                    string contactNumber = row[4].ToString();
+                                    string address = row[5].ToString();
+                                    string purpose = row[6].ToString();
+                                    string profilePicture = row[7].ToString();
 
                                     string imageUrl = ConvertGoogleDriveLink(profilePicture);
                                     byte[] imageBytes = null;
@@ -215,11 +216,12 @@ namespace Visitor_Identification_Management_System
                                     }
                                     
                                     // Insert new record
-                                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
+                                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
                                     using (SqlCommand cmd = new SqlCommand(query, con))
                                     {
                                         cmd.Parameters.AddWithValue("@VisitorID", visitorID);
                                         cmd.Parameters.AddWithValue("@FirstName", firstName);
+                                        cmd.Parameters.AddWithValue("@MidleName", middleName);
                                         cmd.Parameters.AddWithValue("@LastName", lastName);
                                         cmd.Parameters.AddWithValue("@Email", email);
                                         cmd.Parameters.AddWithValue("@Address", address);
@@ -253,7 +255,7 @@ namespace Visitor_Identification_Management_System
                                     }
 
                                     // Generate and send QR code
-                                    string visitorData = $"{visitorID}|{firstName}|{lastName}|{address}|{contactNumber}|{purpose}";
+                                    string visitorData = $"{visitorID}|{firstName}|{middleName}|{lastName}|{address}|{contactNumber}|{purpose}";
                                     string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
                                     QRCodeHelper.GenerateQRCode(visitorData, visitorID);
 

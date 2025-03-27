@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            txt_employeeMiddleName = new TextBox();
+            label7 = new Label();
+            txt_employeeFirstName = new TextBox();
+            label6 = new Label();
             btn_clear = new Button();
             txt_employeeID = new TextBox();
             label5 = new Label();
@@ -42,7 +46,7 @@
             btn_add = new Button();
             txt_employeePassword = new TextBox();
             txt_employeeEmail = new TextBox();
-            txt_employeeName = new TextBox();
+            txt_employeeLastName = new TextBox();
             label4 = new Label();
             label3 = new Label();
             label8 = new Label();
@@ -85,6 +89,10 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(txt_employeeMiddleName);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(txt_employeeFirstName);
+            panel2.Controls.Add(label6);
             panel2.Controls.Add(btn_clear);
             panel2.Controls.Add(txt_employeeID);
             panel2.Controls.Add(label5);
@@ -93,7 +101,7 @@
             panel2.Controls.Add(btn_add);
             panel2.Controls.Add(txt_employeePassword);
             panel2.Controls.Add(txt_employeeEmail);
-            panel2.Controls.Add(txt_employeeName);
+            panel2.Controls.Add(txt_employeeLastName);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label8);
@@ -102,6 +110,46 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(355, 525);
             panel2.TabIndex = 23;
+            // 
+            // txt_employeeMiddleName
+            // 
+            txt_employeeMiddleName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txt_employeeMiddleName.Font = new Font("Segoe UI", 12F);
+            txt_employeeMiddleName.Location = new Point(69, 197);
+            txt_employeeMiddleName.Name = "txt_employeeMiddleName";
+            txt_employeeMiddleName.Size = new Size(232, 29);
+            txt_employeeMiddleName.TabIndex = 90;
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(69, 173);
+            label7.Name = "label7";
+            label7.Size = new Size(104, 21);
+            label7.TabIndex = 89;
+            label7.Text = "Middle Name";
+            // 
+            // txt_employeeFirstName
+            // 
+            txt_employeeFirstName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txt_employeeFirstName.Font = new Font("Segoe UI", 12F);
+            txt_employeeFirstName.Location = new Point(69, 141);
+            txt_employeeFirstName.Name = "txt_employeeFirstName";
+            txt_employeeFirstName.Size = new Size(232, 29);
+            txt_employeeFirstName.TabIndex = 88;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(69, 117);
+            label6.Name = "label6";
+            label6.Size = new Size(86, 21);
+            label6.TabIndex = 87;
+            label6.Text = "First Name";
             // 
             // btn_clear
             // 
@@ -127,7 +175,7 @@
             txt_employeeID.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeID.Enabled = false;
             txt_employeeID.Font = new Font("Segoe UI", 12F);
-            txt_employeeID.Location = new Point(69, 124);
+            txt_employeeID.Location = new Point(69, 85);
             txt_employeeID.Name = "txt_employeeID";
             txt_employeeID.Size = new Size(232, 29);
             txt_employeeID.TabIndex = 71;
@@ -137,7 +185,7 @@
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(69, 100);
+            label5.Location = new Point(69, 61);
             label5.Name = "label5";
             label5.Size = new Size(97, 21);
             label5.TabIndex = 70;
@@ -214,19 +262,19 @@
             // 
             txt_employeeEmail.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeEmail.Font = new Font("Segoe UI", 12F);
-            txt_employeeEmail.Location = new Point(69, 279);
+            txt_employeeEmail.Location = new Point(69, 309);
             txt_employeeEmail.Name = "txt_employeeEmail";
             txt_employeeEmail.Size = new Size(232, 29);
             txt_employeeEmail.TabIndex = 61;
             // 
-            // txt_employeeName
+            // txt_employeeLastName
             // 
-            txt_employeeName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txt_employeeName.Font = new Font("Segoe UI", 12F);
-            txt_employeeName.Location = new Point(69, 197);
-            txt_employeeName.Name = "txt_employeeName";
-            txt_employeeName.Size = new Size(232, 29);
-            txt_employeeName.TabIndex = 60;
+            txt_employeeLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txt_employeeLastName.Font = new Font("Segoe UI", 12F);
+            txt_employeeLastName.Location = new Point(69, 253);
+            txt_employeeLastName.Name = "txt_employeeLastName";
+            txt_employeeLastName.Size = new Size(232, 29);
+            txt_employeeLastName.TabIndex = 60;
             // 
             // label4
             // 
@@ -244,7 +292,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(69, 255);
+            label3.Location = new Point(69, 285);
             label3.Name = "label3";
             label3.Size = new Size(48, 21);
             label3.TabIndex = 58;
@@ -255,11 +303,11 @@
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(69, 173);
+            label8.Location = new Point(69, 229);
             label8.Name = "label8";
-            label8.Size = new Size(81, 21);
+            label8.Size = new Size(84, 21);
             label8.TabIndex = 57;
-            label8.Text = "Full Name";
+            label8.Text = "Last Name";
             // 
             // panel3
             // 
@@ -290,23 +338,23 @@
             dgv_employeeManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_employeeManagement.BackgroundColor = SystemColors.Info;
             dgv_employeeManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgv_employeeManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgv_employeeManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgv_employeeManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgv_employeeManagement.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgv_employeeManagement.DefaultCellStyle = dataGridViewCellStyle4;
             dgv_employeeManagement.Location = new Point(17, 37);
             dgv_employeeManagement.Name = "dgv_employeeManagement";
             dgv_employeeManagement.RowHeadersVisible = false;
@@ -347,12 +395,16 @@
         private Label label4;
         private TextBox txt_employeePassword;
         private TextBox txt_employeeEmail;
-        private TextBox txt_employeeName;
+        private TextBox txt_employeeLastName;
         private TextBox txt_employeeID;
         private Label label5;
         private Button btn_delete;
         private Button btn_update;
         private Button btn_add;
         private Button btn_clear;
+        private TextBox txt_employeeMiddleName;
+        private Label label7;
+        private TextBox txt_employeeFirstName;
+        private Label label6;
     }
 }

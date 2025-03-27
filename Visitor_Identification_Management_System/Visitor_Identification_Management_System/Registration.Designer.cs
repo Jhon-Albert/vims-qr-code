@@ -51,6 +51,8 @@
             pb_uploadProfile = new PictureBox();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            txt_middleName = new TextBox();
+            label8 = new Label();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_uploadProfile).BeginInit();
@@ -80,7 +82,7 @@
             // 
             cmb_purpose.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmb_purpose.FormattingEnabled = true;
-            cmb_purpose.Location = new Point(337, 188);
+            cmb_purpose.Location = new Point(337, 174);
             cmb_purpose.Name = "cmb_purpose";
             cmb_purpose.Size = new Size(232, 29);
             cmb_purpose.TabIndex = 53;
@@ -89,7 +91,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(337, 164);
+            label6.Location = new Point(337, 150);
             label6.Name = "label6";
             label6.Size = new Size(119, 21);
             label6.TabIndex = 52;
@@ -99,7 +101,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(337, 94);
+            label7.Location = new Point(424, 94);
             label7.Name = "label7";
             label7.Size = new Size(84, 21);
             label7.TabIndex = 51;
@@ -108,16 +110,16 @@
             // txt_lastName
             // 
             txt_lastName.Font = new Font("Segoe UI", 12F);
-            txt_lastName.Location = new Point(337, 118);
+            txt_lastName.Location = new Point(424, 118);
             txt_lastName.Name = "txt_lastName";
-            txt_lastName.Size = new Size(232, 29);
+            txt_lastName.Size = new Size(145, 29);
             txt_lastName.TabIndex = 49;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(76, 293);
+            label4.Location = new Point(76, 262);
             label4.Name = "label4";
             label4.Size = new Size(66, 21);
             label4.TabIndex = 48;
@@ -127,7 +129,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(76, 237);
+            label5.Location = new Point(76, 206);
             label5.Name = "label5";
             label5.Size = new Size(125, 21);
             label5.TabIndex = 47;
@@ -136,7 +138,7 @@
             // txt_contactNumber
             // 
             txt_contactNumber.Font = new Font("Segoe UI", 12F);
-            txt_contactNumber.Location = new Point(76, 261);
+            txt_contactNumber.Location = new Point(76, 230);
             txt_contactNumber.Name = "txt_contactNumber";
             txt_contactNumber.Size = new Size(232, 29);
             txt_contactNumber.TabIndex = 45;
@@ -144,7 +146,7 @@
             // txt_address
             // 
             txt_address.Font = new Font("Segoe UI", 12F);
-            txt_address.Location = new Point(76, 317);
+            txt_address.Location = new Point(76, 286);
             txt_address.Multiline = true;
             txt_address.Name = "txt_address";
             txt_address.Size = new Size(232, 134);
@@ -164,7 +166,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(76, 164);
+            label2.Location = new Point(76, 150);
             label2.Name = "label2";
             label2.Size = new Size(48, 21);
             label2.TabIndex = 43;
@@ -191,7 +193,7 @@
             // txt_email
             // 
             txt_email.Font = new Font("Segoe UI", 12F);
-            txt_email.Location = new Point(76, 188);
+            txt_email.Location = new Point(76, 174);
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(232, 29);
             txt_email.TabIndex = 41;
@@ -240,6 +242,8 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(txt_middleName);
+            panel3.Controls.Add(label8);
             panel3.Controls.Add(btn_upload);
             panel3.Controls.Add(pb_uploadProfile);
             panel3.Controls.Add(label3);
@@ -264,7 +268,7 @@
             // 
             // btn_upload
             // 
-            btn_upload.Location = new Point(426, 379);
+            btn_upload.Location = new Point(414, 365);
             btn_upload.Name = "btn_upload";
             btn_upload.Size = new Size(75, 23);
             btn_upload.TabIndex = 56;
@@ -276,7 +280,7 @@
             // 
             pb_uploadProfile.BorderStyle = BorderStyle.FixedSingle;
             pb_uploadProfile.Image = (Image)resources.GetObject("pb_uploadProfile.Image");
-            pb_uploadProfile.Location = new Point(389, 223);
+            pb_uploadProfile.Location = new Point(377, 209);
             pb_uploadProfile.Name = "pb_uploadProfile";
             pb_uploadProfile.Size = new Size(150, 150);
             pb_uploadProfile.SizeMode = PictureBoxSizeMode.Zoom;
@@ -302,6 +306,24 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            // 
+            // txt_middleName
+            // 
+            txt_middleName.Font = new Font("Segoe UI", 12F);
+            txt_middleName.Location = new Point(314, 118);
+            txt_middleName.Name = "txt_middleName";
+            txt_middleName.Size = new Size(104, 29);
+            txt_middleName.TabIndex = 57;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(314, 94);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 21);
+            label8.TabIndex = 58;
+            label8.Text = "Middle Name";
             // 
             // Registration
             // 
@@ -350,5 +372,7 @@
         private PictureBox pictureBox1;
         private PictureBox pb_uploadProfile;
         private Button btn_upload;
+        private TextBox txt_middleName;
+        private Label label8;
     }
 }

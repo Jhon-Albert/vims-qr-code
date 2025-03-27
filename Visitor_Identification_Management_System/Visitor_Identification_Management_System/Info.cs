@@ -18,7 +18,7 @@ namespace Visitor_Identification_Management_System
         public Info()
         {
             InitializeComponent();
-            displayData2();
+            displayData();
         }
 
         private void txt_search_info_TextChanged(object sender, EventArgs e)
@@ -40,30 +40,15 @@ namespace Visitor_Identification_Management_System
                     txt_search_info.Text);
             }
         }
+
         public void displayData()
-        {
-           try
-            {
-                con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("select * from Registration", con);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                dgv_info.DataSource = dt;
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error Message: " + ex.Message);
-            }
-        }
-        public void displayData2()
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "SELECT VisitorID, FirstName, LastName, Email, ContactNumber, Address, Purpose, ProfilePicture FROM Registration";
+                    string query = "SELECT VisitorID, FirstName, MiddleName, LastName, Email, ContactNumber, Address, Purpose, ProfilePicture FROM Registration";
                     SqlDataAdapter sda = new SqlDataAdapter(query, con);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
@@ -80,61 +65,6 @@ namespace Visitor_Identification_Management_System
             catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public void displayData3()
-        {
-            using (SqlConnection con = new SqlConnection(@"Your_Connection_String"))
-            {
-                string query = "SELECT VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture FROM Registration";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    // Convert 'ProfilePicture' column to store images
-                    if (dt.Columns.Contains("ProfilePicture"))
-                    {
-                        dt.Columns["ProfilePicture"].DataType = typeof(Image);
-                    }
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string imageUrl = row["ProfilePicture"]?.ToString();
-                        if (!string.IsNullOrEmpty(imageUrl))
-                        {
-                            try
-                            {
-                                using (var webClient = new WebClient())
-                                {
-                                    byte[] imageBytes = webClient.DownloadData(imageUrl);
-                                    using (var ms = new MemoryStream(imageBytes))
-                                    {
-                                        row["ProfilePicture"] = Image.FromStream(ms);
-                                    }
-                                }
-                            }
-                            catch
-                            {
-                                row["ProfilePicture"] = Properties.Resources.default_image; // Use default image on failure
-                            }
-                        }
-                        else
-                        {
-                            row["ProfilePicture"] = Properties.Resources.default_image; // Use default image if no URL
-                        }
-                    }
-
-                    // Bind updated DataTable with image data
-                    dgv_info.DataSource = dt;
-
-                    // Set 'ProfilePicture' column layout for proper image display
-                    if (dgv_info.Columns["ProfilePicture"] is DataGridViewImageColumn imgColumn)
-                    {
-                        imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                        imgColumn.Width = 100; // Adjust width for better display
-                    }
-                }
             }
         }
     }

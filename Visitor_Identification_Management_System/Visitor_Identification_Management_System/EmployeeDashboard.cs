@@ -53,7 +53,7 @@ namespace Visitor_Identification_Management_System
             try
             {
                 con.Open();
-                string query = "SELECT r.FirstName, r.LastName, v.CheckInTime, r.ProfilePicture FROM VisitorLogs v " +
+                string query = "SELECT r.FirstName, r.MiddleName, r.LastName, v.CheckInTime, r.ProfilePicture FROM VisitorLogs v " +
                                "INNER JOIN Registration r ON v.VisitorID = r.VisitorID " +
                                "WHERE v.CheckInTime IS NOT NULL AND v.CheckOutTime IS NULL ORDER BY v.CheckInTime ASC";
 
@@ -65,7 +65,11 @@ namespace Visitor_Identification_Management_System
                         {
                             checkedInVisitors.Add(new Visitor
                             {
-                                FullName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
+                                //FullName = reader["FirstName"].ToString() + " " + reader["LastName"].ToString(),
+                                FullName = reader["LastName"].ToString() + ", " +
+                                reader["FirstName"].ToString() + " " +
+                                (!string.IsNullOrEmpty(reader["MiddleName"].ToString()) ?
+                                reader["MiddleName"].ToString()[0] + "." : ""),
                                 CheckInTime = Convert.ToDateTime(reader["CheckInTime"]).ToString("hh:mm tt"),
                                 ImageData = reader["ProfilePicture"] != DBNull.Value ? (byte[])reader["ProfilePicture"] : null
                             });
@@ -123,7 +127,7 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-
+        // VISITOR ROTATION
         private void StartVisitorRotation()
         {
             if (checkedInVisitors.Count > 0)

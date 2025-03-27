@@ -32,6 +32,7 @@ namespace Visitor_Identification_Management_System
             timer1.Start();
             StartRealTimeTracking();
         }
+
         private void StartRealTimeTracking()
         {
             refreshTimer = new Timer();
@@ -192,6 +193,7 @@ namespace Visitor_Identification_Management_System
         {
             StopCamera1();
         }
+
         private void StopCamera1()
         {
             if (capture1 != null)

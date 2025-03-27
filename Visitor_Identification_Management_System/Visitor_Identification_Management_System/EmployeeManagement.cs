@@ -47,14 +47,18 @@ namespace Visitor_Identification_Management_System
         private void dgv_employeeManagement_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_employeeID.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txt_employeeName.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txt_employeeEmail.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txt_employeePassword.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_employeeFirstName.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txt_employeeMiddleName.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt_employeeLastName.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_employeeEmail.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_employeePassword.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
         }
         private void ClearTextFields()
         {
             txt_employeeID.Clear();
-            txt_employeeName.Clear();
+            txt_employeeFirstName.Clear();
+            txt_employeeMiddleName.Clear();
+            txt_employeeLastName.Clear();
             txt_employeeEmail.Clear();
             txt_employeePassword.Clear();
         }
@@ -66,9 +70,11 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EmployeeID, @Name, @Email, @Password)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EmployeeID, @FirstName, @MiddleName, @LastName, @Email, @Password)", con);
                 cmd.Parameters.AddWithValue("@EmployeeID", txt_employeeID.Text);
-                cmd.Parameters.AddWithValue("@Name", txt_employeeName.Text);
+                cmd.Parameters.AddWithValue("@FirstName", txt_employeeFirstName.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_employeeMiddleName.Text);
+                cmd.Parameters.AddWithValue("@LastName", txt_employeeLastName.Text);
                 cmd.Parameters.AddWithValue("@Email", txt_employeeEmail.Text);
                 cmd.Parameters.AddWithValue("@Password", txt_employeePassword.Text);
                 cmd.ExecuteNonQuery();
@@ -96,9 +102,11 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Employee SET Name=@Name, Email=@Email, Password=@Password WHERE EmployeeID=@EmployeeID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Employee SET FirstName=@FirstName, MiddleName=@MiddleName, LastName=@LastName, Email=@Email, Password=@Password WHERE EmployeeID=@EmployeeID", con);
                 cmd.Parameters.AddWithValue("@EmployeeID", txt_employeeID.Text);
-                cmd.Parameters.AddWithValue("@Name", txt_employeeName.Text);
+                cmd.Parameters.AddWithValue("@FirstName", txt_employeeFirstName.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_employeeMiddleName.Text);
+                cmd.Parameters.AddWithValue("@LastName", txt_employeeLastName.Text);
                 cmd.Parameters.AddWithValue("@Email", txt_employeeEmail.Text);
                 cmd.Parameters.AddWithValue("@Password", txt_employeePassword.Text);
                 int rowsAffected = cmd.ExecuteNonQuery();

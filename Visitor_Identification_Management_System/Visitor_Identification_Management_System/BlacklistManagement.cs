@@ -44,14 +44,16 @@ namespace Visitor_Identification_Management_System
         {
             txt_blacklistID.Text = dgv_blacklist.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_blacklistFirstname.Text = dgv_blacklist.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txt_blacklistLastname.Text = dgv_blacklist.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txt_reason.Text = dgv_blacklist.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txt_dateAdded.Text = dgv_blacklist.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_blacklistMiddleName.Text = dgv_blacklist.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt_blacklistLastname.Text = dgv_blacklist.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_reason.Text = dgv_blacklist.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_dateAdded.Text = dgv_blacklist.Rows[e.RowIndex].Cells[5].Value.ToString();
         }
         private void ClearTextFields()
         {
             txt_blacklistID.Clear();
             txt_blacklistFirstname.Clear();
+            txt_blacklistMiddleName.Clear();
             txt_blacklistLastname.Clear();
             txt_reason.Clear();
             txt_dateAdded.Clear();
@@ -85,8 +87,9 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Blacklist (FirstName, LastName, Reason) VALUES(@FirstName, @LastName, @Reason)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Blacklist (FirstName, MiddleName, LastName, Reason) VALUES(@FirstName, @MiddleName, @LastName, @Reason)", con);
                 cmd.Parameters.AddWithValue("@FirstName", txt_blacklistFirstname.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_blacklistMiddleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_blacklistLastname.Text);
                 cmd.Parameters.AddWithValue("@Reason", txt_reason.Text);
                 cmd.ExecuteNonQuery();
@@ -112,9 +115,10 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Blacklist SET FirstName=@FirstName, LastName=@LastName, Reason=@Reason WHERE BlacklistID=@BlacklistID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Blacklist SET FirstName=@FirstName, MiddleName=@MiddleName, LastName=@LastName, Reason=@Reason WHERE BlacklistID=@BlacklistID", con);
                 cmd.Parameters.AddWithValue("@BlacklistID", txt_blacklistID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_blacklistFirstname.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_blacklistMiddleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_blacklistLastname.Text);
                 cmd.Parameters.AddWithValue("@Reason", txt_reason.Text);
                 int rowsAffected = cmd.ExecuteNonQuery();

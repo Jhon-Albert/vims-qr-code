@@ -55,17 +55,19 @@ namespace Visitor_Identification_Management_System
         {
             txt_visitorID.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_firstName.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txt_lastName.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txt_email.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txt_address.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txt_contactNumber.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txt_purpose.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[6].Value.ToString();
+            txt_middleName.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt_lastName.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt_email.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txt_address.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txt_contactNumber.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[6].Value.ToString();
+            txt_purpose.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[7].Value.ToString();
             
         }
         private void ClearTextFields()
         {
             txt_visitorID.Clear();
             txt_firstName.Clear();
+            txt_middleName.Clear();
             txt_lastName.Clear();
             txt_email.Clear();
             txt_contactNumber.Clear();
@@ -80,9 +82,10 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Registration VALUES(@VisitorID, @FirstName, @LastName, @Email, @ContactNumber, @Purpose, @Address)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Registration VALUES(@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @ContactNumber, @Purpose, @Address)", con);
                 cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_middleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text);
                 cmd.Parameters.AddWithValue("@Email", txt_email.Text);
                 cmd.Parameters.AddWithValue("@ContactNumber", txt_contactNumber.Text);
@@ -111,9 +114,10 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Registration SET FirstName=@FirstName, LastName=@LastName, Email=@Email, ContactNumber=@ContactNumber, Purpose=@Purpose, Address=@Address WHERE VisitorID=@VisitorID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Registration SET FirstName=@FirstName, MiddleName=@MiddleName, LastName=@LastName, Email=@Email, ContactNumber=@ContactNumber, Purpose=@Purpose, Address=@Address WHERE VisitorID=@VisitorID", con);
                 cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_middleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text);
                 cmd.Parameters.AddWithValue("@Email", txt_email.Text);
                 cmd.Parameters.AddWithValue("@ContactNumber", txt_contactNumber.Text);

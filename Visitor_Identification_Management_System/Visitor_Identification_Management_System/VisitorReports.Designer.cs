@@ -39,6 +39,7 @@
             btn_refresh = new Button();
             dgv_reports = new DataGridView();
             txt_search_reports = new TextBox();
+            btn_import = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_reports).BeginInit();
@@ -76,6 +77,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btn_import);
             panel2.Controls.Add(btn_print);
             panel2.Controls.Add(btn_export);
             panel2.Controls.Add(btn_refresh);
@@ -98,7 +100,7 @@
             btn_print.FlatStyle = FlatStyle.Flat;
             btn_print.Font = new Font("Segoe UI", 12F);
             btn_print.ForeColor = Color.White;
-            btn_print.Location = new Point(586, 358);
+            btn_print.Location = new Point(530, 358);
             btn_print.Name = "btn_print";
             btn_print.Size = new Size(77, 33);
             btn_print.TabIndex = 72;
@@ -117,7 +119,7 @@
             btn_export.FlatStyle = FlatStyle.Flat;
             btn_export.Font = new Font("Segoe UI", 12F);
             btn_export.ForeColor = Color.White;
-            btn_export.Location = new Point(503, 358);
+            btn_export.Location = new Point(447, 358);
             btn_export.Name = "btn_export";
             btn_export.Size = new Size(77, 33);
             btn_export.TabIndex = 71;
@@ -136,7 +138,7 @@
             btn_refresh.FlatStyle = FlatStyle.Flat;
             btn_refresh.Font = new Font("Segoe UI", 12F);
             btn_refresh.ForeColor = Color.White;
-            btn_refresh.Location = new Point(413, 358);
+            btn_refresh.Location = new Point(357, 358);
             btn_refresh.Name = "btn_refresh";
             btn_refresh.Size = new Size(84, 33);
             btn_refresh.TabIndex = 70;
@@ -171,20 +173,39 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgv_reports.DefaultCellStyle = dataGridViewCellStyle2;
-            dgv_reports.Location = new Point(107, 52);
+            dgv_reports.Location = new Point(37, 52);
             dgv_reports.Name = "dgv_reports";
             dgv_reports.RowHeadersVisible = false;
-            dgv_reports.Size = new Size(838, 280);
+            dgv_reports.Size = new Size(980, 300);
             dgv_reports.TabIndex = 15;
             // 
             // txt_search_reports
             // 
-            txt_search_reports.Location = new Point(107, 23);
+            txt_search_reports.Location = new Point(37, 23);
             txt_search_reports.Name = "txt_search_reports";
             txt_search_reports.PlaceholderText = "Search";
             txt_search_reports.Size = new Size(204, 23);
             txt_search_reports.TabIndex = 14;
             txt_search_reports.TextChanged += txt_search_reports_TextChanged;
+            // 
+            // btn_import
+            // 
+            btn_import.Anchor = AnchorStyles.None;
+            btn_import.AutoSize = true;
+            btn_import.BackColor = Color.FromArgb(52, 152, 219);
+            btn_import.FlatAppearance.BorderSize = 0;
+            btn_import.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_import.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_import.FlatStyle = FlatStyle.Flat;
+            btn_import.Font = new Font("Segoe UI", 12F);
+            btn_import.ForeColor = Color.White;
+            btn_import.Location = new Point(613, 358);
+            btn_import.Name = "btn_import";
+            btn_import.Size = new Size(77, 33);
+            btn_import.TabIndex = 73;
+            btn_import.Text = "IMPORT";
+            btn_import.UseVisualStyleBackColor = false;
+            btn_import.Click += btn_import_Click;
             // 
             // VisitorReports
             // 
@@ -213,5 +234,6 @@
         private Button btn_print;
         private Button btn_export;
         private Button btn_refresh;
+        private Button btn_import;
     }
 }

@@ -14,6 +14,7 @@ using System.Reflection.Metadata;
 using ZXing.OneD;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using OfficeOpenXml;
 using Font = iTextSharp.text.Font;
 using Document = iTextSharp.text.Document;
 using Image = iTextSharp.text.Image;
@@ -221,6 +222,132 @@ namespace Visitor_Identification_Management_System
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
                 printDoc.Print();
+            }
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                Filter = "CSV Files (*.csv)|*.csv|Excel Files (*.xlsx)|*.xlsx",
+                Title = "Select a file to import"
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog1.FileName;
+                string fileExtension = Path.GetExtension(filePath).ToLower();
+
+                if (fileExtension == ".csv")
+                {
+                    ImportCSV(filePath);
+                }
+                else if (fileExtension == ".xlsx")
+                {
+                    ImportExcel(filePath);
+                }
+                else
+                {
+                    MessageBox.Show("Unsupported file type selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void ImportCSV(string filePath)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Path\To\Your\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;"))
+                {
+                    con.Open();
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        string line;
+                        bool isHeader = true;
+
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            if (isHeader) // Skip the header row
+                            {
+                                isHeader = false;
+                                continue;
+                            }
+
+                            string[] values = line.Split(',');
+
+                            string query = "INSERT INTO VisitorLogs (VisitorID, FirstName, MiddleName, LastName, Purpose, CheckInTime, CheckOutTime, Status) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Purpose, @CheckInTime, @CheckOutTime, @Status)";
+                            using (SqlCommand cmd = new SqlCommand(query, con))
+                            {
+                                cmd.Parameters.AddWithValue("@VisitorID", values[0]);
+                                cmd.Parameters.AddWithValue("@FirstName", values[1]);
+                                cmd.Parameters.AddWithValue("@MiddleName", values[2]);
+                                cmd.Parameters.AddWithValue("@LastName", values[3]);
+                                cmd.Parameters.AddWithValue("@Purpose", values[4]);
+                                cmd.Parameters.AddWithValue("@CheckInTime", DateTime.Parse(values[5]));
+                                cmd.Parameters.AddWithValue("@CheckOutTime", string.IsNullOrEmpty(values[6]) ? (object)DBNull.Value : DateTime.Parse(values[6]));
+                                cmd.Parameters.AddWithValue("@Status", values[7]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show("CSV Data Imported Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                displayData(); // Refresh DataGridView
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing CSV: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void ImportExcel(string filePath)
+        {
+            try
+            {
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; // Required for EPPlus
+                using (var package = new ExcelPackage(new FileInfo(filePath)))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // First sheet
+                    int rowCount = worksheet.Dimension.Rows;
+
+                    using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Path\To\Your\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;"))
+                    {
+                        con.Open();
+
+                        for (int row = 2; row <= rowCount; row++) // Skip header (start from row 2)
+                        {
+                            string VisitorID = worksheet.Cells[row, 1].Text;
+                            string FirstName = worksheet.Cells[row, 2].Text;
+                            string MiddleName = worksheet.Cells[row,3].Text;
+                            string LastName = worksheet.Cells[row, 4].Text;
+                            string Purpose = worksheet.Cells[row, 5].Text;
+                            string CheckInTime = worksheet.Cells[row, 6].Text;
+                            string CheckOutTime = worksheet.Cells[row, 7].Text;
+                            string Status = worksheet.Cells[row, 8].Text;
+
+                            string query = "INSERT INTO VisitorLogs (VisitorID, FirstName, MiddleName, LastName, Purpose, CheckInTime, CheckOutTime, Status) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Purpose, @CheckInTime, @CheckOutTime, @Status)";
+                            using (SqlCommand cmd = new SqlCommand(query, con))
+                            {
+                                cmd.Parameters.AddWithValue("@VisitorID", VisitorID);
+                                cmd.Parameters.AddWithValue("@FirstName", FirstName);
+                                cmd.Parameters.AddWithValue("@MiddleName", MiddleName);
+                                cmd.Parameters.AddWithValue("@LastName", LastName);
+                                cmd.Parameters.AddWithValue("@Purpose", Purpose);
+                                cmd.Parameters.AddWithValue("@CheckInTime", DateTime.Parse(CheckInTime));
+                                cmd.Parameters.AddWithValue("@CheckOutTime", string.IsNullOrEmpty(CheckOutTime) ? (object)DBNull.Value : DateTime.Parse(CheckOutTime));
+                                cmd.Parameters.AddWithValue("@Status", Status);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show("Excel Data Imported Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                displayData(); // Refresh DataGridView
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

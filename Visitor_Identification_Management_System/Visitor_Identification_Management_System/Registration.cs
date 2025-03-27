@@ -184,11 +184,12 @@ namespace Visitor_Identification_Management_System
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "INSERT INTO Registration (VisitorID, FirstName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
+                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@VisitorID", visitorID.Trim());
                         cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@MiddleName", txt_middleName.Text.Trim());
                         cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text.Trim());
                         cmd.Parameters.AddWithValue("@Email", txt_email.Text.Trim());
                         cmd.Parameters.AddWithValue("@Address", txt_address.Text.Trim());
@@ -209,8 +210,8 @@ namespace Visitor_Identification_Management_System
                     }
                 }
 
-                string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
-                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
+                string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nMiddleName: {txt_middleName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
+                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
                 string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
                 GenerateQRCode(systemVisitorData, visitorID);
 

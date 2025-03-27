@@ -85,14 +85,15 @@ namespace Visitor_Identification_Management_System
                         // Split the QR data assuming it's using a pipe '|' delimiter
                         string[] visitorInfo = decode.Split('|');
 
-                        if (visitorInfo.Length == 6)
+                        if (visitorInfo.Length == 7)
                         {
                             txt_visitorID.Text = visitorInfo[0];       // Visitor ID
-                            txt_firstName.Text = visitorInfo[1];      // First Name
-                            txt_lastName.Text = visitorInfo[2];       // Last Name
-                            txt_address.Text = visitorInfo[3];        // Address
-                            txt_contactNumber.Text = visitorInfo[4];  // Contact Number
-                            txt_purpose.Text = visitorInfo[5];        // Purpose
+                            txt_firstName.Text = visitorInfo[1];        // First Name
+                            txt_middleName.Text = visitorInfo[2];      // Middle Name
+                            txt_lastName.Text = visitorInfo[3];       // Last Name
+                            txt_address.Text = visitorInfo[4];        // Address
+                            txt_contactNumber.Text = visitorInfo[5];  // Contact Number
+                            txt_purpose.Text = visitorInfo[6];        // Purpose
 
                             // Now fetch additional info from the database if needed
                             if (!string.IsNullOrEmpty(txt_visitorID.Text))
@@ -155,6 +156,7 @@ namespace Visitor_Identification_Management_System
         {
             txt_visitorID.Clear();
             txt_firstName.Clear();
+            txt_middleName.Clear();
             txt_lastName.Clear();
             txt_address.Clear();
             txt_contactNumber.Clear();
@@ -196,9 +198,10 @@ namespace Visitor_Identification_Management_System
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO VisitorLogs (VisitorID, FirstName, LastName, Purpose, CheckInTime, Status) VALUES (@VisitorID, @FirstName, @LastName, @Purpose, @CheckInTime, @Status)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO VisitorLogs (VisitorID, FirstName, MiddleName, LastName, Purpose, CheckInTime, Status) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Purpose, @CheckInTime, @Status)", con);
                 cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);
+                cmd.Parameters.AddWithValue("@MiddleName", txt_middleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text);
                 cmd.Parameters.AddWithValue("@Purpose", txt_purpose.Text);
                 cmd.Parameters.AddWithValue("@CheckInTime", DateTime.Now);
