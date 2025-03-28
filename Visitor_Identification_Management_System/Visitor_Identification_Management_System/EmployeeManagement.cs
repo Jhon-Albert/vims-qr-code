@@ -92,7 +92,7 @@ namespace Visitor_Identification_Management_System
             {
                 con.Close();
             }
-            
+
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace Visitor_Identification_Management_System
             {
                 con.Close();
             }
-            
+
         }
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -179,6 +179,29 @@ namespace Visitor_Identification_Management_System
         private void btn_clear_Click(object sender, EventArgs e)
         {
             ClearTextFields();
+        }
+
+        private void txt_searchEmployee_TextChanged(object sender, EventArgs e)
+        {
+            searchData(txt_searchEmployee.Text);
+        }
+
+        private void searchData(string search)
+        {
+            try
+            {
+                con.Open();
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Employee WHERE FirstName LIKE @search OR LastName LIKE @search OR Email LIKE @search OR EmployeeID LIKE @search", con);
+                sda.SelectCommand.Parameters.AddWithValue("@search", "%" + search + "%");
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                dgv_employeeManagement.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message: " + ex.Message);
+            }
         }
     }
 }

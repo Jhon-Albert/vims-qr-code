@@ -70,6 +70,12 @@ namespace Visitor_Identification_Management_System
             addUserControl(uc);
         }
 
+        private void btn_visitorQRCode_Click(object sender, EventArgs e)
+        {
+            VisitorQRCode uc = new VisitorQRCode();
+            addUserControl(uc);
+        }
+
         private void btn_logout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -105,5 +111,7 @@ namespace Visitor_Identification_Management_System
         {
             Application.Exit();
         }
+
+        
     }
 }

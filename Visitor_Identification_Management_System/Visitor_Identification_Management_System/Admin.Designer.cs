@@ -47,6 +47,7 @@
             label1 = new Label();
             pictureBox2 = new PictureBox();
             adminPanelContainer = new Panel();
+            btn_visitorQRCode = new Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panelLogo.SuspendLayout();
@@ -101,6 +102,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(254, 240, 138);
+            panel1.Controls.Add(btn_visitorQRCode);
             panel1.Controls.Add(btn_logout);
             panel1.Controls.Add(btn_blacklistManagement);
             panel1.Controls.Add(btn_visitorReports);
@@ -121,7 +123,7 @@
             btn_logout.FlatAppearance.MouseDownBackColor = Color.Yellow;
             btn_logout.FlatAppearance.MouseOverBackColor = Color.Yellow;
             btn_logout.FlatStyle = FlatStyle.Flat;
-            btn_logout.Font = new Font("Segoe UI", 9F);
+            btn_logout.Font = new Font("Segoe UI", 9.75F);
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
@@ -143,7 +145,7 @@
             btn_blacklistManagement.FlatAppearance.MouseDownBackColor = Color.Yellow;
             btn_blacklistManagement.FlatAppearance.MouseOverBackColor = Color.Yellow;
             btn_blacklistManagement.FlatStyle = FlatStyle.Flat;
-            btn_blacklistManagement.Font = new Font("Segoe UI", 9F);
+            btn_blacklistManagement.Font = new Font("Segoe UI", 9.75F);
             btn_blacklistManagement.ForeColor = SystemColors.ControlText;
             btn_blacklistManagement.Image = (Image)resources.GetObject("btn_blacklistManagement.Image");
             btn_blacklistManagement.ImageAlign = ContentAlignment.MiddleLeft;
@@ -165,7 +167,7 @@
             btn_visitorReports.FlatAppearance.MouseDownBackColor = Color.Yellow;
             btn_visitorReports.FlatAppearance.MouseOverBackColor = Color.Yellow;
             btn_visitorReports.FlatStyle = FlatStyle.Flat;
-            btn_visitorReports.Font = new Font("Segoe UI", 9F);
+            btn_visitorReports.Font = new Font("Segoe UI", 9.75F);
             btn_visitorReports.ForeColor = SystemColors.ControlText;
             btn_visitorReports.Image = (Image)resources.GetObject("btn_visitorReports.Image");
             btn_visitorReports.ImageAlign = ContentAlignment.MiddleLeft;
@@ -187,7 +189,7 @@
             btn_employeeManagement.FlatAppearance.MouseDownBackColor = Color.Yellow;
             btn_employeeManagement.FlatAppearance.MouseOverBackColor = Color.Yellow;
             btn_employeeManagement.FlatStyle = FlatStyle.Flat;
-            btn_employeeManagement.Font = new Font("Segoe UI", 9F);
+            btn_employeeManagement.Font = new Font("Segoe UI", 9.75F);
             btn_employeeManagement.ForeColor = SystemColors.ControlText;
             btn_employeeManagement.Image = (Image)resources.GetObject("btn_employeeManagement.Image");
             btn_employeeManagement.ImageAlign = ContentAlignment.MiddleLeft;
@@ -196,7 +198,7 @@
             btn_employeeManagement.Padding = new Padding(12, 0, 0, 0);
             btn_employeeManagement.Size = new Size(200, 55);
             btn_employeeManagement.TabIndex = 16;
-            btn_employeeManagement.Text = "   Employee Management";
+            btn_employeeManagement.Text = "  Employee Management";
             btn_employeeManagement.TextAlign = ContentAlignment.MiddleLeft;
             btn_employeeManagement.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_employeeManagement.UseVisualStyleBackColor = true;
@@ -209,7 +211,7 @@
             btn_visitorManagement.FlatAppearance.MouseDownBackColor = Color.Yellow;
             btn_visitorManagement.FlatAppearance.MouseOverBackColor = Color.Yellow;
             btn_visitorManagement.FlatStyle = FlatStyle.Flat;
-            btn_visitorManagement.Font = new Font("Segoe UI", 9F);
+            btn_visitorManagement.Font = new Font("Segoe UI", 9.75F);
             btn_visitorManagement.ForeColor = SystemColors.ControlText;
             btn_visitorManagement.Image = (Image)resources.GetObject("btn_visitorManagement.Image");
             btn_visitorManagement.ImageAlign = ContentAlignment.MiddleLeft;
@@ -231,7 +233,7 @@
             btn_admin_dashboard.FlatAppearance.MouseDownBackColor = Color.Yellow;
             btn_admin_dashboard.FlatAppearance.MouseOverBackColor = Color.Yellow;
             btn_admin_dashboard.FlatStyle = FlatStyle.Flat;
-            btn_admin_dashboard.Font = new Font("Segoe UI", 9F);
+            btn_admin_dashboard.Font = new Font("Segoe UI", 9.75F);
             btn_admin_dashboard.ForeColor = SystemColors.ControlText;
             btn_admin_dashboard.Image = (Image)resources.GetObject("btn_admin_dashboard.Image");
             btn_admin_dashboard.ImageAlign = ContentAlignment.MiddleLeft;
@@ -328,6 +330,28 @@
             adminPanelContainer.Size = new Size(1080, 642);
             adminPanelContainer.TabIndex = 38;
             // 
+            // btn_visitorQRCode
+            // 
+            btn_visitorQRCode.Dock = DockStyle.Top;
+            btn_visitorQRCode.FlatAppearance.BorderSize = 0;
+            btn_visitorQRCode.FlatAppearance.MouseDownBackColor = Color.Yellow;
+            btn_visitorQRCode.FlatAppearance.MouseOverBackColor = Color.Yellow;
+            btn_visitorQRCode.FlatStyle = FlatStyle.Flat;
+            btn_visitorQRCode.Font = new Font("Segoe UI", 9.75F);
+            btn_visitorQRCode.ForeColor = SystemColors.ControlText;
+            btn_visitorQRCode.Image = (Image)resources.GetObject("btn_visitorQRCode.Image");
+            btn_visitorQRCode.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_visitorQRCode.Location = new Point(0, 350);
+            btn_visitorQRCode.Name = "btn_visitorQRCode";
+            btn_visitorQRCode.Padding = new Padding(12, 0, 0, 0);
+            btn_visitorQRCode.Size = new Size(200, 55);
+            btn_visitorQRCode.TabIndex = 20;
+            btn_visitorQRCode.Text = "   Visitor's QR Codes";
+            btn_visitorQRCode.TextAlign = ContentAlignment.MiddleLeft;
+            btn_visitorQRCode.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_visitorQRCode.UseVisualStyleBackColor = true;
+            btn_visitorQRCode.Click += btn_visitorQRCode_Click;
+            // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -373,5 +397,6 @@
         private PictureBox pictureBox2;
         private Label label2;
         private Panel adminPanelContainer;
+        private Button btn_visitorQRCode;
     }
 }

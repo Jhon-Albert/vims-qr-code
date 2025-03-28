@@ -77,8 +77,9 @@ namespace Visitor_Identification_Management_System
         }
 
         //GENERATE VISITOR QR CODE
-        private void GenerateQRCode(string data, string visitorID)
+        /*private void GenerateQRCode(string data, string visitorID)
         {
+
             try
             {
                 using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
@@ -98,9 +99,36 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error generating QR Code: " + ex.Message, "QR Code Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }*/
+        private byte[] GenerateQRCode(string data, string visitorID)
+        {
+            try
+            {
+                using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+                {
+                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(data, QRCodeGenerator.ECCLevel.Q);
+                    using (QRCode qrCode = new QRCode(qrCodeData))
+                    {
+                        using (Bitmap qrCodeImage = qrCode.GetGraphic(10))
+                        {
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                qrCodeImage.Save(ms, ImageFormat.Png);
+                                return ms.ToArray(); // Return QR code as byte array
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error generating QR Code: " + ex.Message, "QR Code Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         //SEND VISITOR QR CODE TO EMAIL
+        /*
         private bool SendEmailWithQRCode(string recipientEmail, string qrFilePath)
         {
             try
@@ -134,7 +162,41 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Error sending email: " + ex.Message, "Email Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }*/
+        private bool SendEmailWithQRCode(string recipientEmail, byte[] qrCodeBytes)
+        {
+            try
+            {
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress(senderEmail);
+                    mail.To.Add(recipientEmail);
+                    mail.Subject = "Your Visitor QR Code";
+                    mail.Body = "Dear Visitor,\n\nAttached is your generated QR Code for verification upon arrival.\n\nThank you!";
+
+                    if (qrCodeBytes != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream(qrCodeBytes))
+                        {
+                            mail.Attachments.Add(new Attachment(ms, "Visitor_QRCode.png", "image/png"));
+                            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                            {
+                                smtp.Credentials = new NetworkCredential(senderEmail, senderPassword);
+                                smtp.EnableSsl = true;
+                                smtp.Send(mail);
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error sending email: " + ex.Message, "Email Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
+
         private bool IsValidEmail(string email)
         {
             try { return new MailAddress(email).Address == email; }
@@ -144,6 +206,7 @@ namespace Visitor_Identification_Management_System
         private void ClearTextFields()
         {
             txt_firstName.Clear();
+            txt_middleName.Clear();
             txt_lastName.Clear();
             txt_email.Clear();
             txt_contactNumber.Clear();
@@ -181,10 +244,14 @@ namespace Visitor_Identification_Management_System
             {
                 string visitorID = GenerateVisitorID();
                 byte[] profilePicture = pb_uploadProfile.Image != null ? ImageToByteArray(pb_uploadProfile.Image) : null;
+                string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nMiddleName: {txt_middleName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
+                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
+                byte[] qrCodeBytes = GenerateQRCode(systemVisitorData, visitorID);
+
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
+                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@VisitorID", visitorID.Trim());
@@ -204,18 +271,17 @@ namespace Visitor_Identification_Management_System
                         {
                             cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = DBNull.Value;
                         }
+                        //cmd.Parameters.AddWithValue("@QRCodeImage", qrCodeBytes ?? (object)DBNull.Value);
+                        cmd.Parameters.Add("@QRCodeImage", SqlDbType.VarBinary).Value = qrCodeBytes ?? (object)DBNull.Value;
 
-                            cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
                         MessageBox.Show("Data saved successfully.");
                     }
                 }
+                //string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
+                //GenerateQRCode(systemVisitorData, visitorID);
 
-                string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nMiddleName: {txt_middleName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
-                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
-                string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
-                GenerateQRCode(systemVisitorData, visitorID);
-
-                if (SendEmailWithQRCode(txt_email.Text.Trim(), filePath))
+                if (SendEmailWithQRCode(txt_email.Text.Trim(), qrCodeBytes))
                 {
                     MessageBox.Show("Visitor Registered Successfully and QR Code sent to " + txt_email.Text.Trim());
                 }

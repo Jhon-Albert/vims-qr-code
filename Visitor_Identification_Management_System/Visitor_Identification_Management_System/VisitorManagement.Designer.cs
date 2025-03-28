@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel3 = new Panel();
             panel5 = new Panel();
             dgv_visitorManagement = new DataGridView();
@@ -58,6 +58,7 @@
             label3 = new Label();
             label8 = new Label();
             txt_email = new TextBox();
+            txt_searchVisitor = new TextBox();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_visitorManagement).BeginInit();
@@ -79,6 +80,7 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(txt_searchVisitor);
             panel5.Controls.Add(dgv_visitorManagement);
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(0, 100);
@@ -96,24 +98,24 @@
             dgv_visitorManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_visitorManagement.BackgroundColor = SystemColors.Info;
             dgv_visitorManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgv_visitorManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle2;
-            dgv_visitorManagement.Location = new Point(17, 37);
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle6;
+            dgv_visitorManagement.Location = new Point(17, 65);
             dgv_visitorManagement.Name = "dgv_visitorManagement";
             dgv_visitorManagement.RowHeadersVisible = false;
             dgv_visitorManagement.Size = new Size(770, 370);
@@ -407,6 +409,16 @@
             txt_email.Size = new Size(232, 29);
             txt_email.TabIndex = 55;
             // 
+            // txt_searchVisitor
+            // 
+            txt_searchVisitor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_searchVisitor.Location = new Point(17, 30);
+            txt_searchVisitor.Name = "txt_searchVisitor";
+            txt_searchVisitor.PlaceholderText = "Search";
+            txt_searchVisitor.Size = new Size(204, 29);
+            txt_searchVisitor.TabIndex = 20;
+            txt_searchVisitor.TextChanged += txt_searchVisitor_TextChanged;
+            // 
             // VisitorManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -417,6 +429,7 @@
             Load += VisitorManagement_Load;
             panel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_visitorManagement).EndInit();
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -455,5 +468,6 @@
         private Button btn_clear;
         private TextBox txt_middleName;
         private Label label10;
+        private TextBox txt_searchVisitor;
     }
 }

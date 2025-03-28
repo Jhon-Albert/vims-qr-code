@@ -41,6 +41,11 @@ namespace Visitor_Identification_Management_System
                     DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)dgv_visitorManagement.Columns["ProfilePicture"];
                     imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 }
+                if (dgv_visitorManagement.Columns["QRCodeImage"] != null && dgv_visitorManagement.Columns["QRCodeImage"] is DataGridViewImageColumn)
+                {
+                    DataGridViewImageColumn qrColumn = (DataGridViewImageColumn)dgv_visitorManagement.Columns["QRCodeImage"];
+                    qrColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                }
             }
             catch (Exception ex)
             {
@@ -61,7 +66,7 @@ namespace Visitor_Identification_Management_System
             txt_address.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
             txt_contactNumber.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[6].Value.ToString();
             txt_purpose.Text = dgv_visitorManagement.Rows[e.RowIndex].Cells[7].Value.ToString();
-            
+
         }
         private void ClearTextFields()
         {
@@ -105,7 +110,7 @@ namespace Visitor_Identification_Management_System
             {
                 con.Close();
             }
-            
+
         }
         private void btn_update_Click(object sender, EventArgs e)
         {
@@ -197,6 +202,28 @@ namespace Visitor_Identification_Management_System
         private void btn_clear_Click(object sender, EventArgs e)
         {
             ClearTextFields();
+        }
+
+        private void txt_searchVisitor_TextChanged(object sender, EventArgs e)
+        {
+            searchData(txt_searchVisitor.Text);
+        }
+        private void searchData(string search)
+        {
+            try
+            {
+                con.Open();
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Registration WHERE FirstName LIKE @search OR LastName LIKE @search OR Email LIKE @search OR VisitorID LIKE @search", con);
+                sda.SelectCommand.Parameters.AddWithValue("@search", "%" + search + "%");
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                dgv_visitorManagement.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message: " + ex.Message);
+            }
         }
     }
 }

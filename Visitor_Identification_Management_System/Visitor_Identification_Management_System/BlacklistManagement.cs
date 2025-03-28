@@ -63,7 +63,7 @@ namespace Visitor_Identification_Management_System
             try
             {
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Blacklist WHERE FirstName LIKE @search OR LastName LIKE @search OR Reason LIKE @search", con);
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Blacklist WHERE FirstName LIKE @search OR LastName LIKE @search OR Reason LIKE @search OR BlacklistID LIKE @search", con);
                 sda.SelectCommand.Parameters.AddWithValue("@search", "%" + search + "%");
                 DataTable dt = new DataTable();
                 sda.Fill(dt);

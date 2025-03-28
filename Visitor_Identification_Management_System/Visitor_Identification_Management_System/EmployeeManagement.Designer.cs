@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
@@ -53,6 +53,7 @@
             panel3 = new Panel();
             panel4 = new Panel();
             dgv_employeeManagement = new DataGridView();
+            txt_searchEmployee = new TextBox();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -106,16 +107,16 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label8);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(698, 0);
+            panel2.Location = new Point(799, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(355, 525);
+            panel2.Size = new Size(281, 642);
             panel2.TabIndex = 23;
             // 
             // txt_employeeMiddleName
             // 
             txt_employeeMiddleName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeMiddleName.Font = new Font("Segoe UI", 12F);
-            txt_employeeMiddleName.Location = new Point(69, 197);
+            txt_employeeMiddleName.Location = new Point(22, 273);
             txt_employeeMiddleName.Name = "txt_employeeMiddleName";
             txt_employeeMiddleName.Size = new Size(232, 29);
             txt_employeeMiddleName.TabIndex = 90;
@@ -125,7 +126,7 @@
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(69, 173);
+            label7.Location = new Point(22, 249);
             label7.Name = "label7";
             label7.Size = new Size(104, 21);
             label7.TabIndex = 89;
@@ -135,7 +136,7 @@
             // 
             txt_employeeFirstName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeFirstName.Font = new Font("Segoe UI", 12F);
-            txt_employeeFirstName.Location = new Point(69, 141);
+            txt_employeeFirstName.Location = new Point(22, 217);
             txt_employeeFirstName.Name = "txt_employeeFirstName";
             txt_employeeFirstName.Size = new Size(232, 29);
             txt_employeeFirstName.TabIndex = 88;
@@ -145,7 +146,7 @@
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(69, 117);
+            label6.Location = new Point(22, 193);
             label6.Name = "label6";
             label6.Size = new Size(86, 21);
             label6.TabIndex = 87;
@@ -162,7 +163,7 @@
             btn_clear.FlatStyle = FlatStyle.Flat;
             btn_clear.Font = new Font("Segoe UI", 12F);
             btn_clear.ForeColor = Color.White;
-            btn_clear.Location = new Point(149, 475);
+            btn_clear.Location = new Point(104, 564);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(77, 33);
             btn_clear.TabIndex = 86;
@@ -175,7 +176,7 @@
             txt_employeeID.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeID.Enabled = false;
             txt_employeeID.Font = new Font("Segoe UI", 12F);
-            txt_employeeID.Location = new Point(69, 85);
+            txt_employeeID.Location = new Point(22, 161);
             txt_employeeID.Name = "txt_employeeID";
             txt_employeeID.Size = new Size(232, 29);
             txt_employeeID.TabIndex = 71;
@@ -185,7 +186,7 @@
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(69, 61);
+            label5.Location = new Point(22, 137);
             label5.Name = "label5";
             label5.Size = new Size(97, 21);
             label5.TabIndex = 70;
@@ -203,7 +204,7 @@
             btn_delete.FlatStyle = FlatStyle.Flat;
             btn_delete.Font = new Font("Segoe UI", 12F);
             btn_delete.ForeColor = Color.White;
-            btn_delete.Location = new Point(242, 436);
+            btn_delete.Location = new Point(187, 512);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(77, 33);
             btn_delete.TabIndex = 69;
@@ -222,7 +223,7 @@
             btn_update.FlatStyle = FlatStyle.Flat;
             btn_update.Font = new Font("Segoe UI", 12F);
             btn_update.ForeColor = Color.White;
-            btn_update.Location = new Point(149, 436);
+            btn_update.Location = new Point(104, 512);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(77, 33);
             btn_update.TabIndex = 68;
@@ -241,7 +242,7 @@
             btn_add.FlatStyle = FlatStyle.Flat;
             btn_add.Font = new Font("Segoe UI", 12F);
             btn_add.ForeColor = Color.White;
-            btn_add.Location = new Point(58, 436);
+            btn_add.Location = new Point(21, 512);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(77, 33);
             btn_add.TabIndex = 67;
@@ -253,7 +254,7 @@
             // 
             txt_employeePassword.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeePassword.Font = new Font("Segoe UI", 12F);
-            txt_employeePassword.Location = new Point(69, 365);
+            txt_employeePassword.Location = new Point(22, 441);
             txt_employeePassword.Name = "txt_employeePassword";
             txt_employeePassword.Size = new Size(232, 29);
             txt_employeePassword.TabIndex = 62;
@@ -262,7 +263,7 @@
             // 
             txt_employeeEmail.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeEmail.Font = new Font("Segoe UI", 12F);
-            txt_employeeEmail.Location = new Point(69, 309);
+            txt_employeeEmail.Location = new Point(22, 385);
             txt_employeeEmail.Name = "txt_employeeEmail";
             txt_employeeEmail.Size = new Size(232, 29);
             txt_employeeEmail.TabIndex = 61;
@@ -271,7 +272,7 @@
             // 
             txt_employeeLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_employeeLastName.Font = new Font("Segoe UI", 12F);
-            txt_employeeLastName.Location = new Point(69, 253);
+            txt_employeeLastName.Location = new Point(22, 329);
             txt_employeeLastName.Name = "txt_employeeLastName";
             txt_employeeLastName.Size = new Size(232, 29);
             txt_employeeLastName.TabIndex = 60;
@@ -281,7 +282,7 @@
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(69, 341);
+            label4.Location = new Point(22, 417);
             label4.Name = "label4";
             label4.Size = new Size(76, 21);
             label4.TabIndex = 59;
@@ -292,7 +293,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(69, 285);
+            label3.Location = new Point(22, 361);
             label3.Name = "label3";
             label3.Size = new Size(48, 21);
             label3.TabIndex = 58;
@@ -303,7 +304,7 @@
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(69, 229);
+            label8.Location = new Point(22, 305);
             label8.Name = "label8";
             label8.Size = new Size(84, 21);
             label8.TabIndex = 57;
@@ -316,16 +317,17 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(698, 100);
+            panel3.Size = new Size(799, 100);
             panel3.TabIndex = 24;
             // 
             // panel4
             // 
+            panel4.Controls.Add(txt_searchEmployee);
             panel4.Controls.Add(dgv_employeeManagement);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(0, 100);
             panel4.Name = "panel4";
-            panel4.Size = new Size(698, 425);
+            panel4.Size = new Size(799, 542);
             panel4.TabIndex = 25;
             // 
             // dgv_employeeManagement
@@ -338,29 +340,39 @@
             dgv_employeeManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_employeeManagement.BackgroundColor = SystemColors.Info;
             dgv_employeeManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgv_employeeManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgv_employeeManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgv_employeeManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgv_employeeManagement.DefaultCellStyle = dataGridViewCellStyle4;
-            dgv_employeeManagement.Location = new Point(17, 37);
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgv_employeeManagement.DefaultCellStyle = dataGridViewCellStyle6;
+            dgv_employeeManagement.Location = new Point(17, 65);
             dgv_employeeManagement.Name = "dgv_employeeManagement";
             dgv_employeeManagement.RowHeadersVisible = false;
-            dgv_employeeManagement.Size = new Size(675, 370);
+            dgv_employeeManagement.Size = new Size(776, 370);
             dgv_employeeManagement.TabIndex = 16;
             dgv_employeeManagement.CellContentClick += dgv_employeeManagement_CellContentClick;
+            // 
+            // txt_searchEmployee
+            // 
+            txt_searchEmployee.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_searchEmployee.Location = new Point(17, 30);
+            txt_searchEmployee.Name = "txt_searchEmployee";
+            txt_searchEmployee.PlaceholderText = "Search";
+            txt_searchEmployee.Size = new Size(204, 29);
+            txt_searchEmployee.TabIndex = 19;
+            txt_searchEmployee.TextChanged += txt_searchEmployee_TextChanged;
             // 
             // EmployeeManagement
             // 
@@ -371,12 +383,13 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "EmployeeManagement";
-            Size = new Size(1053, 525);
+            Size = new Size(1080, 642);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_employeeManagement).EndInit();
             ResumeLayout(false);
         }
@@ -406,5 +419,6 @@
         private Label label7;
         private TextBox txt_employeeFirstName;
         private Label label6;
+        private TextBox txt_searchEmployee;
     }
 }

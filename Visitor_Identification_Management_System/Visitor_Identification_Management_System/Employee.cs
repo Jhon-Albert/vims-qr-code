@@ -214,14 +214,17 @@ namespace Visitor_Identification_Management_System
                                         int count = (int)checkCmd.ExecuteScalar();
                                         if (count > 0) continue;
                                     }
-                                    
+
+                                    string visitorData = $"{visitorID}|{firstName}|{middleName}|{lastName}|{address}|{contactNumber}|{purpose}";
+                                    byte[] qrCodeBytes = QRCodeHelper.GenerateQRCode(visitorData, visitorID);
+
                                     // Insert new record
-                                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture)";
+                                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage)";
                                     using (SqlCommand cmd = new SqlCommand(query, con))
                                     {
                                         cmd.Parameters.AddWithValue("@VisitorID", visitorID);
                                         cmd.Parameters.AddWithValue("@FirstName", firstName);
-                                        cmd.Parameters.AddWithValue("@MidleName", middleName);
+                                        cmd.Parameters.AddWithValue("@MiddleName", middleName);
                                         cmd.Parameters.AddWithValue("@LastName", lastName);
                                         cmd.Parameters.AddWithValue("@Email", email);
                                         cmd.Parameters.AddWithValue("@Address", address);
@@ -250,16 +253,16 @@ namespace Visitor_Identification_Management_System
                                         {
                                             cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = DBNull.Value;
                                         }
+                                        cmd.Parameters.Add("@QRCodeImage", SqlDbType.VarBinary).Value = qrCodeBytes ?? (object)DBNull.Value;
 
                                         cmd.ExecuteNonQuery();
                                     }
 
                                     // Generate and send QR code
-                                    string visitorData = $"{visitorID}|{firstName}|{middleName}|{lastName}|{address}|{contactNumber}|{purpose}";
                                     string filePath = Path.Combine(Application.StartupPath, $"Visitor_{visitorID}.png");
-                                    QRCodeHelper.GenerateQRCode(visitorData, visitorID);
+                                    
 
-                                    if (QRCodeHelper.SendEmailWithQRCode(email, filePath))
+                                    if (QRCodeHelper.SendEmailWithQRCode(email, qrCodeBytes))
                                     {
                                         MessageBox.Show($"QR Code sent to {email}");
                                     }

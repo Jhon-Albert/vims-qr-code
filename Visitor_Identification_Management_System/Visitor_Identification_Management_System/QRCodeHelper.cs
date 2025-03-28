@@ -8,8 +8,8 @@ using QRCoder;
 
 public static class QRCodeHelper
 {
-    
-    public static void GenerateQRCode(string data, string visitorID)
+
+    /*public static void GenerateQRCode(string data, string visitorID)
     {
         using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
         {
@@ -25,9 +25,29 @@ public static class QRCodeHelper
                 }
             }
         }
+    }*/
+    public static byte[] GenerateQRCode(string data, string visitorID)
+    {
+        using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+        {
+            using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(data, QRCodeGenerator.ECCLevel.Q))
+            {
+                using (QRCode qrCode = new QRCode(qrCodeData))
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        using (Bitmap qrCodeImage = qrCode.GetGraphic(20))
+                        {
+                            qrCodeImage.Save(ms, ImageFormat.Png);
+                            return ms.ToArray(); // Return QR code as byte array
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    public static bool SendEmailWithQRCode(string email, string filePath)
+    /*public static bool SendEmailWithQRCode(string email, string filePath)
     {
         try
         {
@@ -52,6 +72,36 @@ public static class QRCodeHelper
             smtp.Credentials = new System.Net.NetworkCredential(senderEmail, senderPassword);
             smtp.EnableSsl = true;
             smtp.Send(mail);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Email sending failed: " + ex.Message);
+            return false;
+        }
+    }*/
+    public static bool SendEmailWithQRCode(string email, byte[] qrCodeBytes)
+    {
+        try
+        {
+            string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "your-email@gmail.com";
+            string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "your-app-password";
+
+            using (MemoryStream ms = new MemoryStream(qrCodeBytes))
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(senderEmail);
+                mail.To.Add(email);
+                mail.Subject = "Your Visitor QR Code";
+                mail.Body = "Here is your QR code for your visit.";
+                mail.Attachments.Add(new Attachment(ms, "VisitorQRCode.png", "image/png"));
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new System.Net.NetworkCredential(senderEmail, senderPassword);
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
 
             return true;
         }

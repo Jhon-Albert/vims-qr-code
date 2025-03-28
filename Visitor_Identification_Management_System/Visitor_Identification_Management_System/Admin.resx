@@ -134,6 +134,15 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btn_visitorQRCode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAMFJREFUSEvt
+        k9sJQkEMRKckO9DOtBQ70Q60BDvQDpQDNxASFmfvhx9yDwTC7GSzT2ljkp2km6R3CTTGZn2Nu6SXpFMJ
+        NIpnfQ1WgbGCxljg+hq5MLYNtdD1NdxC19fIhZla6PoaD0lPSccSaFzsrK/BE8MQ245Aq8/U8f0h7g8N
+        /Zo08tCHuD90dQMGnefHZMRZ0n4J8tCH5AZ5NbVBcEg+8q/8tEGmNuAYLsuxMDFBjkYMcX9orHr6kt0f
+        urrBRuMD/ZqZQZ3WKzcAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btn_logout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA

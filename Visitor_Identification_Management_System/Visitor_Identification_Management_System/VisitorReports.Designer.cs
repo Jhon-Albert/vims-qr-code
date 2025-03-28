@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitorReports));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            btn_import = new Button();
             btn_print = new Button();
             btn_export = new Button();
             btn_refresh = new Button();
             dgv_reports = new DataGridView();
             txt_search_reports = new TextBox();
-            btn_import = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_reports).BeginInit();
@@ -72,7 +73,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1053, 100);
+            panel1.Size = new Size(1080, 100);
             panel1.TabIndex = 22;
             // 
             // panel2
@@ -86,8 +87,30 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 100);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1053, 425);
+            panel2.Size = new Size(1080, 542);
             panel2.TabIndex = 23;
+            // 
+            // btn_import
+            // 
+            btn_import.Anchor = AnchorStyles.None;
+            btn_import.AutoSize = true;
+            btn_import.BackColor = Color.FromArgb(52, 152, 219);
+            btn_import.FlatAppearance.BorderSize = 0;
+            btn_import.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_import.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_import.FlatStyle = FlatStyle.Flat;
+            btn_import.Font = new Font("Segoe UI", 12F);
+            btn_import.ForeColor = Color.White;
+            btn_import.Image = (Image)resources.GetObject("btn_import.Image");
+            btn_import.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_import.Location = new Point(630, 383);
+            btn_import.Name = "btn_import";
+            btn_import.Size = new Size(100, 33);
+            btn_import.TabIndex = 73;
+            btn_import.Text = "IMPORT";
+            btn_import.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_import.UseVisualStyleBackColor = false;
+            btn_import.Click += btn_import_Click;
             // 
             // btn_print
             // 
@@ -100,11 +123,14 @@
             btn_print.FlatStyle = FlatStyle.Flat;
             btn_print.Font = new Font("Segoe UI", 12F);
             btn_print.ForeColor = Color.White;
-            btn_print.Location = new Point(530, 358);
+            btn_print.Image = (Image)resources.GetObject("btn_print.Image");
+            btn_print.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_print.Location = new Point(509, 383);
             btn_print.Name = "btn_print";
-            btn_print.Size = new Size(77, 33);
+            btn_print.Size = new Size(87, 33);
             btn_print.TabIndex = 72;
             btn_print.Text = "PRINT";
+            btn_print.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_print.UseVisualStyleBackColor = false;
             btn_print.Click += btn_print_Click;
             // 
@@ -119,11 +145,14 @@
             btn_export.FlatStyle = FlatStyle.Flat;
             btn_export.Font = new Font("Segoe UI", 12F);
             btn_export.ForeColor = Color.White;
-            btn_export.Location = new Point(447, 358);
+            btn_export.Image = (Image)resources.GetObject("btn_export.Image");
+            btn_export.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_export.Location = new Point(374, 383);
             btn_export.Name = "btn_export";
-            btn_export.Size = new Size(77, 33);
+            btn_export.Size = new Size(99, 33);
             btn_export.TabIndex = 71;
             btn_export.Text = "EXPORT";
+            btn_export.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_export.UseVisualStyleBackColor = false;
             btn_export.Click += btn_export_Click;
             // 
@@ -138,11 +167,12 @@
             btn_refresh.FlatStyle = FlatStyle.Flat;
             btn_refresh.Font = new Font("Segoe UI", 12F);
             btn_refresh.ForeColor = Color.White;
-            btn_refresh.Location = new Point(357, 358);
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(247, 17);
             btn_refresh.Name = "btn_refresh";
-            btn_refresh.Size = new Size(84, 33);
+            btn_refresh.Size = new Size(30, 30);
             btn_refresh.TabIndex = 70;
-            btn_refresh.Text = "REFRESH";
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_refresh.UseVisualStyleBackColor = false;
             btn_refresh.Click += btn_refresh_Click;
             // 
@@ -176,36 +206,18 @@
             dgv_reports.Location = new Point(37, 52);
             dgv_reports.Name = "dgv_reports";
             dgv_reports.RowHeadersVisible = false;
-            dgv_reports.Size = new Size(980, 300);
+            dgv_reports.Size = new Size(1007, 300);
             dgv_reports.TabIndex = 15;
             // 
             // txt_search_reports
             // 
-            txt_search_reports.Location = new Point(37, 23);
+            txt_search_reports.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_search_reports.Location = new Point(37, 17);
             txt_search_reports.Name = "txt_search_reports";
             txt_search_reports.PlaceholderText = "Search";
-            txt_search_reports.Size = new Size(204, 23);
+            txt_search_reports.Size = new Size(204, 29);
             txt_search_reports.TabIndex = 14;
             txt_search_reports.TextChanged += txt_search_reports_TextChanged;
-            // 
-            // btn_import
-            // 
-            btn_import.Anchor = AnchorStyles.None;
-            btn_import.AutoSize = true;
-            btn_import.BackColor = Color.FromArgb(52, 152, 219);
-            btn_import.FlatAppearance.BorderSize = 0;
-            btn_import.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
-            btn_import.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
-            btn_import.FlatStyle = FlatStyle.Flat;
-            btn_import.Font = new Font("Segoe UI", 12F);
-            btn_import.ForeColor = Color.White;
-            btn_import.Location = new Point(613, 358);
-            btn_import.Name = "btn_import";
-            btn_import.Size = new Size(77, 33);
-            btn_import.TabIndex = 73;
-            btn_import.Text = "IMPORT";
-            btn_import.UseVisualStyleBackColor = false;
-            btn_import.Click += btn_import_Click;
             // 
             // VisitorReports
             // 
@@ -214,7 +226,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "VisitorReports";
-            Size = new Size(1053, 525);
+            Size = new Size(1080, 642);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

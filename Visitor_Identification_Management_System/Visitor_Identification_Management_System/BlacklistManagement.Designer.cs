@@ -90,7 +90,7 @@
             btn_clear.FlatStyle = FlatStyle.Flat;
             btn_clear.Font = new Font("Segoe UI", 12F);
             btn_clear.ForeColor = Color.White;
-            btn_clear.Location = new Point(109, 485);
+            btn_clear.Location = new Point(102, 478);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(77, 33);
             btn_clear.TabIndex = 85;
@@ -103,7 +103,7 @@
             txt_dateAdded.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_dateAdded.Enabled = false;
             txt_dateAdded.Font = new Font("Segoe UI", 12F);
-            txt_dateAdded.Location = new Point(37, 398);
+            txt_dateAdded.Location = new Point(30, 391);
             txt_dateAdded.Name = "txt_dateAdded";
             txt_dateAdded.Size = new Size(232, 29);
             txt_dateAdded.TabIndex = 84;
@@ -119,7 +119,7 @@
             btn_delete.FlatStyle = FlatStyle.Flat;
             btn_delete.Font = new Font("Segoe UI", 12F);
             btn_delete.ForeColor = Color.White;
-            btn_delete.Location = new Point(192, 446);
+            btn_delete.Location = new Point(185, 439);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(77, 33);
             btn_delete.TabIndex = 83;
@@ -138,7 +138,7 @@
             btn_update.FlatStyle = FlatStyle.Flat;
             btn_update.Font = new Font("Segoe UI", 12F);
             btn_update.ForeColor = Color.White;
-            btn_update.Location = new Point(109, 446);
+            btn_update.Location = new Point(102, 439);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(77, 33);
             btn_update.TabIndex = 82;
@@ -157,7 +157,7 @@
             btn_add.FlatStyle = FlatStyle.Flat;
             btn_add.Font = new Font("Segoe UI", 12F);
             btn_add.ForeColor = Color.White;
-            btn_add.Location = new Point(26, 446);
+            btn_add.Location = new Point(19, 439);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(77, 33);
             btn_add.TabIndex = 81;
@@ -170,7 +170,7 @@
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(38, 374);
+            label6.Location = new Point(31, 367);
             label6.Name = "label6";
             label6.Size = new Size(91, 21);
             label6.TabIndex = 80;
@@ -181,7 +181,7 @@
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(38, 93);
+            label7.Location = new Point(31, 86);
             label7.Name = "label7";
             label7.Size = new Size(86, 21);
             label7.TabIndex = 79;
@@ -191,7 +191,7 @@
             // 
             txt_blacklistFirstname.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_blacklistFirstname.Font = new Font("Segoe UI", 12F);
-            txt_blacklistFirstname.Location = new Point(37, 117);
+            txt_blacklistFirstname.Location = new Point(30, 110);
             txt_blacklistFirstname.Name = "txt_blacklistFirstname";
             txt_blacklistFirstname.Size = new Size(232, 29);
             txt_blacklistFirstname.TabIndex = 78;
@@ -201,7 +201,7 @@
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(38, 205);
+            label5.Location = new Point(31, 198);
             label5.Name = "label5";
             label5.Size = new Size(84, 21);
             label5.TabIndex = 76;
@@ -211,7 +211,7 @@
             // 
             txt_blacklistLastname.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_blacklistLastname.Font = new Font("Segoe UI", 12F);
-            txt_blacklistLastname.Location = new Point(37, 229);
+            txt_blacklistLastname.Location = new Point(30, 222);
             txt_blacklistLastname.Name = "txt_blacklistLastname";
             txt_blacklistLastname.Size = new Size(232, 29);
             txt_blacklistLastname.TabIndex = 74;
@@ -221,7 +221,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(37, 261);
+            label3.Location = new Point(30, 254);
             label3.Name = "label3";
             label3.Size = new Size(61, 21);
             label3.TabIndex = 73;
@@ -232,7 +232,7 @@
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(38, 37);
+            label8.Location = new Point(31, 30);
             label8.Name = "label8";
             label8.Size = new Size(85, 21);
             label8.TabIndex = 72;
@@ -243,7 +243,7 @@
             txt_blacklistID.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_blacklistID.Enabled = false;
             txt_blacklistID.Font = new Font("Segoe UI", 12F);
-            txt_blacklistID.Location = new Point(37, 61);
+            txt_blacklistID.Location = new Point(30, 54);
             txt_blacklistID.Name = "txt_blacklistID";
             txt_blacklistID.Size = new Size(232, 29);
             txt_blacklistID.TabIndex = 70;
@@ -252,7 +252,7 @@
             // 
             txt_reason.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_reason.Font = new Font("Segoe UI", 12F);
-            txt_reason.Location = new Point(37, 285);
+            txt_reason.Location = new Point(30, 278);
             txt_reason.Multiline = true;
             txt_reason.Name = "txt_reason";
             txt_reason.Size = new Size(232, 86);
@@ -260,10 +260,11 @@
             // 
             // txt_search_blacklist
             // 
-            txt_search_blacklist.Location = new Point(17, 36);
+            txt_search_blacklist.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_search_blacklist.Location = new Point(17, 30);
             txt_search_blacklist.Name = "txt_search_blacklist";
             txt_search_blacklist.PlaceholderText = "Search";
-            txt_search_blacklist.Size = new Size(204, 23);
+            txt_search_blacklist.Size = new Size(204, 29);
             txt_search_blacklist.TabIndex = 18;
             txt_search_blacklist.TextChanged += txt_search_blacklist_TextChanged;
             // 
@@ -297,7 +298,7 @@
             dgv_blacklist.Location = new Point(17, 65);
             dgv_blacklist.Name = "dgv_blacklist";
             dgv_blacklist.RowHeadersVisible = false;
-            dgv_blacklist.Size = new Size(755, 359);
+            dgv_blacklist.Size = new Size(778, 359);
             dgv_blacklist.TabIndex = 17;
             dgv_blacklist.CellContentClick += dgv_blacklist_CellContentClick;
             // 
@@ -330,16 +331,16 @@
             panel2.Controls.Add(btn_add);
             panel2.Controls.Add(txt_reason);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(778, 100);
+            panel2.Location = new Point(801, 100);
             panel2.Name = "panel2";
-            panel2.Size = new Size(302, 542);
+            panel2.Size = new Size(279, 542);
             panel2.TabIndex = 87;
             // 
             // txt_blacklistMiddleName
             // 
             txt_blacklistMiddleName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_blacklistMiddleName.Font = new Font("Segoe UI", 12F);
-            txt_blacklistMiddleName.Location = new Point(37, 173);
+            txt_blacklistMiddleName.Location = new Point(30, 166);
             txt_blacklistMiddleName.Name = "txt_blacklistMiddleName";
             txt_blacklistMiddleName.Size = new Size(232, 29);
             txt_blacklistMiddleName.TabIndex = 86;
@@ -349,7 +350,7 @@
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(38, 149);
+            label4.Location = new Point(31, 142);
             label4.Name = "label4";
             label4.Size = new Size(104, 21);
             label4.TabIndex = 87;
@@ -362,7 +363,7 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 100);
             panel3.Name = "panel3";
-            panel3.Size = new Size(778, 542);
+            panel3.Size = new Size(801, 542);
             panel3.TabIndex = 88;
             // 
             // BlacklistManagement

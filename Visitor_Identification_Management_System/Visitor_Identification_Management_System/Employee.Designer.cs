@@ -125,7 +125,7 @@
             btn_register.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_register.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_register.FlatStyle = FlatStyle.Flat;
-            btn_register.Font = new Font("Segoe UI", 9F);
+            btn_register.Font = new Font("Segoe UI", 9.75F);
             btn_register.ForeColor = SystemColors.ControlText;
             btn_register.Image = (Image)resources.GetObject("btn_register.Image");
             btn_register.ImageAlign = ContentAlignment.MiddleLeft;
@@ -147,7 +147,7 @@
             btn_realTime.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_realTime.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_realTime.FlatStyle = FlatStyle.Flat;
-            btn_realTime.Font = new Font("Segoe UI", 9F);
+            btn_realTime.Font = new Font("Segoe UI", 9.75F);
             btn_realTime.ForeColor = SystemColors.ControlText;
             btn_realTime.Image = (Image)resources.GetObject("btn_realTime.Image");
             btn_realTime.ImageAlign = ContentAlignment.MiddleLeft;
@@ -156,7 +156,7 @@
             btn_realTime.Padding = new Padding(12, 0, 0, 0);
             btn_realTime.Size = new Size(200, 55);
             btn_realTime.TabIndex = 21;
-            btn_realTime.Text = " Real-Time Tracking";
+            btn_realTime.Text = "   Real-Time Tracking";
             btn_realTime.TextAlign = ContentAlignment.MiddleLeft;
             btn_realTime.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_realTime.UseVisualStyleBackColor = true;
@@ -169,7 +169,7 @@
             btn_logout.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_logout.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_logout.FlatStyle = FlatStyle.Flat;
-            btn_logout.Font = new Font("Segoe UI", 9F);
+            btn_logout.Font = new Font("Segoe UI", 9.75F);
             btn_logout.ForeColor = SystemColors.ControlText;
             btn_logout.Image = (Image)resources.GetObject("btn_logout.Image");
             btn_logout.ImageAlign = ContentAlignment.MiddleLeft;
@@ -191,7 +191,7 @@
             btn_scan.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_scan.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_scan.FlatStyle = FlatStyle.Flat;
-            btn_scan.Font = new Font("Segoe UI", 9F);
+            btn_scan.Font = new Font("Segoe UI", 9.75F);
             btn_scan.ForeColor = SystemColors.ControlText;
             btn_scan.Image = (Image)resources.GetObject("btn_scan.Image");
             btn_scan.ImageAlign = ContentAlignment.MiddleLeft;
@@ -213,7 +213,7 @@
             btn_blacklist.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_blacklist.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_blacklist.FlatStyle = FlatStyle.Flat;
-            btn_blacklist.Font = new Font("Segoe UI", 9F);
+            btn_blacklist.Font = new Font("Segoe UI", 9.75F);
             btn_blacklist.ForeColor = SystemColors.ControlText;
             btn_blacklist.Image = (Image)resources.GetObject("btn_blacklist.Image");
             btn_blacklist.ImageAlign = ContentAlignment.MiddleLeft;
@@ -235,7 +235,7 @@
             btn_info.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_info.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_info.FlatStyle = FlatStyle.Flat;
-            btn_info.Font = new Font("Segoe UI", 9F);
+            btn_info.Font = new Font("Segoe UI", 9.75F);
             btn_info.ForeColor = SystemColors.ControlText;
             btn_info.Image = (Image)resources.GetObject("btn_info.Image");
             btn_info.ImageAlign = ContentAlignment.MiddleLeft;
@@ -257,7 +257,7 @@
             btn_logs.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_logs.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_logs.FlatStyle = FlatStyle.Flat;
-            btn_logs.Font = new Font("Segoe UI", 9F);
+            btn_logs.Font = new Font("Segoe UI", 9.75F);
             btn_logs.ForeColor = SystemColors.ControlText;
             btn_logs.Image = (Image)resources.GetObject("btn_logs.Image");
             btn_logs.ImageAlign = ContentAlignment.MiddleLeft;
@@ -279,7 +279,7 @@
             btn_dashboard.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
             btn_dashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
             btn_dashboard.FlatStyle = FlatStyle.Flat;
-            btn_dashboard.Font = new Font("Segoe UI", 9F);
+            btn_dashboard.Font = new Font("Segoe UI", 9.75F);
             btn_dashboard.ForeColor = SystemColors.ControlText;
             btn_dashboard.Image = (Image)resources.GetObject("btn_dashboard.Image");
             btn_dashboard.ImageAlign = ContentAlignment.MiddleLeft;
