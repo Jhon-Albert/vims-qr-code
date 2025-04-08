@@ -85,8 +85,8 @@ public static class QRCodeHelper
     {
         try
         {
-            string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "degolladomichael01@gmail.com";
-            string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "ctor uogr wgin mvev";
+            string senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "YOUR-EMAIL@gmail.com";
+            string senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "YOUR-EMAIL-PASSWORD";
 
             using (MemoryStream ms = new MemoryStream(qrCodeBytes))
             {
