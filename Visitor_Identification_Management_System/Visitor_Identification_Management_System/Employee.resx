@@ -134,6 +134,22 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btn_renewQRCode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        rgAAAK4B+ff3XQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAI2SURBVEhLndVJ
+        i5VXEMbxHygqGAdEcBZxYZQggjPikL2zYHbuFePODyAm4pSNC3GecFgGFAfc+Al064QmatyoIDiAiS4M
+        T3Nu8/bp93a3/uFAnaq6dc5bVacuAzMDv+IWHuAj/sXLottdfL6ZaTiF1ziDjfgRozESM4vuMt7jIqbX
+        QbqxAa/wO8bWxhbi8wfeYmvRPa58etmFF1hUG4bAcvxdYnytjSE3T/Ahf2oLqUcO6XdAcp60fM/NOyQt
+        CZyVZujDafxWKxv8hD14iGc4gpW1UzfyWemWcZV+HvaWoH/hABaWFTm62OIT366kKPmCms84jCW1oUFs
+        8fmvNjS5WXq6pl+hBmBA30eYUysH+xGWYX6R23zH4F6ED/ihtlY/2oZhjf3PpeuWln3bAaPwKUKeetsB
+        XzC8yJk7h4rcCb6m7OMT35q88HcRuqXoKWYVeULZH6yCh9l40th3mIv7EVLkTbUVV7CzsV9Q3kAzeEgX
+        Xqp0YQuuR0iQs7UVK0rAFKsbScPzModqLmB7hMyetocWTuDPqsAdkvurOFobMB5vygjq4ST29fXpYQSu
+        4Q4mNfQTcbsUP91Sk4Y41lRMLcVb3FQWckiKm3Rl3v9S0rK/2GrSuok1uTasH2Rcr8bdslbVxkLm2j9Y
+        Wxs65P83hww0f7qRmyd4s/NaWVc+MSlIsQYjPp330fXmNVNKB6UTzmFzeTh58VmRoztffI635XwopM12
+        4EZ5lZlbWZHziGLrbcU2/gd9BHeK8A3j4wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btn_register.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

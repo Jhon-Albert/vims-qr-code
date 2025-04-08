@@ -33,6 +33,7 @@
             btn_minimize = new Button();
             btn_close = new Button();
             panel1 = new Panel();
+            btn_renewQRCode = new Button();
             btn_register = new Button();
             btn_realTime = new Button();
             btn_logout = new Button();
@@ -103,6 +104,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(147, 197, 253);
+            panel1.Controls.Add(btn_renewQRCode);
             panel1.Controls.Add(btn_register);
             panel1.Controls.Add(btn_realTime);
             panel1.Controls.Add(btn_logout);
@@ -117,6 +119,28 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 689);
             panel1.TabIndex = 35;
+            // 
+            // btn_renewQRCode
+            // 
+            btn_renewQRCode.Dock = DockStyle.Top;
+            btn_renewQRCode.FlatAppearance.BorderSize = 0;
+            btn_renewQRCode.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_renewQRCode.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_renewQRCode.FlatStyle = FlatStyle.Flat;
+            btn_renewQRCode.Font = new Font("Segoe UI", 9.75F);
+            btn_renewQRCode.ForeColor = SystemColors.ControlText;
+            btn_renewQRCode.Image = (Image)resources.GetObject("btn_renewQRCode.Image");
+            btn_renewQRCode.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_renewQRCode.Location = new Point(0, 460);
+            btn_renewQRCode.Name = "btn_renewQRCode";
+            btn_renewQRCode.Padding = new Padding(12, 0, 0, 0);
+            btn_renewQRCode.Size = new Size(200, 55);
+            btn_renewQRCode.TabIndex = 23;
+            btn_renewQRCode.Text = "   Renew QR Code";
+            btn_renewQRCode.TextAlign = ContentAlignment.MiddleLeft;
+            btn_renewQRCode.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_renewQRCode.UseVisualStyleBackColor = true;
+            btn_renewQRCode.Click += btn_renewQRCode_Click;
             // 
             // btn_register
             // 
@@ -424,5 +448,6 @@
         private PictureBox pictureBox1;
         private Panel panelContainer;
         private Button btn_register;
+        private Button btn_renewQRCode;
     }
 }

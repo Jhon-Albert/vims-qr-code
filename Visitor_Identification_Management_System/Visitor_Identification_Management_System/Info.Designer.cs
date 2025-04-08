@@ -108,15 +108,15 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgv_info.DefaultCellStyle = dataGridViewCellStyle2;
-            dgv_info.Location = new Point(107, 52);
+            dgv_info.Location = new Point(26, 52);
             dgv_info.Name = "dgv_info";
             dgv_info.RowHeadersVisible = false;
-            dgv_info.Size = new Size(838, 321);
+            dgv_info.Size = new Size(1008, 350);
             dgv_info.TabIndex = 15;
             // 
             // txt_search_info
             // 
-            txt_search_info.Location = new Point(107, 23);
+            txt_search_info.Location = new Point(26, 23);
             txt_search_info.Name = "txt_search_info";
             txt_search_info.PlaceholderText = "Search";
             txt_search_info.Size = new Size(204, 23);

@@ -72,6 +72,7 @@ namespace Visitor_Identification_Management_System
         private void timer1_Tick(object sender, EventArgs e)
         {
             lbl_time.Text = "Time: " + DateTime.Now.ToLongTimeString();
+
             if (pb_scan.Image != null)
             {
                 BarcodeReader reader = new BarcodeReader();
@@ -85,20 +86,21 @@ namespace Visitor_Identification_Management_System
                         // Split the QR data assuming it's using a pipe '|' delimiter
                         string[] visitorInfo = decode.Split('|');
 
-                        if (visitorInfo.Length == 7)
+                        if (visitorInfo.Length == 8)
                         {
-                            txt_visitorID.Text = visitorInfo[0];       // Visitor ID
-                            txt_firstName.Text = visitorInfo[1];        // First Name
-                            txt_middleName.Text = visitorInfo[2];      // Middle Name
-                            txt_lastName.Text = visitorInfo[3];       // Last Name
-                            txt_address.Text = visitorInfo[4];        // Address
-                            txt_contactNumber.Text = visitorInfo[5];  // Contact Number
-                            txt_purpose.Text = visitorInfo[6];        // Purpose
+                            txt_visitorID.Text = visitorInfo[0];
+                            txt_firstName.Text = visitorInfo[1];   
+                            txt_middleName.Text = visitorInfo[2];    
+                            txt_lastName.Text = visitorInfo[3];
+                            txt_email.Text = visitorInfo[4];
+                            txt_address.Text = visitorInfo[5];  
+                            txt_contactNumber.Text = visitorInfo[6];
+                            txt_purpose.Text = visitorInfo[7];   
 
                             // Now fetch additional info from the database if needed
                             if (!string.IsNullOrEmpty(txt_visitorID.Text))
                             {
-                                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Registration WHERE VisitorID = @VisitorID", con))
+                                using (SqlCommand cmd = new SqlCommand("SELECT VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, ExpirationDate FROM Registration WHERE VisitorID = @VisitorID", con))
                                 {
                                     cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
 
@@ -110,6 +112,7 @@ namespace Visitor_Identification_Management_System
                                         if (dr.Read())
                                         {
                                             txt_email.Text = dr["Email"].ToString();
+
                                             if (dr["ProfilePicture"] != DBNull.Value)
                                             {
                                                 byte[] imageBytes = (byte[])dr["ProfilePicture"];
@@ -123,6 +126,25 @@ namespace Visitor_Identification_Management_System
                                                 pb_profilePic.Image = null;
                                             }
 
+                                            //CHECK EXPIRATION DATE 
+                                            if (dr["ExpirationDate"] != DBNull.Value)
+                                            {
+                                                DateTime expirationDate = Convert.ToDateTime(dr["ExpirationDate"]);
+
+                                                if (DateTime.Now > expirationDate)  // QR Code Expired
+                                                {
+                                                    MessageBox.Show("QR Code has expired. Please renew it before checking in.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                    ClearTextFields();
+                                                    btn_confirm.Enabled = false;
+                                                    btn_checkOut.Enabled = false;
+                                                    return;
+                                                }
+                                                else
+                                                {
+                                                    btn_confirm.Enabled = true;
+                                                    btn_checkOut.Enabled = true;
+                                                }
+                                            }
                                             //trackingForm?.UpdateVisitorInfo(txt_visitorID.Text, txt_firstName.Text, txt_lastName.Text, txt_address.Text, txt_contactNumber.Text, txt_purpose.Text, profilePic);
                                         }
                                         else
@@ -198,6 +220,20 @@ namespace Visitor_Identification_Management_System
             try
             {
                 con.Open();
+
+                //CHECK IF CHECKIN DUPLICATES
+                using (SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM VisitorLogs WHERE VisitorID = @VisitorID AND Status = 'Checked In'", con))
+                {
+                    checkCmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("This visitor is already checked in.");
+                        return;
+                    }
+                }
+
                 SqlCommand cmd = new SqlCommand("INSERT INTO VisitorLogs (VisitorID, FirstName, MiddleName, LastName, Purpose, CheckInTime, Status) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Purpose, @CheckInTime, @Status)", con);
                 cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);

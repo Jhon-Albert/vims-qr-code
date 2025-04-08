@@ -21,7 +21,7 @@ namespace Visitor_Identification_Management_System
 
         private void VisitorQRCode_Load(object sender, EventArgs e)
         {
-            displayData();
+            displayData2();
         }
         public void displayData()
         {
@@ -89,6 +89,37 @@ namespace Visitor_Identification_Management_System
                 con.Close();
             }
         }
+        public void displayData2()
+        {
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Registration", con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                dgv_visitorQRCode.DataSource = dt;
+                dgv_visitorQRCode.AllowUserToAddRows = false;
+
+                // Ensure images are displayed properly
+                if (dgv_visitorQRCode.Columns["QRCodeImage"] is DataGridViewImageColumn qrColumn)
+                    qrColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                if (dgv_visitorQRCode.Columns["ProfilePicture"] is DataGridViewImageColumn profileColumn)
+                    profileColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Message: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
 
         private Image ByteArrayToImage(byte[] byteArray)
         {

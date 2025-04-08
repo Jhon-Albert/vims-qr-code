@@ -14,6 +14,7 @@ using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using System.Timers;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Visitor_Identification_Management_System
 {
@@ -199,8 +200,15 @@ namespace Visitor_Identification_Management_System
 
         private bool IsValidEmail(string email)
         {
-            try { return new MailAddress(email).Address == email; }
-            catch { return false; }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void ClearTextFields()
@@ -225,6 +233,23 @@ namespace Visitor_Identification_Management_System
             }
         }
 
+        // EXPIRATION TYPE
+        private DateTime CalculateExpirationDate(string visitorType)
+        {
+            switch (visitorType)
+            {
+                case "VIP":
+                    return DateTime.Now.AddMonths(1);
+                case "Official Business":
+                    return DateTime.Now.AddDays(7);
+                case "Delivery":
+                case "Maintenance":
+                    return DateTime.Now.AddDays(1);
+                default:
+                    return DateTime.Now.AddHours(12);
+            }
+        }
+
         //BUTTONS
         private void btn_register_Click(object sender, EventArgs e)
         {
@@ -243,15 +268,18 @@ namespace Visitor_Identification_Management_System
             try
             {
                 string visitorID = GenerateVisitorID();
+                DateTime expirationDate = CalculateExpirationDate(cmb_purpose.Text.Trim());
                 byte[] profilePicture = pb_uploadProfile.Image != null ? ImageToByteArray(pb_uploadProfile.Image) : null;
-                string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nMiddleName: {txt_middleName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
-                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
+                //string visitorData = $"VisitorID: {visitorID}\nFirstName: {txt_firstName.Text.Trim()}\nMiddleName: {txt_middleName.Text.Trim()}\nLastName: {txt_lastName.Text.Trim()}\nAddress: {txt_address.Text.Trim()}\nContact: {txt_contactNumber.Text.Trim()}\nPurpose: {cmb_purpose.Text.Trim()}";
+                //string systemVisitorData = $"Visitor ID: {visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_email.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
+                string systemVisitorData = $"{visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_email.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
+
                 byte[] qrCodeBytes = GenerateQRCode(systemVisitorData, visitorID);
 
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage)";
+                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage, ExpirationDate) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage, @ExpirationDate)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@VisitorID", visitorID.Trim());
@@ -262,8 +290,9 @@ namespace Visitor_Identification_Management_System
                         cmd.Parameters.AddWithValue("@Address", txt_address.Text.Trim());
                         cmd.Parameters.AddWithValue("@ContactNumber", txt_contactNumber.Text.Trim());
                         cmd.Parameters.AddWithValue("@Purpose", cmb_purpose.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ExpirationDate", expirationDate);
 
-                        if(profilePicture != null)
+                        if (profilePicture != null)
                         {
                             cmd.Parameters.Add("@ProfilePicture", SqlDbType.VarBinary).Value = profilePicture;
                         }

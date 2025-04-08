@@ -48,7 +48,7 @@ namespace Visitor_Identification_Management_System
                 using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
                 {
                     con.Open();
-                    string query = "SELECT VisitorID, FirstName, MiddleName, LastName, Email, ContactNumber, Address, Purpose, ProfilePicture FROM Registration";
+                    string query = "SELECT VisitorID, FirstName, MiddleName, LastName, Email, ContactNumber, Address, Purpose, ProfilePicture, ExpirationDate FROM Registration";
                     SqlDataAdapter sda = new SqlDataAdapter(query, con);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);

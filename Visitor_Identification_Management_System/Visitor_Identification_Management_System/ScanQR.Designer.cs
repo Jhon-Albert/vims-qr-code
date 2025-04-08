@@ -37,6 +37,8 @@
             label2 = new Label();
             label1 = new Label();
             gb_visitor_information = new GroupBox();
+            txt_middleName = new TextBox();
+            label10 = new Label();
             pb_profilePic = new PictureBox();
             btn_clear = new Button();
             btn_checkOut = new Button();
@@ -62,8 +64,6 @@
             panel2 = new Panel();
             btn_minimize = new Button();
             btn_close = new Button();
-            txt_middleName = new TextBox();
-            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pb_scan).BeginInit();
             gb_visitor_information.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_profilePic).BeginInit();
@@ -175,11 +175,29 @@
             gb_visitor_information.TabStop = false;
             gb_visitor_information.Text = "VISITOR INFORMATION";
             // 
+            // txt_middleName
+            // 
+            txt_middleName.Font = new Font("Segoe UI", 12F);
+            txt_middleName.Location = new Point(133, 113);
+            txt_middleName.Name = "txt_middleName";
+            txt_middleName.Size = new Size(218, 29);
+            txt_middleName.TabIndex = 89;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(24, 117);
+            label10.Name = "label10";
+            label10.Size = new Size(103, 20);
+            label10.TabIndex = 88;
+            label10.Text = "Middle Name:";
+            // 
             // pb_profilePic
             // 
             pb_profilePic.BorderStyle = BorderStyle.FixedSingle;
             pb_profilePic.Image = (Image)resources.GetObject("pb_profilePic.Image");
-            pb_profilePic.Location = new Point(359, 34);
+            pb_profilePic.Location = new Point(376, 34);
             pb_profilePic.Name = "pb_profilePic";
             pb_profilePic.Size = new Size(200, 200);
             pb_profilePic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -196,7 +214,7 @@
             btn_clear.FlatStyle = FlatStyle.Flat;
             btn_clear.Font = new Font("Segoe UI", 12F);
             btn_clear.ForeColor = Color.White;
-            btn_clear.Location = new Point(403, 318);
+            btn_clear.Location = new Point(427, 354);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(103, 33);
             btn_clear.TabIndex = 86;
@@ -214,7 +232,7 @@
             btn_checkOut.FlatStyle = FlatStyle.Flat;
             btn_checkOut.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_checkOut.ForeColor = SystemColors.Control;
-            btn_checkOut.Location = new Point(403, 279);
+            btn_checkOut.Location = new Point(427, 315);
             btn_checkOut.Name = "btn_checkOut";
             btn_checkOut.Size = new Size(103, 33);
             btn_checkOut.TabIndex = 71;
@@ -232,7 +250,7 @@
             btn_confirm.FlatStyle = FlatStyle.Flat;
             btn_confirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_confirm.ForeColor = SystemColors.Control;
-            btn_confirm.Location = new Point(403, 240);
+            btn_confirm.Location = new Point(427, 276);
             btn_confirm.Name = "btn_confirm";
             btn_confirm.Size = new Size(103, 33);
             btn_confirm.TabIndex = 70;
@@ -450,24 +468,6 @@
             btn_close.TabIndex = 34;
             btn_close.UseVisualStyleBackColor = true;
             btn_close.Click += btn_close_Click;
-            // 
-            // txt_middleName
-            // 
-            txt_middleName.Font = new Font("Segoe UI", 12F);
-            txt_middleName.Location = new Point(133, 113);
-            txt_middleName.Name = "txt_middleName";
-            txt_middleName.Size = new Size(218, 29);
-            txt_middleName.TabIndex = 89;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(24, 117);
-            label10.Name = "label10";
-            label10.Size = new Size(103, 20);
-            label10.TabIndex = 88;
-            label10.Text = "Middle Name:";
             // 
             // ScanQR
             // 

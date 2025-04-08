@@ -40,6 +40,9 @@
     <Compile Update="Registration.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="RenewQRCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ScanQR.cs">
       <SubType>Form</SubType>
     </Compile>

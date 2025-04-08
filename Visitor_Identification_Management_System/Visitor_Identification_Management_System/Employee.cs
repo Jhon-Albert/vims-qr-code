@@ -107,7 +107,7 @@ namespace Visitor_Identification_Management_System
         {
             //RealTime uc = new RealTime();
             //addUserControl(uc);
-            foreach(Form form in Application.OpenForms)
+            foreach (Form form in Application.OpenForms)
             {
                 if (form is RealTimeTracking)
                 {
@@ -131,6 +131,12 @@ namespace Visitor_Identification_Management_System
             }
             Registration uc = new Registration();
             uc.Show();
+        }
+
+        private void btn_renewQRCode_Click(object sender, EventArgs e)
+        {
+            RenewQRCode uc = new RenewQRCode();
+            addUserControl(uc);
         }
 
         private void btn_logout_Click_1(object sender, EventArgs e)
@@ -160,12 +166,31 @@ namespace Visitor_Identification_Management_System
         {
             StartAutoSync();  // Start syncing when the Employee form loads
         }
+
     }
+
     public class GoogleSync
     {
         private static string CredentialsPath = @"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\vims-visitor-registration-4e7c2a747133.json";
         private static string SpreadsheetId = "1FOcW7o8FLkPQumPZJzzefux3HyAfvcWKXv6AF_3frgc";
         private static string SheetName = "VisitorSheet";
+
+        // EXPIRATION TYPE
+        public static DateTime CalculateExpirationDate(string visitorType)
+        {
+            switch (visitorType)
+            {
+                case "VIP":
+                    return DateTime.Now.AddMonths(1);
+                case "Official Business":
+                    return DateTime.Now.AddDays(7);
+                case "Delivery":
+                case "Maintenance":
+                    return DateTime.Now.AddDays(1);
+                default:
+                    return DateTime.Now.AddHours(12);
+            }
+        }
 
         public static async Task SyncGoogleSheetData()
         {
@@ -215,11 +240,13 @@ namespace Visitor_Identification_Management_System
                                         if (count > 0) continue;
                                     }
 
-                                    string visitorData = $"{visitorID}|{firstName}|{middleName}|{lastName}|{address}|{contactNumber}|{purpose}";
+                                    string visitorType = purpose;
+                                    DateTime expirationDate = CalculateExpirationDate(visitorType);
+                                    string visitorData = $"{visitorID}|{firstName}|{middleName}|{lastName}|{email}|{address}|{contactNumber}|{purpose}";
                                     byte[] qrCodeBytes = QRCodeHelper.GenerateQRCode(visitorData, visitorID);
 
                                     // Insert new record
-                                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage)";
+                                    string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage, ExpirationDate) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage, @ExpirationDate)";
                                     using (SqlCommand cmd = new SqlCommand(query, con))
                                     {
                                         cmd.Parameters.AddWithValue("@VisitorID", visitorID);
@@ -230,6 +257,7 @@ namespace Visitor_Identification_Management_System
                                         cmd.Parameters.AddWithValue("@Address", address);
                                         cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
                                         cmd.Parameters.AddWithValue("@Purpose", purpose);
+                                        cmd.Parameters.AddWithValue("@ExpirationDate", expirationDate);
 
                                         if (!string.IsNullOrEmpty(profilePicture))
                                         {
