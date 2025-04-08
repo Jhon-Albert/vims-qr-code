@@ -30,8 +30,8 @@ namespace Visitor_Identification_Management_System
 
         private void LoadEmailCredentials()
         {
-            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "degolladomichael01@gmail.com";
-            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "ctor uogr wgin mvev";
+            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "YOUR-EMAIL@gmail.com";
+            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "YOUR-EMAIL-PASSWORD";
         }
 
         private void displayData()
