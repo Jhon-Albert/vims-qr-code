@@ -97,7 +97,6 @@ namespace Visitor_Identification_Management_System
                             txt_contactNumber.Text = visitorInfo[6];
                             txt_purpose.Text = visitorInfo[7];   
 
-                            // Now fetch additional info from the database if needed
                             if (!string.IsNullOrEmpty(txt_visitorID.Text))
                             {
                                 using (SqlCommand cmd = new SqlCommand("SELECT VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, ExpirationDate FROM Registration WHERE VisitorID = @VisitorID", con))
@@ -126,7 +125,7 @@ namespace Visitor_Identification_Management_System
                                                 pb_profilePic.Image = null;
                                             }
 
-                                            //CHECK EXPIRATION DATE 
+                                            // CHECK EXPIRATION DATE 
                                             if (dr["ExpirationDate"] != DBNull.Value)
                                             {
                                                 DateTime expirationDate = Convert.ToDateTime(dr["ExpirationDate"]);
@@ -188,7 +187,7 @@ namespace Visitor_Identification_Management_System
             pb_profilePic.Image = Image.FromFile(@"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\Resources\image.png");
         }
 
-        //BUTTON
+        // BUTTON
         private void btn_camera_Click(object sender, EventArgs e)
         {
             StopCamera();
@@ -221,7 +220,7 @@ namespace Visitor_Identification_Management_System
             {
                 con.Open();
 
-                //CHECK IF CHECKIN DUPLICATES
+                // CHECK IF CHECKIN DUPLICATES
                 using (SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM VisitorLogs WHERE VisitorID = @VisitorID AND Status = 'Checked In'", con))
                 {
                     checkCmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);

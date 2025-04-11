@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeManagement));
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
@@ -52,8 +53,9 @@
             label8 = new Label();
             panel3 = new Panel();
             panel4 = new Panel();
-            dgv_employeeManagement = new DataGridView();
             txt_searchEmployee = new TextBox();
+            dgv_employeeManagement = new DataGridView();
+            btn_refresh = new Button();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -322,6 +324,7 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(btn_refresh);
             panel4.Controls.Add(txt_searchEmployee);
             panel4.Controls.Add(dgv_employeeManagement);
             panel4.Dock = DockStyle.Fill;
@@ -329,6 +332,16 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(799, 542);
             panel4.TabIndex = 25;
+            // 
+            // txt_searchEmployee
+            // 
+            txt_searchEmployee.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_searchEmployee.Location = new Point(17, 30);
+            txt_searchEmployee.Name = "txt_searchEmployee";
+            txt_searchEmployee.PlaceholderText = "Search";
+            txt_searchEmployee.Size = new Size(204, 29);
+            txt_searchEmployee.TabIndex = 19;
+            txt_searchEmployee.TextChanged += txt_searchEmployee_TextChanged;
             // 
             // dgv_employeeManagement
             // 
@@ -340,23 +353,23 @@
             dgv_employeeManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_employeeManagement.BackgroundColor = SystemColors.Info;
             dgv_employeeManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv_employeeManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_employeeManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_employeeManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgv_employeeManagement.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgv_employeeManagement.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_employeeManagement.Location = new Point(17, 65);
             dgv_employeeManagement.Name = "dgv_employeeManagement";
             dgv_employeeManagement.RowHeadersVisible = false;
@@ -364,15 +377,24 @@
             dgv_employeeManagement.TabIndex = 16;
             dgv_employeeManagement.CellContentClick += dgv_employeeManagement_CellContentClick;
             // 
-            // txt_searchEmployee
+            // btn_refresh
             // 
-            txt_searchEmployee.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_searchEmployee.Location = new Point(17, 30);
-            txt_searchEmployee.Name = "txt_searchEmployee";
-            txt_searchEmployee.PlaceholderText = "Search";
-            txt_searchEmployee.Size = new Size(204, 29);
-            txt_searchEmployee.TabIndex = 19;
-            txt_searchEmployee.TextChanged += txt_searchEmployee_TextChanged;
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(227, 29);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(30, 30);
+            btn_refresh.TabIndex = 72;
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
             // EmployeeManagement
             // 
@@ -420,5 +442,6 @@
         private TextBox txt_employeeFirstName;
         private Label label6;
         private TextBox txt_searchEmployee;
+        private Button btn_refresh;
     }
 }

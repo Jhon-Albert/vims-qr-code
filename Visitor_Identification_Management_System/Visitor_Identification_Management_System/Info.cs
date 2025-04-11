@@ -67,5 +67,10 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Error Message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            displayData();
+        }
     }
 }

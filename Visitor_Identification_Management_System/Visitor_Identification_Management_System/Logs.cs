@@ -57,6 +57,11 @@ namespace Visitor_Identification_Management_System
                               "ContactNumber LIKE '%{0}%' OR Purpose LIKE '%{0}%'",
                     txt_search_logs.Text);
             }
-        }   
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            displayData();
+        }
     }
 }

@@ -30,12 +30,14 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Blacklist));
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
             dgv_blacklist = new DataGridView();
             txt_search_blacklist = new TextBox();
+            btn_refresh = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_blacklist).BeginInit();
@@ -73,6 +75,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btn_refresh);
             panel2.Controls.Add(dgv_blacklist);
             panel2.Controls.Add(txt_search_blacklist);
             panel2.Dock = DockStyle.Fill;
@@ -116,12 +119,32 @@
             // 
             // txt_search_blacklist
             // 
-            txt_search_blacklist.Location = new Point(107, 23);
+            txt_search_blacklist.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_search_blacklist.Location = new Point(107, 17);
             txt_search_blacklist.Name = "txt_search_blacklist";
             txt_search_blacklist.PlaceholderText = "Search";
-            txt_search_blacklist.Size = new Size(204, 23);
+            txt_search_blacklist.Size = new Size(204, 29);
             txt_search_blacklist.TabIndex = 17;
             txt_search_blacklist.TextChanged += txt_search_blacklist_TextChanged;
+            // 
+            // btn_refresh
+            // 
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(317, 16);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(30, 30);
+            btn_refresh.TabIndex = 72;
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
             // Blacklist
             // 
@@ -147,5 +170,6 @@
         private Panel panel2;
         private TextBox txt_search_blacklist;
         private DataGridView dgv_blacklist;
+        private Button btn_refresh;
     }
 }

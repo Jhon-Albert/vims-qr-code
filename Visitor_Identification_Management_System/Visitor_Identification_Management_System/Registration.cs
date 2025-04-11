@@ -45,7 +45,7 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-        //GENERATE VISITOR ID
+        // GENERATE VISITOR ID
         public static string GenerateVisitorID()
         {
             int lastVisitorNumber = 10000; // Start from V10001
@@ -74,7 +74,7 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Error fetching last VisitorID: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return $"V{(lastVisitorNumber + 1):D5}"; // Ensure it's always "V10001", "V10002", etc.
+            return $"V{(lastVisitorNumber + 1):D5}";
         }
 
         //GENERATE VISITOR QR CODE
@@ -223,7 +223,7 @@ namespace Visitor_Identification_Management_System
             pb_uploadProfile.Image = null;
         }
 
-        //IMAGE
+        // IMAGE
         private byte[] ImageToByteArray(Image image)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -250,7 +250,7 @@ namespace Visitor_Identification_Management_System
             }
         }
 
-        //BUTTONS
+        // BUTTONS
         private void btn_register_Click(object sender, EventArgs e)
         {
             if (!IsValidEmail(txt_email.Text) ||

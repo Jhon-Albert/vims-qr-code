@@ -191,5 +191,10 @@ namespace Visitor_Identification_Management_System
         {
             ClearTextFields();
         }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            displayData();
+        }
     }
 }

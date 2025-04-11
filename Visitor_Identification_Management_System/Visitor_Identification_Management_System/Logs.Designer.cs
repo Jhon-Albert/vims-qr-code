@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Logs));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
+            btn_refresh = new Button();
             dgv_logs = new DataGridView();
             txt_search_logs = new TextBox();
             panel1.SuspendLayout();
@@ -73,6 +75,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btn_refresh);
             panel2.Controls.Add(dgv_logs);
             panel2.Controls.Add(txt_search_logs);
             panel2.Dock = DockStyle.Fill;
@@ -80,6 +83,25 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1053, 425);
             panel2.TabIndex = 0;
+            // 
+            // btn_refresh
+            // 
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(317, 16);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(30, 30);
+            btn_refresh.TabIndex = 71;
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
             // dgv_logs
             // 
@@ -116,10 +138,11 @@
             // 
             // txt_search_logs
             // 
-            txt_search_logs.Location = new Point(107, 23);
+            txt_search_logs.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_search_logs.Location = new Point(107, 17);
             txt_search_logs.Name = "txt_search_logs";
             txt_search_logs.PlaceholderText = "Search";
-            txt_search_logs.Size = new Size(204, 23);
+            txt_search_logs.Size = new Size(204, 29);
             txt_search_logs.TabIndex = 13;
             txt_search_logs.TextChanged += txt_search_logs_TextChanged;
             // 
@@ -147,5 +170,6 @@
         private Panel panel2;
         private DataGridView dgv_logs;
         private TextBox txt_search_logs;
+        private Button btn_refresh;
     }
 }

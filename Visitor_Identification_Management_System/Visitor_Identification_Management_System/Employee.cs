@@ -171,9 +171,9 @@ namespace Visitor_Identification_Management_System
 
     public class GoogleSync
     {
-        private static string CredentialsPath = @"YOUR-JSON-PATH.json";
-        private static string SpreadsheetId = "SHEET-ID";
-        private static string SheetName = "SHEET-NAME";
+        private static string CredentialsPath = @"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\vims-visitor-registration-4e7c2a747133.json";
+        private static string SpreadsheetId = "1FOcW7o8FLkPQumPZJzzefux3HyAfvcWKXv6AF_3frgc";
+        private static string SheetName = "VisitorSheet";
 
         // EXPIRATION TYPE
         public static DateTime CalculateExpirationDate(string visitorType)

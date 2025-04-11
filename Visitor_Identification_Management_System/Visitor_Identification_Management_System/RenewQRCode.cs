@@ -30,8 +30,8 @@ namespace Visitor_Identification_Management_System
 
         private void LoadEmailCredentials()
         {
-            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "YOUR-EMAIL@gmail.com";
-            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "YOUR-EMAIL-PASSWORD";
+            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "degolladomichael01@gmail.com";
+            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "ctor uogr wgin mvev";
         }
 
         private void displayData()
@@ -99,7 +99,7 @@ namespace Visitor_Identification_Management_System
             string selectedVisitor = cmb_visitor.SelectedItem.ToString();
             string visitorID = selectedVisitor.Split(' ')[0]; // Extract VisitorID
 
-            DateTime newExpirationDate = DateTime.Now.AddDays(7); // Example expiration date (7 days from today)
+            DateTime newExpirationDate = DateTime.Now.AddDays(7); // Default Additional Days
             byte[] newQRCodeBytes = GenerateQRCode(visitorID);
 
             // Update the visitor's QR code in the database and log the renewal
@@ -130,7 +130,6 @@ namespace Visitor_Identification_Management_System
                                 string contact = reader["ContactNumber"].ToString();
                                 string purpose = reader["Purpose"].ToString();
 
-                                // You can format this as JSON or a delimited string
                                 qrContent = $"{visitorID}|{firstName}|{middleName}|{lastName}|{email}|{address}|{contact}|{purpose}";
                                 //$"{visitorID}|{txt_firstName.Text.Trim()}|{txt_middleName.Text.Trim()}|{txt_lastName.Text.Trim()}|{txt_email.Text.Trim()}|{txt_address.Text.Trim()}|{txt_contactNumber.Text.Trim()}|{cmb_purpose.Text.Trim()}";
                             }
@@ -148,7 +147,7 @@ namespace Visitor_Identification_Management_System
                             using (MemoryStream ms = new MemoryStream())
                             {
                                 qrCodeImage.Save(ms, ImageFormat.Png);
-                                return ms.ToArray(); // Return QR code as byte array
+                                return ms.ToArray();
                             }
                         }
                     }
@@ -170,7 +169,7 @@ namespace Visitor_Identification_Management_System
                     con.Open();
                     SqlTransaction transaction = con.BeginTransaction();
 
-                    // Get the current QR code for the visitor (before renewal) and email
+                    // GET CURRENT VISITOR QR CODE
                     byte[] oldQRCodeBytes = null;
                     string visitorEmail = null;
                     string queryOldQRCode = "SELECT QRCodeImage, Email FROM Registration WHERE VisitorID = @VisitorID";
@@ -182,7 +181,7 @@ namespace Visitor_Identification_Management_System
                             if (reader.Read())
                             {
                                 oldQRCodeBytes = reader["QRCodeImage"] as byte[];
-                                visitorEmail = reader["Email"].ToString(); // Retrieve visitor's email
+                                visitorEmail = reader["Email"].ToString();
                             }
                         }
                     }
@@ -230,9 +229,8 @@ namespace Visitor_Identification_Management_System
         private void cmb_visitor_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedVisitor = cmb_visitor.SelectedItem.ToString();
-            string visitorID = selectedVisitor.Split(' ')[0]; // Extract VisitorID
+            string visitorID = selectedVisitor.Split(' ')[0];
 
-            // Load current QR code for the selected visitor
             LoadCurrentQRCode(visitorID);
         }
 
@@ -240,10 +238,9 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                // Create the email message
                 MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(senderEmail); // Your email address
-                mail.To.Add(visitorEmail); // Visitor's email address
+                mail.From = new MailAddress(senderEmail);
+                mail.To.Add(visitorEmail);
                 mail.Subject = "Your QR Code Renewal";
                 mail.Body = "Hello, \n\nYour QR Code has been successfully renewed. Please find the new QR Code attached.\n\nBest regards,\nVisitor Identification Management System";
 
@@ -253,10 +250,9 @@ namespace Visitor_Identification_Management_System
                     Attachment attachment = new Attachment(ms, "QR_Code.png", "image/png");
                     mail.Attachments.Add(attachment);
 
-                    // Send the email via SMTP
-                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"); // SMTP server (Gmail)
-                    smtpClient.Port = 587; // Gmail SMTP port
-                    smtpClient.Credentials = new NetworkCredential(senderEmail, senderPassword); // Your email and password
+                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                    smtpClient.Port = 587; 
+                    smtpClient.Credentials = new NetworkCredential(senderEmail, senderPassword);
                     smtpClient.EnableSsl = true;
                     smtpClient.Send(mail);
                 }

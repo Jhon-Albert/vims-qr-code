@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlacklistManagement));
             label2 = new Label();
             label1 = new Label();
             btn_clear = new Button();
@@ -53,6 +54,7 @@
             txt_blacklistMiddleName = new TextBox();
             label4 = new Label();
             panel3 = new Panel();
+            btn_refresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_blacklist).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -358,6 +360,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(btn_refresh);
             panel3.Controls.Add(dgv_blacklist);
             panel3.Controls.Add(txt_search_blacklist);
             panel3.Dock = DockStyle.Fill;
@@ -365,6 +368,25 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(801, 542);
             panel3.TabIndex = 88;
+            // 
+            // btn_refresh
+            // 
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(227, 29);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(30, 30);
+            btn_refresh.TabIndex = 72;
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
             // BlacklistManagement
             // 
@@ -410,5 +432,6 @@
         private Panel panel3;
         private TextBox txt_blacklistMiddleName;
         private Label label4;
+        private Button btn_refresh;
     }
 }

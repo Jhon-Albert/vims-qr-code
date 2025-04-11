@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitorManagement));
             panel3 = new Panel();
             panel5 = new Panel();
+            txt_searchVisitor = new TextBox();
             dgv_visitorManagement = new DataGridView();
             panel2 = new Panel();
             panel4 = new Panel();
@@ -58,7 +60,7 @@
             label3 = new Label();
             label8 = new Label();
             txt_email = new TextBox();
-            txt_searchVisitor = new TextBox();
+            btn_refresh = new Button();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_visitorManagement).BeginInit();
@@ -80,6 +82,7 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(btn_refresh);
             panel5.Controls.Add(txt_searchVisitor);
             panel5.Controls.Add(dgv_visitorManagement);
             panel5.Dock = DockStyle.Fill;
@@ -87,6 +90,16 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(793, 542);
             panel5.TabIndex = 2;
+            // 
+            // txt_searchVisitor
+            // 
+            txt_searchVisitor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_searchVisitor.Location = new Point(17, 30);
+            txt_searchVisitor.Name = "txt_searchVisitor";
+            txt_searchVisitor.PlaceholderText = "Search";
+            txt_searchVisitor.Size = new Size(204, 29);
+            txt_searchVisitor.TabIndex = 20;
+            txt_searchVisitor.TextChanged += txt_searchVisitor_TextChanged;
             // 
             // dgv_visitorManagement
             // 
@@ -98,23 +111,23 @@
             dgv_visitorManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_visitorManagement.BackgroundColor = SystemColors.Info;
             dgv_visitorManagement.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_visitorManagement.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_visitorManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgv_visitorManagement.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_visitorManagement.Location = new Point(17, 65);
             dgv_visitorManagement.Name = "dgv_visitorManagement";
             dgv_visitorManagement.RowHeadersVisible = false;
@@ -409,15 +422,24 @@
             txt_email.Size = new Size(232, 29);
             txt_email.TabIndex = 55;
             // 
-            // txt_searchVisitor
+            // btn_refresh
             // 
-            txt_searchVisitor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txt_searchVisitor.Location = new Point(17, 30);
-            txt_searchVisitor.Name = "txt_searchVisitor";
-            txt_searchVisitor.PlaceholderText = "Search";
-            txt_searchVisitor.Size = new Size(204, 29);
-            txt_searchVisitor.TabIndex = 20;
-            txt_searchVisitor.TextChanged += txt_searchVisitor_TextChanged;
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(227, 29);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(30, 30);
+            btn_refresh.TabIndex = 72;
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
             // VisitorManagement
             // 
@@ -469,5 +491,6 @@
         private TextBox txt_middleName;
         private Label label10;
         private TextBox txt_searchVisitor;
+        private Button btn_refresh;
     }
 }

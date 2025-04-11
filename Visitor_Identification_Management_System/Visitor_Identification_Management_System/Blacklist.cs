@@ -31,7 +31,7 @@ namespace Visitor_Identification_Management_System
                     txt_search_blacklist.Text);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
@@ -51,6 +51,11 @@ namespace Visitor_Identification_Management_System
             {
                 MessageBox.Show("Error Message: " + ex.Message);
             }
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            displayData();
         }
     }
 }

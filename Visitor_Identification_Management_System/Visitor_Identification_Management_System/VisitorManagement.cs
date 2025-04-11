@@ -225,5 +225,10 @@ namespace Visitor_Identification_Management_System
                 MessageBox.Show("Error Message: " + ex.Message);
             }
         }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            displayData();
+        }
     }
 }
