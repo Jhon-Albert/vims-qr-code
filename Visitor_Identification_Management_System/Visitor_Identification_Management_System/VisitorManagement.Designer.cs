@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitorManagement));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitorManagement));
             panel3 = new Panel();
             panel5 = new Panel();
+            btn_refresh = new Button();
             txt_searchVisitor = new TextBox();
             dgv_visitorManagement = new DataGridView();
             panel2 = new Panel();
@@ -60,7 +61,6 @@
             label3 = new Label();
             label8 = new Label();
             txt_email = new TextBox();
-            btn_refresh = new Button();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_visitorManagement).BeginInit();
@@ -90,6 +90,25 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(793, 542);
             panel5.TabIndex = 2;
+            // 
+            // btn_refresh
+            // 
+            btn_refresh.AutoSize = true;
+            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
+            btn_refresh.FlatAppearance.BorderSize = 0;
+            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
+            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
+            btn_refresh.FlatStyle = FlatStyle.Flat;
+            btn_refresh.Font = new Font("Segoe UI", 12F);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.Location = new Point(227, 29);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.Size = new Size(30, 30);
+            btn_refresh.TabIndex = 72;
+            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_refresh.UseVisualStyleBackColor = false;
+            btn_refresh.Click += btn_refresh_Click;
             // 
             // txt_searchVisitor
             // 
@@ -230,7 +249,7 @@
             btn_clear.FlatStyle = FlatStyle.Flat;
             btn_clear.Font = new Font("Segoe UI", 12F);
             btn_clear.ForeColor = Color.White;
-            btn_clear.Location = new Point(103, 591);
+            btn_clear.Location = new Point(186, 552);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(77, 33);
             btn_clear.TabIndex = 86;
@@ -312,7 +331,7 @@
             btn_delete.FlatStyle = FlatStyle.Flat;
             btn_delete.Font = new Font("Segoe UI", 12F);
             btn_delete.ForeColor = Color.White;
-            btn_delete.Location = new Point(186, 552);
+            btn_delete.Location = new Point(105, 552);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(77, 33);
             btn_delete.TabIndex = 68;
@@ -330,7 +349,7 @@
             btn_update.FlatStyle = FlatStyle.Flat;
             btn_update.Font = new Font("Segoe UI", 12F);
             btn_update.ForeColor = Color.White;
-            btn_update.Location = new Point(103, 552);
+            btn_update.Location = new Point(22, 552);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(77, 33);
             btn_update.TabIndex = 67;
@@ -348,12 +367,13 @@
             btn_add.FlatStyle = FlatStyle.Flat;
             btn_add.Font = new Font("Segoe UI", 12F);
             btn_add.ForeColor = Color.White;
-            btn_add.Location = new Point(20, 552);
+            btn_add.Location = new Point(105, 591);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(77, 33);
             btn_add.TabIndex = 66;
             btn_add.Text = "ADD";
             btn_add.UseVisualStyleBackColor = false;
+            btn_add.Visible = false;
             btn_add.Click += btn_add_Click;
             // 
             // label7
@@ -421,25 +441,6 @@
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(232, 29);
             txt_email.TabIndex = 55;
-            // 
-            // btn_refresh
-            // 
-            btn_refresh.AutoSize = true;
-            btn_refresh.BackColor = Color.FromArgb(52, 152, 219);
-            btn_refresh.FlatAppearance.BorderSize = 0;
-            btn_refresh.FlatAppearance.MouseDownBackColor = Color.FromArgb(36, 76, 209);
-            btn_refresh.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 96, 228);
-            btn_refresh.FlatStyle = FlatStyle.Flat;
-            btn_refresh.Font = new Font("Segoe UI", 12F);
-            btn_refresh.ForeColor = Color.White;
-            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
-            btn_refresh.Location = new Point(227, 29);
-            btn_refresh.Name = "btn_refresh";
-            btn_refresh.Size = new Size(30, 30);
-            btn_refresh.TabIndex = 72;
-            btn_refresh.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_refresh.UseVisualStyleBackColor = false;
-            btn_refresh.Click += btn_refresh_Click;
             // 
             // VisitorManagement
             // 

@@ -13,12 +13,14 @@ namespace Visitor_Identification_Management_System
 {
     public partial class EmployeeManagement : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        
         public EmployeeManagement()
         {
             InitializeComponent();
             displayData();
         }
+
         private void displayData()
         {
             try
@@ -40,10 +42,12 @@ namespace Visitor_Identification_Management_System
                 con.Close();
             }
         }
+
         private void label5_Click(object sender, EventArgs e)
         {
 
         }
+
         private void dgv_employeeManagement_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_employeeID.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -53,6 +57,7 @@ namespace Visitor_Identification_Management_System
             txt_employeeEmail.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[4].Value.ToString();
             txt_employeePassword.Text = dgv_employeeManagement.Rows[e.RowIndex].Cells[5].Value.ToString();
         }
+
         private void ClearTextFields()
         {
             txt_employeeID.Clear();
@@ -62,7 +67,8 @@ namespace Visitor_Identification_Management_System
             txt_employeeEmail.Clear();
             txt_employeePassword.Clear();
         }
-        //BUTTONS
+
+        // BUTTONS
         private void btn_add_Click(object sender, EventArgs e)
         {
             try
@@ -70,8 +76,8 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EmployeeID, @FirstName, @MiddleName, @LastName, @Email, @Password)", con);
-                cmd.Parameters.AddWithValue("@EmployeeID", txt_employeeID.Text);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@FirstName, @MiddleName, @LastName, @Email, @Password)", con);
+                //cmd.Parameters.AddWithValue("@EmployeeID", txt_employeeID.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txt_employeeFirstName.Text);
                 cmd.Parameters.AddWithValue("@MiddleName", txt_employeeMiddleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_employeeLastName.Text);
@@ -92,7 +98,6 @@ namespace Visitor_Identification_Management_System
             {
                 con.Close();
             }
-
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -130,7 +135,6 @@ namespace Visitor_Identification_Management_System
             {
                 con.Close();
             }
-
         }
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -173,7 +177,6 @@ namespace Visitor_Identification_Management_System
             {
                 con.Close();
             }
-
         }
 
         private void btn_clear_Click(object sender, EventArgs e)

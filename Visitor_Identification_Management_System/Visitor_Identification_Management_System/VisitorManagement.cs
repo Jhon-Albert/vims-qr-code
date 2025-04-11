@@ -13,7 +13,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class VisitorManagement : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
         public VisitorManagement()
         {
             InitializeComponent();
@@ -79,16 +79,53 @@ namespace Visitor_Identification_Management_System
             txt_purpose.Clear();
             txt_address.Clear();
         }
-        //BUTTONS
+        private string GenerateVisitorID()
+        {
+            string prefix = "V";
+            int startingNumber = 10001;
+
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC", con);
+                var result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    string lastID = result.ToString(); 
+                    int lastNumber = int.Parse(lastID.Substring(1)); 
+                    return prefix + (lastNumber + 1).ToString("D5");
+                }
+                else
+                {
+                    return prefix + startingNumber.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error generating VisitorID: " + ex.Message);
+                return prefix + startingNumber.ToString();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        // BUTTONS
         private void btn_add_Click(object sender, EventArgs e)
         {
             try
             {
                 if (con.State == ConnectionState.Closed)
                     con.Open();
+                string newVisitorID = GenerateVisitorID();
+                txt_visitorID.Text = newVisitorID;
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO Registration VALUES(@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @ContactNumber, @Purpose, @Address)", con);
-                cmd.Parameters.AddWithValue("@VisitorID", txt_visitorID.Text);
+                cmd.Parameters.AddWithValue("@VisitorID", newVisitorID);
                 cmd.Parameters.AddWithValue("@FirstName", txt_firstName.Text);
                 cmd.Parameters.AddWithValue("@MiddleName", txt_middleName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txt_lastName.Text);
@@ -100,7 +137,7 @@ namespace Visitor_Identification_Management_System
 
                 MessageBox.Show("Visitor added successfully!");
                 ClearTextFields();
-                displayData(); // Refreshes DataGridView
+                displayData();
             }
             catch (Exception ex)
             {
@@ -134,7 +171,7 @@ namespace Visitor_Identification_Management_System
                 {
                     MessageBox.Show("Visitor updated successfully!");
                     ClearTextFields();
-                    displayData(); // Refreshes DataGridView
+                    displayData();
                 }
                 else
                 {
@@ -176,7 +213,7 @@ namespace Visitor_Identification_Management_System
                     {
                         MessageBox.Show("Visitor deleted successfully!");
                         ClearTextFields();
-                        displayData(); // Refreshes DataGridView
+                        displayData(); 
                     }
                     else
                     {

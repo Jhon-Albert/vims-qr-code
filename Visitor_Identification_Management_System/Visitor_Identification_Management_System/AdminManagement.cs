@@ -13,7 +13,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class AdminManagement : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
         public AdminManagement()
         {
             InitializeComponent();
@@ -65,8 +65,8 @@ namespace Visitor_Identification_Management_System
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Admin VALUES(@AdminID, @Name, @Email, @Password)", con);
-                cmd.Parameters.AddWithValue("@AdminID", txt_adminID.Text);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Admin VALUES(@Name, @Email, @Password)", con);
+                //cmd.Parameters.AddWithValue("@AdminID", txt_adminID.Text);
                 cmd.Parameters.AddWithValue("@Name", txt_fullName.Text);
                 cmd.Parameters.AddWithValue("@Email", txt_adminEmail.Text);
                 cmd.Parameters.AddWithValue("@Password", txt_adminPassword.Text);
