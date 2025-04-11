@@ -30,15 +30,15 @@ namespace Visitor_Identification_Management_System
 
         private void LoadEmailCredentials()
         {
-            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "degolladomichael01@gmail.com";
-            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "ctor uogr wgin mvev";
+            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "";
+            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "";
         }
 
         private void displayData()
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     string query = "SELECT VisitorID, FirstName + ' ' + MiddleName + '.' + ' ' + LastName AS FullName FROM Registration";
@@ -69,7 +69,7 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     string query = "SELECT QRCodeImage FROM Registration WHERE VisitorID = @VisitorID";
@@ -111,7 +111,7 @@ namespace Visitor_Identification_Management_System
             try
             {
                 string qrContent = "";
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     string query = "SELECT FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose FROM Registration WHERE VisitorID = @VisitorID";
@@ -164,7 +164,7 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     SqlTransaction transaction = con.BeginTransaction();
