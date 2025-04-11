@@ -32,8 +32,8 @@ namespace Visitor_Identification_Management_System
 
         private void LoadEmailCredentials()
         {
-            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "degolladomichael01@gmail.com";
-            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "ctor uogr wgin mvev";
+            senderEmail = Environment.GetEnvironmentVariable("SENDER_EMAIL") ?? "";
+            senderPassword = Environment.GetEnvironmentVariable("SENDER_PASSWORD") ?? "";
         }
 
         private void Registration_Load(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace Visitor_Identification_Management_System
             int lastVisitorNumber = 10000; // Start from V10001
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     string query = "SELECT TOP 1 VisitorID FROM Registration ORDER BY VisitorID DESC";
@@ -276,7 +276,7 @@ namespace Visitor_Identification_Management_System
 
                 byte[] qrCodeBytes = GenerateQRCode(systemVisitorData, visitorID);
 
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     string query = "INSERT INTO Registration (VisitorID, FirstName, MiddleName, LastName, Email, Address, ContactNumber, Purpose, ProfilePicture, QRCodeImage, ExpirationDate) VALUES (@VisitorID, @FirstName, @MiddleName, @LastName, @Email, @Address, @ContactNumber, @Purpose, @ProfilePicture, @QRCodeImage, @ExpirationDate)";
