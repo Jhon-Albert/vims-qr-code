@@ -24,7 +24,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class VisitorReports : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        private readonly SqlConnection con = new SqlConnection(@"");
         public VisitorReports()
         {
             InitializeComponent();
@@ -256,7 +256,7 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Path\To\Your\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     using (StreamReader reader = new StreamReader(filePath))
@@ -310,7 +310,7 @@ namespace Visitor_Identification_Management_System
                     ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // First sheet
                     int rowCount = worksheet.Dimension.Rows;
 
-                    using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Path\To\Your\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;"))
+                    using (SqlConnection con = new SqlConnection(@""))
                     {
                         con.Open();
 
