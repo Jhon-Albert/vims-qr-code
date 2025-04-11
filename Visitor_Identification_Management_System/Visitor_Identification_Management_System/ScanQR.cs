@@ -13,7 +13,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class ScanQR : Form
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        private readonly SqlConnection con = new SqlConnection(@"");
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
         private RealTimeTracking trackingForm;
@@ -184,7 +184,7 @@ namespace Visitor_Identification_Management_System
             txt_purpose.Clear();
             txt_email.Clear();
             //pb_profilePic.Image = null;
-            pb_profilePic.Image = Image.FromFile(@"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\Visitor_Identification_Management_System\Resources\image.png");
+            pb_profilePic.Image = Image.FromFile(@"");
         }
 
         // BUTTON
