@@ -17,7 +17,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class EmployeeDashboard: UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        private readonly SqlConnection con = new SqlConnection(@"");
         private List<Visitor> checkedInVisitors = new List<Visitor>();
         private int currentIndex = 0;
         private Timer visitorTimer;
