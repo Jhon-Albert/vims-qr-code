@@ -171,9 +171,9 @@ namespace Visitor_Identification_Management_System
 
     public class GoogleSync
     {
-        private static string CredentialsPath = @"C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\vims-visitor-registration-4e7c2a747133.json";
-        private static string SpreadsheetId = "1FOcW7o8FLkPQumPZJzzefux3HyAfvcWKXv6AF_3frgc";
-        private static string SheetName = "VisitorSheet";
+        private static string CredentialsPath = @"";
+        private static string SpreadsheetId = "";
+        private static string SheetName = "";
 
         // EXPIRATION TYPE
         public static DateTime CalculateExpirationDate(string visitorType)
@@ -211,7 +211,7 @@ namespace Visitor_Identification_Management_System
 
                     if (response.Values != null && response.Values.Count > 0)
                     {
-                        using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                        using (SqlConnection con = new SqlConnection(@""))
                         {
                             con.Open();
                             foreach (var row in response.Values.Skip(1))
