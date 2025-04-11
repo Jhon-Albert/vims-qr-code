@@ -14,7 +14,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class Info : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        private readonly SqlConnection con = new SqlConnection(@"");
         public Info()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace Visitor_Identification_Management_System
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False"))
+                using (SqlConnection con = new SqlConnection(@""))
                 {
                     con.Open();
                     string query = "SELECT VisitorID, FirstName, MiddleName, LastName, Email, ContactNumber, Address, Purpose, ProfilePicture, ExpirationDate FROM Registration";
