@@ -63,6 +63,7 @@
             panelBackground = new Panel();
             panel5 = new Panel();
             btn_customizeBackground = new Button();
+            pb_establishmentLogo = new PictureBox();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
             panel10.SuspendLayout();
@@ -82,11 +83,13 @@
             ((System.ComponentModel.ISupportInitialize)pb_displayProfile).BeginInit();
             panelBackground.SuspendLayout();
             panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_establishmentLogo).BeginInit();
             SuspendLayout();
             // 
             // panel4
             // 
-            panel4.BackColor = Color.Transparent;
+            panel4.BackColor = Color.FromArgb(191, 219, 254);
+            panel4.Controls.Add(pb_establishmentLogo);
             panel4.Controls.Add(label2);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
@@ -99,21 +102,21 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(26, 60);
+            label2.Location = new Point(124, 59);
             label2.Name = "label2";
-            label2.Size = new Size(140, 21);
+            label2.Size = new Size(205, 21);
             label2.TabIndex = 14;
-            label2.Text = "Home | Dashboard";
+            label2.Text = "Dashboard | School Address";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 15);
+            label1.Location = new Point(115, 14);
             label1.Name = "label1";
-            label1.Size = new Size(184, 45);
+            label1.Size = new Size(252, 45);
             label1.TabIndex = 13;
-            label1.Text = "Dashboard";
+            label1.Text = "SCHOOL NAME";
             // 
             // panel6
             // 
@@ -122,7 +125,7 @@
             panel6.Controls.Add(panel11);
             panel6.Controls.Add(panel12);
             panel6.Controls.Add(pb_recentDisplayProfile);
-            panel6.Location = new Point(536, 184);
+            panel6.Location = new Point(537, 242);
             panel6.Name = "panel6";
             panel6.Size = new Size(485, 221);
             panel6.TabIndex = 20;
@@ -210,7 +213,7 @@
             panel3.Controls.Add(pictureBox4);
             panel3.Controls.Add(lbl_current);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(748, 23);
+            panel3.Location = new Point(749, 81);
             panel3.Name = "panel3";
             panel3.Size = new Size(273, 142);
             panel3.TabIndex = 18;
@@ -253,7 +256,7 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(lbl_today);
             panel2.Controls.Add(label5);
-            panel2.Location = new Point(387, 23);
+            panel2.Location = new Point(388, 81);
             panel2.Name = "panel2";
             panel2.Size = new Size(273, 142);
             panel2.TabIndex = 17;
@@ -296,7 +299,7 @@
             panel1.Controls.Add(lbl_total_regis);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(25, 23);
+            panel1.Location = new Point(26, 81);
             panel1.Name = "panel1";
             panel1.Size = new Size(273, 142);
             panel1.TabIndex = 16;
@@ -340,7 +343,7 @@
             panelVisitors.Controls.Add(panel8);
             panelVisitors.Controls.Add(panel7);
             panelVisitors.Controls.Add(pb_displayProfile);
-            panelVisitors.Location = new Point(25, 184);
+            panelVisitors.Location = new Point(26, 242);
             panelVisitors.Name = "panelVisitors";
             panelVisitors.Size = new Size(485, 221);
             panelVisitors.TabIndex = 19;
@@ -458,6 +461,16 @@
             btn_customizeBackground.UseVisualStyleBackColor = true;
             btn_customizeBackground.Click += btn_customizeBackground_Click;
             // 
+            // pb_establishmentLogo
+            // 
+            pb_establishmentLogo.Image = (Image)resources.GetObject("pb_establishmentLogo.Image");
+            pb_establishmentLogo.Location = new Point(26, 14);
+            pb_establishmentLogo.Name = "pb_establishmentLogo";
+            pb_establishmentLogo.Size = new Size(80, 80);
+            pb_establishmentLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_establishmentLogo.TabIndex = 15;
+            pb_establishmentLogo.TabStop = false;
+            // 
             // EmployeeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -495,6 +508,7 @@
             ((System.ComponentModel.ISupportInitialize)pb_displayProfile).EndInit();
             panelBackground.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pb_establishmentLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -534,5 +548,6 @@
         private Panel panelBackground;
         private Panel panel5;
         private Button btn_customizeBackground;
+        private PictureBox pb_establishmentLogo;
     }
 }
