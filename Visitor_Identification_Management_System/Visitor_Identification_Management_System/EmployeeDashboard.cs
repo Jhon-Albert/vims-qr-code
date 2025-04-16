@@ -15,9 +15,9 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace Visitor_Identification_Management_System
 {
-    public partial class EmployeeDashboard: UserControl
+    public partial class EmployeeDashboard : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
         private List<Visitor> checkedInVisitors = new List<Visitor>();
         private int currentIndex = 0;
         private Timer visitorTimer;
@@ -35,15 +35,22 @@ namespace Visitor_Identification_Management_System
             con.Open();
             //
             SqlCommand total_reg_cmd = new SqlCommand("select count(*) from Registration", con);
-            lbl_total_regis.Text = total_reg_cmd .ExecuteScalar().ToString();
+            lbl_total_regis.Text = total_reg_cmd.ExecuteScalar().ToString();
             //
             SqlCommand today_visitor_cmd = new SqlCommand("select count(*) from VisitorLogs where cast(CheckInTime as date) = cast(getdate() as date)", con);
             lbl_today.Text = today_visitor_cmd.ExecuteScalar().ToString();
             //
             SqlCommand current_visitor_cmd = new SqlCommand("select count(*) from VisitorLogs where CheckInTime is not null and CheckOutTime is null", con);
-            lbl_current.Text = current_visitor_cmd .ExecuteScalar().ToString();
+            lbl_current.Text = current_visitor_cmd.ExecuteScalar().ToString();
             con.Close();
         }
+
+        public void SetDashboardBackground(Image backgroundImage)
+        {
+            panelBackground.BackgroundImage = backgroundImage;
+            //panelBackground.BackgroundImageLayout = ImageLayout.Zoom;
+        }
+
 
         //CHECK IN VISITOR
         private void LoadCheckedInVisitors()
@@ -198,6 +205,42 @@ namespace Visitor_Identification_Management_System
             public string CheckInTime { get; set; }
             public byte[] ImageData { get; set; }
             public string CheckOutTime { get; set; }
+        }
+
+        private void btn_customizeBackground_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Image selectedImage = Image.FromFile(ofd.FileName);
+                SetDashboardBackground(selectedImage);
+
+                Properties.Settings.Default.EmployeeDashboardBackgroundPath = ofd.FileName;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void EmployeeDashboard_Load(object sender, EventArgs e)
+        {
+            string path = Properties.Settings.Default.EmployeeDashboardBackgroundPath;
+            try
+            {
+                if (!string.IsNullOrEmpty(path) && File.Exists(path))
+                {
+                    Image savedImage = Image.FromFile(path);
+                    SetDashboardBackground(savedImage);
+                }
+                else
+                {
+                    MessageBox.Show("No background image path found or file does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading background image: " + ex.Message);
+            }
         }
     }
 }

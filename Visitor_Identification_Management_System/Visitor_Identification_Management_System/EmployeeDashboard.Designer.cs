@@ -32,7 +32,6 @@
             panel4 = new Panel();
             label2 = new Label();
             label1 = new Label();
-            panel5 = new Panel();
             panel6 = new Panel();
             panel10 = new Panel();
             lbl_recentTime = new Label();
@@ -61,8 +60,10 @@
             panel7 = new Panel();
             lbl_status = new Label();
             pb_displayProfile = new PictureBox();
+            panelBackground = new Panel();
+            panel5 = new Panel();
+            btn_customizeBackground = new Button();
             panel4.SuspendLayout();
-            panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel11.SuspendLayout();
@@ -79,16 +80,19 @@
             panel8.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_displayProfile).BeginInit();
+            panelBackground.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel4
             // 
+            panel4.BackColor = Color.Transparent;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1053, 100);
+            panel4.Size = new Size(1080, 100);
             panel4.TabIndex = 16;
             // 
             // label2
@@ -111,19 +115,6 @@
             label1.TabIndex = 13;
             label1.Text = "Dashboard";
             // 
-            // panel5
-            // 
-            panel5.Controls.Add(panel6);
-            panel5.Controls.Add(panel3);
-            panel5.Controls.Add(panel2);
-            panel5.Controls.Add(panel1);
-            panel5.Controls.Add(panelVisitors);
-            panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 100);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1053, 425);
-            panel5.TabIndex = 17;
-            // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(96, 165, 250);
@@ -131,7 +122,7 @@
             panel6.Controls.Add(panel11);
             panel6.Controls.Add(panel12);
             panel6.Controls.Add(pb_recentDisplayProfile);
-            panel6.Location = new Point(537, 183);
+            panel6.Location = new Point(536, 184);
             panel6.Name = "panel6";
             panel6.Size = new Size(485, 221);
             panel6.TabIndex = 20;
@@ -219,7 +210,7 @@
             panel3.Controls.Add(pictureBox4);
             panel3.Controls.Add(lbl_current);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(749, 22);
+            panel3.Location = new Point(748, 23);
             panel3.Name = "panel3";
             panel3.Size = new Size(273, 142);
             panel3.TabIndex = 18;
@@ -262,7 +253,7 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(lbl_today);
             panel2.Controls.Add(label5);
-            panel2.Location = new Point(388, 22);
+            panel2.Location = new Point(387, 23);
             panel2.Name = "panel2";
             panel2.Size = new Size(273, 142);
             panel2.TabIndex = 17;
@@ -295,9 +286,9 @@
             label5.ForeColor = Color.FromArgb(23, 37, 84);
             label5.Location = new Point(86, 75);
             label5.Name = "label5";
-            label5.Size = new Size(99, 21);
+            label5.Size = new Size(106, 21);
             label5.TabIndex = 0;
-            label5.Text = "Today Visitor";
+            label5.Text = "Today Visitors";
             // 
             // panel1
             // 
@@ -305,7 +296,7 @@
             panel1.Controls.Add(lbl_total_regis);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(26, 22);
+            panel1.Location = new Point(25, 23);
             panel1.Name = "panel1";
             panel1.Size = new Size(273, 142);
             panel1.TabIndex = 16;
@@ -349,7 +340,7 @@
             panelVisitors.Controls.Add(panel8);
             panelVisitors.Controls.Add(panel7);
             panelVisitors.Controls.Add(pb_displayProfile);
-            panelVisitors.Location = new Point(26, 183);
+            panelVisitors.Location = new Point(25, 184);
             panelVisitors.Name = "panelVisitors";
             panelVisitors.Size = new Size(485, 221);
             panelVisitors.TabIndex = 19;
@@ -431,17 +422,52 @@
             pb_displayProfile.TabIndex = 0;
             pb_displayProfile.TabStop = false;
             // 
+            // panelBackground
+            // 
+            panelBackground.BackgroundImageLayout = ImageLayout.Stretch;
+            panelBackground.Controls.Add(panel5);
+            panelBackground.Controls.Add(panel4);
+            panelBackground.Dock = DockStyle.Fill;
+            panelBackground.Location = new Point(0, 0);
+            panelBackground.Name = "panelBackground";
+            panelBackground.Size = new Size(1080, 642);
+            panelBackground.TabIndex = 18;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Transparent;
+            panel5.Controls.Add(btn_customizeBackground);
+            panel5.Controls.Add(panel1);
+            panel5.Controls.Add(panel6);
+            panel5.Controls.Add(panelVisitors);
+            panel5.Controls.Add(panel2);
+            panel5.Controls.Add(panel3);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(0, 100);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1080, 542);
+            panel5.TabIndex = 21;
+            // 
+            // btn_customizeBackground
+            // 
+            btn_customizeBackground.Location = new Point(1002, 516);
+            btn_customizeBackground.Name = "btn_customizeBackground";
+            btn_customizeBackground.Size = new Size(75, 23);
+            btn_customizeBackground.TabIndex = 21;
+            btn_customizeBackground.Text = "Customize";
+            btn_customizeBackground.UseVisualStyleBackColor = true;
+            btn_customizeBackground.Click += btn_customizeBackground_Click;
+            // 
             // EmployeeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel5);
-            Controls.Add(panel4);
+            Controls.Add(panelBackground);
             Name = "EmployeeDashboard";
-            Size = new Size(1053, 525);
+            Size = new Size(1080, 642);
+            Load += EmployeeDashboard_Load;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
@@ -467,6 +493,8 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_displayProfile).EndInit();
+            panelBackground.ResumeLayout(false);
+            panel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -475,7 +503,6 @@
         private Panel panel4;
         private Label label2;
         private Label label1;
-        private Panel panel5;
         private Panel panel3;
         private Label lbl_current;
         private Label label6;
@@ -504,5 +531,8 @@
         private PictureBox pb_recentDisplayProfile;
         private PictureBox pictureBox4;
         private PictureBox pictureBox2;
+        private Panel panelBackground;
+        private Panel panel5;
+        private Button btn_customizeBackground;
     }
 }
