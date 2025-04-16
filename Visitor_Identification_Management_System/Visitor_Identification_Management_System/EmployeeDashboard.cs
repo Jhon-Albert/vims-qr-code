@@ -17,7 +17,7 @@ namespace Visitor_Identification_Management_System
 {
     public partial class EmployeeDashboard : UserControl
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Jhon Albert Ogana\source\repos\Visitor_Identification_Management_System\VIMS.mdf"";Integrated Security=True;Connect Timeout=30;");
+        private readonly SqlConnection con = new SqlConnection(@"");
         private List<Visitor> checkedInVisitors = new List<Visitor>();
         private int currentIndex = 0;
         private Timer visitorTimer;
@@ -55,7 +55,7 @@ namespace Visitor_Identification_Management_System
         //CHECK IN VISITOR
         private void LoadCheckedInVisitors()
         {
-            checkedInVisitors.Clear(); // Clear the previous list
+            checkedInVisitors.Clear();
 
             try
             {
@@ -104,7 +104,7 @@ namespace Visitor_Identification_Management_System
                                "FROM VisitorLogs v " +
                                "INNER JOIN Registration r ON v.VisitorID = r.VisitorID " +
                                "WHERE v.CheckOutTime IS NOT NULL " +
-                               "ORDER BY v.CheckOutTime DESC"; // Get the most recent check-out
+                               "ORDER BY v.CheckOutTime DESC";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -140,10 +140,10 @@ namespace Visitor_Identification_Management_System
             if (checkedInVisitors.Count > 0)
             {
                 visitorTimer = new Timer();
-                visitorTimer.Interval = 5000; // Change visitor every 5 seconds
+                visitorTimer.Interval = 5000;
                 visitorTimer.Tick += VisitorTimer_Tick;
                 visitorTimer.Start();
-                DisplayVisitor(0); // Show first visitor immediately
+                DisplayVisitor(0);
             }
         }
 
@@ -151,7 +151,7 @@ namespace Visitor_Identification_Management_System
         {
             if (checkedInVisitors.Count > 0)
             {
-                currentIndex = (currentIndex + 1) % checkedInVisitors.Count; // Cycle through visitors
+                currentIndex = (currentIndex + 1) % checkedInVisitors.Count;
                 DisplayVisitor(currentIndex);
             }
         }
@@ -175,14 +175,14 @@ namespace Visitor_Identification_Management_System
             }
             else
             {
-                pb_displayProfile.Image = Properties.Resources.default_image; // Use a default image
+                pb_displayProfile.Image = Properties.Resources.default_image;
             }
         }
 
         //RECENT VISITOR
         private void DisplayRecentCheckOut(Visitor visitor)
         {
-            lbl_recentStatus.Text = "Last Checked Out";  // Label for status
+            lbl_recentStatus.Text = "Last Checked Out";
             lbl_recentVisitorName.Text = visitor.FullName;
             lbl_recentTime.Text = "Checked Out: " + visitor.CheckOutTime;
 
@@ -195,7 +195,7 @@ namespace Visitor_Identification_Management_System
             }
             else
             {
-                pb_recentDisplayProfile.Image = Properties.Resources.default_image; // Default image
+                pb_recentDisplayProfile.Image = Properties.Resources.default_image;
             }
         }
 
